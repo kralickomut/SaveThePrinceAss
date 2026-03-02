@@ -1,3 +1,56 @@
-# Godot 4+ specific ignores
+# =========================
+# Godot Engine
+# =========================
+
+# Godot 4+ import/export metadata
+.import/
 .godot/
-/android/
+
+# Godot 3.x import metadata (keep if supporting 3.x)
+.import/
+
+# Export presets (optional: ignore if you don't want to track export configs)
+# export_presets.cfg
+
+# Mono / C# (if using Godot with .NET)
+.mono/
+data_*/
+mono_crash.*
+
+# C# build outputs
+bin/
+obj/
+
+# Rider / Visual Studio / VSCode
+.idea/
+.vscode/
+*.csproj
+*.sln
+*.user
+*.userprefs
+*.DotSettings
+*.DotSettings.user
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+
+# macOS
+*.icloud
+
+# Linux
+*~
+
+# Windows
+desktop.ini
+
+# Godot local editor settings (optional)
+.editor_settings-3.tres
+.editor_settings-4.tres
