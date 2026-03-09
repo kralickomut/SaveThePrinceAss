@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://d4fjcxrccyvgq"]
+
+[ext_resource type="Texture2D" uid="uid://pmbissxw7m4m" path="res://sprites/knight.png" id="1_glpr6"]
+[ext_resource type="Script" uid="uid://dtymd2pcwv021" path="res://scripts/PlayerController.cs" id="1_pjt0s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glpr6"]
+size = Vector2(13.5, 19)
+
+[node name="Player" type="CharacterBody2D" unique_id=949381415]
+script = ExtResource("1_pjt0s")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=339371271]
+zoom = Vector2(6, 6)
+
+[node name="AgentAnimator" type="Node2D" parent="." unique_id=1250667790]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AgentAnimator" unique_id=1629600749]
+root_node = NodePath("../..")
+
+[node name="Sprite2D" type="Sprite2D" parent="AgentAnimator" unique_id=2073796625]
+position = Vector2(2, -7)
+texture = ExtResource("1_glpr6")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=859654896]
+position = Vector2(1.25, -4.5)
+shape = SubResource("RectangleShape2D_glpr6")
