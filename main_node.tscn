@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b51deiloc710" path="res://sprites/world_tileset.png" id="1_lwogq"]
 [ext_resource type="PackedScene" uid="uid://d4fjcxrccyvgq" path="res://character.tscn" id="2_dhalm"]
+[ext_resource type="PackedScene" path="res://slime.tscn" id="3_bxfy6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dhalm"]
 texture = ExtResource("1_lwogq")
@@ -143,8 +144,11 @@ sources/0 = SubResource("TileSetAtlasSource_dhalm")
 [node name="TileMap" type="TileMap" parent="." unique_id=668536971]
 tile_set = SubResource("TileSet_bxfy6")
 format = 2
-layer_0/tile_data = PackedInt32Array(2293764, 0, 0, 2293765, 0, 0, 2293766, 0, 0, 2293767, 0, 0, 2293768, 0, 0, 2293769, 0, 0, 2293770, 0, 0, 2293771, 0, 0, 2293772, 0, 0)
+layer_0/tile_data = PackedInt32Array(2293766, 0, 0, 2293767, 0, 0, 2293768, 0, 0, 2293769, 0, 0, 2293770, 0, 0, 2293771, 0, 0, 2293772, 0, 0, 2293773, 0, 0, 2228237, 0, 0, 2293774, 0, 0, 2228238, 0, 0, 2162702, 0, 0, 2293775, 0, 0, 2228239, 0, 0, 2162703, 0, 0, 2097167, 0, 0, 2031631, 0, 0, 2228228, 0, 11, 2228229, 0, 11, 2228230, 0, 11, 2228231, 0, 11, 2228232, 0, 11, 2228233, 0, 5, 2228234, 0, 11, 2228235, 0, 11, 2228236, 0, 11, 2162700, 0, 11, 2162701, 0, 11, 2162699, 0, 11, 2162698, 0, 11, 2162697, 0, 4, 2162696, 0, 11, 2162695, 0, 11, 2162694, 0, 11, 2162693, 0, 11, 2162692, 0, 11, 2097156, 0, 11, 2097157, 0, 11, 2097158, 0, 11, 2097159, 0, 11, 2097160, 0, 11, 2097161, 0, 3, 2097162, 0, 11, 2097163, 0, 11, 2097164, 0, 11, 2097165, 0, 11, 2097166, 0, 11, 2031630, 0, 11, 2031629, 0, 11, 2031628, 0, 11, 2031627, 0, 11, 2031626, 0, 11, 2031625, 0, 11, 2031624, 0, 11, 2031623, 0, 11, 2031622, 0, 11, 2031621, 0, 11, 2031620, 0, 11, 2293764, 0, 0, 2293765, 0, 0)
 layer_1/name = "Layer1"
 
 [node name="Player" parent="." unique_id=949381415 instance=ExtResource("2_dhalm")]
 position = Vector2(102, 554)
+
+[node name="SlimeEnemy" parent="." unique_id=1091950493 instance=ExtResource("3_bxfy6")]
+position = Vector2(187, 546)
