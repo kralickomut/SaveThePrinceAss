@@ -9,6 +9,7 @@ public partial class ZoneManager : Node
     private Node2D _normalSprites;
     private Node2D _autumnSprites;
     private Node2D _winterSprites;
+    private Node2D _snowSprites;
 
     public override void _Ready()
     {
@@ -16,9 +17,11 @@ public partial class ZoneManager : Node
         _normalSprites = root.GetNode<Node2D>("NormalBG/Sprites");
         _autumnSprites = root.GetNode<Node2D>("AutumnBG/Sprites");
         _winterSprites = root.GetNode<Node2D>("WinterBG/Sprites");
+        _snowSprites   = root.GetNode<Node2D>("SnowOverlay/Sprites");
 
         SetAlpha(_autumnSprites, 0f);
         SetAlpha(_winterSprites, 0f);
+        SetAlpha(_snowSprites,   0f);
     }
 
     public override void _Process(double delta)
@@ -37,6 +40,7 @@ public partial class ZoneManager : Node
         // Autumn fades in over Normal, then Winter fades in over Autumn.
         SetAlpha(_autumnSprites, t12 * (1f - t23));
         SetAlpha(_winterSprites, t23);
+        SetAlpha(_snowSprites,   t23);
     }
 
     private static void SetAlpha(Node2D node, float alpha)
