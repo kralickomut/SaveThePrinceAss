@@ -964,7 +964,7 @@ position = Vector2(1008, 592)
 texture = ExtResource("25_6vuwa")
 region_enabled = true
 region_rect = Rect2(320, 0, 32, 32)
-script = ExtResource("32_apple")
+script = ExtResource("33_apple")
 HealAmount = 25
 
 [node name="InteractionArea" type="Area2D" parent="Decor/grass-5_norm2"]
