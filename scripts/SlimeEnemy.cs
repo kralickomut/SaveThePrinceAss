@@ -15,6 +15,7 @@ public partial class SlimeEnemy : CharacterBody2D, IDamageable
 	// ── Ноды ────────────────────────────────────────────────────────────────
 	private AnimationPlayer _animationPlayer;
 	private Sprite2D _sprite;
+	private HealthBar _healthBar;
 
 	// ── Данные ──────────────────────────────────────────────────────────────
 	private int _currentHealth;
@@ -32,6 +33,8 @@ public partial class SlimeEnemy : CharacterBody2D, IDamageable
 		_currentHealth  = MaxHealth;
 		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		_sprite         = GetNode<Sprite2D>("Sprite2D");
+		_healthBar      = GetNodeOrNull<HealthBar>("HealthBar");
+		_healthBar?.SetHealth(_currentHealth, MaxHealth);
 
 		_animationPlayer.AnimationFinished += OnAnimationFinished;
 		SetState(State.Patrol);
@@ -154,6 +157,7 @@ public partial class SlimeEnemy : CharacterBody2D, IDamageable
 		if (_state == State.Dead) return;
 
 		_currentHealth = Mathf.Max(0, _currentHealth - damage);
+		_healthBar?.SetHealth(_currentHealth, MaxHealth);
 		GD.Print($"Slime HP: {_currentHealth}/{MaxHealth}");
 
 		if (_currentHealth <= 0)

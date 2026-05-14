@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwy01kqtjeu1h" path="res://scripts/SlimeEnemy.cs" id="1_slm"]
 [ext_resource type="Texture2D" uid="uid://b4l5fw2ulorki" path="res://sprites/slime_green.png" id="2_slm"]
+[ext_resource type="Script" uid="uid://dmm0qgx2r4n5c" path="res://scripts/HealthBar.cs" id="3_health"]
 
 [sub_resource type="RectangleShape2D" id="Shape_slm"]
 size = Vector2(28, 26)
@@ -82,3 +83,31 @@ shape = SubResource("Shape_slm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=920943741]
 libraries/ = SubResource("AnimLib_slm")
+
+[node name="HealthBar" type="Node2D" parent="."]
+position = Vector2(0, -40)
+z_index = 20
+script = ExtResource("3_health")
+Width = 26.0
+Height = 3.0
+
+[node name="Border" type="ColorRect" parent="HealthBar"]
+offset_left = -14.0
+offset_top = -2.5
+offset_right = 14.0
+offset_bottom = 2.5
+color = Color(0.03, 0.02, 0.02, 0.95)
+
+[node name="Background" type="ColorRect" parent="HealthBar"]
+offset_left = -13.0
+offset_top = -1.5
+offset_right = 13.0
+offset_bottom = 1.5
+color = Color(0.08, 0.02, 0.03, 0.85)
+
+[node name="Fill" type="ColorRect" parent="HealthBar"]
+offset_left = -13.0
+offset_top = -1.5
+offset_right = 13.0
+offset_bottom = 1.5
+color = Color(0.18, 0.92, 0.28, 1)

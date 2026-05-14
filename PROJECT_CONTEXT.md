@@ -1,4 +1,4 @@
-# SaveThePrinceAss — Project Context for Claude
+# Save The Princess — Project Context for Claude
 
 This file exists to give Claude full project context at the start of a session, so no codebase exploration is needed upfront.
 
@@ -6,7 +6,7 @@ This file exists to give Claude full project context at the start of a session, 
 
 ## Project Overview
 
-- **Name**: SaveThePrinceAss
+- **Name**: Save The Princess
 - **Genre**: 2D side-scrolling action platformer / slasher
 - **Engine**: Godot 4.6 (Forward Plus renderer)
 - **Language**: C#
@@ -154,9 +154,10 @@ const float InvincibleDuration = 1.2f;  // seconds of i-frames after taking dama
 Idle → Move → Jump → Attack → Hurt → Dead
 ```
 - Input locked during `Attack`, `Hurt`, `Dead`
-- `Attack` flips `AttackHitbox.Scale.X` for direction; hitbox enabled/disabled by animation keyframes
+- `Attack` calls `UpdateFacingDirection()` to move `AttackHitbox.Position` left/right; hitbox enabled/disabled by animation keyframes
 - One damage instance per attack swing (`_hasDealtDamageThisAttack` flag)
 - **Invincibility frames:** after `TakeDamage`, player is immune for 1.2 s (`_invincibleTimer`). Prevents slime from locking the player in `Hurt` state permanently.
+- `Heal(int amount)` restores HP up to `MaxHealth`, updates the HUD health bar, and returns `true` only when HP changed.
 - Death: plays "death" animation, stops all processing
 - Player is in group `"player"` (enemies use this to locate it)
 - Texture swaps: `knight.png` for normal states, `attack.png` for attack state
@@ -284,7 +285,7 @@ Both are empty stubs (auto-generated Node2D scripts, no logic).
 - [ ] Scroll / lore system (interactive objects)
 - [ ] Torch mechanic for floor 3 (`PointLight2D`)
 - [ ] Full level design (3 floors with platforms, hazards, rooms)
-- [ ] Collectibles (coin, fruit — sprites exist, no logic)
+- [ ] Coin/score collectibles
 - [ ] Death / respawn flow (death anim plays but no scene restart)
 - [ ] UI / HUD (health bar, score)
 - [ ] Audio
