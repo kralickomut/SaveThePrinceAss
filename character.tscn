@@ -84,6 +84,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_wfnr8"]
 resource_name = "move"
+loop_mode = 1
 length = 2.0
 step = 0.125
 tracks/0/type = "value"

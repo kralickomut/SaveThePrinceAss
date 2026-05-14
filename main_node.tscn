@@ -1,154 +1,169 @@
 [gd_scene format=3 uid="uid://bh60ihk0xt2j3"]
 
-[ext_resource type="Texture2D" uid="uid://b51deiloc710" path="res://sprites/world_tileset.png" id="1_lwogq"]
-[ext_resource type="PackedScene" uid="uid://d4fjcxrccyvgq" path="res://character.tscn" id="2_dhalm"]
-[ext_resource type="PackedScene" path="res://slime.tscn" id="3_bxfy6"]
+[ext_resource type="Script" path="res://scripts/ZoneManager.cs" id="1_zm"]
+[ext_resource type="Texture2D" uid="uid://dghfvwmmeluvy" path="res://GandalfHardcore FREE Platformer Assets/Floor Tiles1.png" id="2_wts"]
+[ext_resource type="PackedScene" uid="uid://d4fjcxrccyvgq" path="res://character.tscn" id="3_char"]
+[ext_resource type="PackedScene" uid="uid://dn314auixunnd" path="res://slime.tscn" id="4_slime"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dhalm"]
-texture = ExtResource("1_lwogq")
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/Background Castle .png" id="5_n0"]
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 5.png" id="6_n5"]
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 4.png" id="7_n4"]
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 3.png" id="8_n3"]
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 2.png" id="9_n2"]
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 1.png" id="10_n1"]
+
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/Background Castle Autumn.png" id="11_a0"]
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 5.png" id="12_a5"]
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 4.png" id="13_a4"]
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 3.png" id="14_a3"]
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 2.png" id="15_a2"]
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 1.png" id="16_a1"]
+
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/Background Castle  Winter.png" id="17_w0"]
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/GandalfHardcore Background layers_layer 5.png" id="18_w5"]
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/GandalfHardcore Background layers_layer 4.png" id="19_w4"]
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/GandalfHardcore Background layers_layer 3.png" id="20_w3"]
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/GandalfHardcore Background layers_layer 2.png" id="21_w2"]
+[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/GandalfHardcore Background layers_layer 1.png" id="22_w1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1"]
+texture = ExtResource("2_wts")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-10:0/0 = 0
-11:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
-11:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-8:2/0 = 0
-9:2/0 = 0
-10:2/0 = 0
-11:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-7:3/0 = 0
-8:3/0 = 0
-9:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-7:4/0 = 0
-8:4/0 = 0
-9:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-7:5/0 = 0
-8:5/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-6:6/0 = 0
-7:6/0 = 0
-8:6/0 = 0
-0:7/0 = 0
-1:7/0 = 0
-3:7/0 = 0
-5:7/0 = 0
-6:7/0 = 0
-7:7/0 = 0
-8:7/0 = 0
 0:8/0 = 0
-1:8/0 = 0
-2:8/0 = 0
-3:8/0 = 0
-4:8/0 = 0
-5:8/0 = 0
-6:8/0 = 0
-7:8/0 = 0
-8:8/0 = 0
-0:9/0 = 0
-1:9/0 = 0
-2:9/0 = 0
-3:9/0 = 0
-4:9/0 = 0
-5:9/0 = 0
-6:9/0 = 0
-7:9/0 = 0
-0:10/0 = 0
-1:10/0 = 0
-2:10/0 = 0
-3:10/0 = 0
-4:10/0 = 0
-6:10/0 = 0
-0:11/0 = 0
-1:11/0 = 0
-2:11/0 = 0
-3:11/0 = 0
-4:11/0 = 0
-5:11/0 = 0
+0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:12/0 = 0
-1:12/0 = 0
-2:12/0 = 0
-3:12/0 = 0
-4:12/0 = 0
-0:13/0 = 0
-1:13/0 = 0
-2:13/0 = 0
-3:13/0 = 0
-4:13/0 = 0
-5:13/0 = 0
-0:14/0 = 0
-1:14/0 = 0
-2:14/0 = 0
-3:14/0 = 0
-4:14/0 = 0
-0:15/0 = 0
-1:15/0 = 0
-2:15/0 = 0
-3:15/0 = 0
+0:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:20/0 = 0
+0:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:24/0 = 0
+0:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:32/0 = 0
+0:32/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSet" id="TileSet_bxfy6"]
+[sub_resource type="TileSet" id="TileSet_1"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_dhalm")
+sources/0 = SubResource("TileSetAtlasSource_1")
 
 [node name="MainNode" type="Node2D" unique_id=718610701]
 
+[node name="NormalBG" type="CanvasLayer" parent="." unique_id=200001]
+layer = -100
+
+[node name="Sprites" type="Node2D" parent="NormalBG" unique_id=200002]
+
+[node name="Castle" type="Sprite2D" parent="NormalBG/Sprites" unique_id=200003]
+texture = ExtResource("5_n0")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="Layer5" type="Sprite2D" parent="NormalBG/Sprites" unique_id=200004]
+texture = ExtResource("6_n5")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="Layer4" type="Sprite2D" parent="NormalBG/Sprites" unique_id=200005]
+texture = ExtResource("7_n4")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="Layer3" type="Sprite2D" parent="NormalBG/Sprites" unique_id=200006]
+texture = ExtResource("8_n3")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="Layer2" type="Sprite2D" parent="NormalBG/Sprites" unique_id=200007]
+texture = ExtResource("9_n2")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="Layer1" type="Sprite2D" parent="NormalBG/Sprites" unique_id=200008]
+texture = ExtResource("10_n1")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="AutumnBG" type="CanvasLayer" parent="." unique_id=200009]
+layer = -100
+
+[node name="Sprites" type="Node2D" parent="AutumnBG" unique_id=200010]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Castle" type="Sprite2D" parent="AutumnBG/Sprites" unique_id=200011]
+texture = ExtResource("11_a0")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="Layer5" type="Sprite2D" parent="AutumnBG/Sprites" unique_id=200012]
+texture = ExtResource("12_a5")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="Layer4" type="Sprite2D" parent="AutumnBG/Sprites" unique_id=200013]
+texture = ExtResource("13_a4")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="Layer3" type="Sprite2D" parent="AutumnBG/Sprites" unique_id=200014]
+texture = ExtResource("14_a3")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="Layer2" type="Sprite2D" parent="AutumnBG/Sprites" unique_id=200015]
+texture = ExtResource("15_a2")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="Layer1" type="Sprite2D" parent="AutumnBG/Sprites" unique_id=200016]
+texture = ExtResource("16_a1")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="WinterBG" type="CanvasLayer" parent="." unique_id=200017]
+layer = -100
+
+[node name="Sprites" type="Node2D" parent="WinterBG" unique_id=200018]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Castle" type="Sprite2D" parent="WinterBG/Sprites" unique_id=200019]
+texture = ExtResource("17_w0")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="Layer5" type="Sprite2D" parent="WinterBG/Sprites" unique_id=200020]
+texture = ExtResource("18_w5")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="Layer4" type="Sprite2D" parent="WinterBG/Sprites" unique_id=200021]
+texture = ExtResource("19_w4")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="Layer3" type="Sprite2D" parent="WinterBG/Sprites" unique_id=200022]
+texture = ExtResource("20_w3")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="Layer2" type="Sprite2D" parent="WinterBG/Sprites" unique_id=200023]
+texture = ExtResource("21_w2")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
+[node name="Layer1" type="Sprite2D" parent="WinterBG/Sprites" unique_id=200024]
+texture = ExtResource("22_w1")
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+
 [node name="TileMap" type="TileMap" parent="." unique_id=668536971]
-tile_set = SubResource("TileSet_bxfy6")
+tile_set = SubResource("TileSet_1")
 format = 2
-layer_0/tile_data = PackedInt32Array(2293766, 0, 0, 2293767, 0, 0, 2293768, 0, 0, 2293769, 0, 0, 2293770, 0, 0, 2293771, 0, 0, 2293772, 0, 0, 2293773, 0, 0, 2228237, 0, 0, 2293774, 0, 0, 2228238, 0, 0, 2162702, 0, 0, 2293775, 0, 0, 2228239, 0, 0, 2162703, 0, 0, 2097167, 0, 0, 2031631, 0, 0, 2228228, 0, 11, 2228229, 0, 11, 2228230, 0, 11, 2228231, 0, 11, 2228232, 0, 11, 2228233, 0, 5, 2228234, 0, 11, 2228235, 0, 11, 2228236, 0, 11, 2162700, 0, 11, 2162701, 0, 11, 2162699, 0, 11, 2162698, 0, 11, 2162697, 0, 4, 2162696, 0, 11, 2162695, 0, 11, 2162694, 0, 11, 2162693, 0, 11, 2162692, 0, 11, 2097156, 0, 11, 2097157, 0, 11, 2097158, 0, 11, 2097159, 0, 11, 2097160, 0, 11, 2097161, 0, 3, 2097162, 0, 11, 2097163, 0, 11, 2097164, 0, 11, 2097165, 0, 11, 2097166, 0, 11, 2031630, 0, 11, 2031629, 0, 11, 2031628, 0, 11, 2031627, 0, 11, 2031626, 0, 11, 2031625, 0, 11, 2031624, 0, 11, 2031623, 0, 11, 2031622, 0, 11, 2031621, 0, 11, 2031620, 0, 11, 2293764, 0, 0, 2293765, 0, 0)
-layer_1/name = "Layer1"
+layer_0/tile_data = PackedInt32Array(2228224, 0, 0, 2228225, 0, 0, 2228226, 0, 0, 2228227, 0, 0, 2228228, 0, 0, 2228229, 0, 0, 2228230, 0, 0, 2228231, 0, 0, 2228232, 0, 0, 2228233, 0, 0, 2228234, 0, 0, 2228235, 0, 0, 2228236, 0, 0, 2228237, 0, 0, 2228238, 0, 0, 2228239, 0, 0, 2228240, 0, 0, 2228241, 0, 0, 2228242, 0, 0, 2228243, 0, 0, 2228244, 0, 0, 2228245, 0, 0, 2228246, 0, 0, 2228247, 0, 0, 2228248, 0, 0, 2228249, 0, 0, 2228250, 0, 0, 2228251, 0, 0, 2228252, 0, 0, 2228253, 0, 0, 2228254, 0, 0, 2228255, 0, 0, 2228256, 0, 0, 2228257, 0, 0, 2228258, 0, 0, 2228259, 0, 0, 2228260, 0, 786432, 2228261, 0, 786432, 2228262, 0, 786432, 2228263, 0, 786432, 2228264, 0, 786432, 2228265, 0, 786432, 2228266, 0, 786432, 2228267, 0, 786432, 2228268, 0, 786432, 2228269, 0, 786432, 2228270, 0, 786432, 2228271, 0, 786432, 2228272, 0, 786432, 2228273, 0, 786432, 2228274, 0, 786432, 2228275, 0, 786432, 2228276, 0, 786432, 2228277, 0, 786432, 2228278, 0, 786432, 2228279, 0, 786432, 2228280, 0, 786432, 2228281, 0, 786432, 2228282, 0, 786432, 2228283, 0, 786432, 2228284, 0, 786432, 2228285, 0, 786432, 2228286, 0, 786432, 2228287, 0, 786432, 2228288, 0, 786432, 2228289, 0, 786432, 2228290, 0, 786432, 2228291, 0, 786432, 2228292, 0, 786432, 2228293, 0, 786432, 2228294, 0, 786432, 2228295, 0, 786432, 2228296, 0, 1572864, 2228297, 0, 1572864, 2228298, 0, 1572864, 2228299, 0, 1572864, 2228300, 0, 1572864, 2228301, 0, 1572864, 2228302, 0, 1572864, 2228303, 0, 1572864, 2228304, 0, 1572864, 2228305, 0, 1572864, 2228306, 0, 1572864, 2228307, 0, 1572864, 2228308, 0, 1572864, 2228309, 0, 1572864, 2228310, 0, 1572864, 2228311, 0, 1572864, 2228312, 0, 1572864, 2228313, 0, 1572864, 2228314, 0, 1572864, 2228315, 0, 1572864, 2228316, 0, 1572864, 2228317, 0, 1572864, 2228318, 0, 1572864, 2228319, 0, 1572864, 2228320, 0, 1572864, 2228321, 0, 1572864, 2228322, 0, 1572864, 2228323, 0, 1572864, 2228324, 0, 1572864, 2228325, 0, 1572864, 2228326, 0, 1572864, 2228327, 0, 1572864, 2228328, 0, 1572864, 2228329, 0, 1572864, 2228330, 0, 1572864, 2228331, 0, 1572864, 2293760, 0, 524288, 2293761, 0, 524288, 2293762, 0, 524288, 2293763, 0, 524288, 2293764, 0, 524288, 2293765, 0, 524288, 2293766, 0, 524288, 2293767, 0, 524288, 2293768, 0, 524288, 2293769, 0, 524288, 2293770, 0, 524288, 2293771, 0, 524288, 2293772, 0, 524288, 2293773, 0, 524288, 2293774, 0, 524288, 2293775, 0, 524288, 2293776, 0, 524288, 2293777, 0, 524288, 2293778, 0, 524288, 2293779, 0, 524288, 2293780, 0, 524288, 2293781, 0, 524288, 2293782, 0, 524288, 2293783, 0, 524288, 2293784, 0, 524288, 2293785, 0, 524288, 2293786, 0, 524288, 2293787, 0, 524288, 2293788, 0, 524288, 2293789, 0, 524288, 2293790, 0, 524288, 2293791, 0, 524288, 2293792, 0, 524288, 2293793, 0, 524288, 2293794, 0, 524288, 2293795, 0, 524288, 2293796, 0, 1310720, 2293797, 0, 1310720, 2293798, 0, 1310720, 2293799, 0, 1310720, 2293800, 0, 1310720, 2293801, 0, 1310720, 2293802, 0, 1310720, 2293803, 0, 1310720, 2293804, 0, 1310720, 2293805, 0, 1310720, 2293806, 0, 1310720, 2293807, 0, 1310720, 2293808, 0, 1310720, 2293809, 0, 1310720, 2293810, 0, 1310720, 2293811, 0, 1310720, 2293812, 0, 1310720, 2293813, 0, 1310720, 2293814, 0, 1310720, 2293815, 0, 1310720, 2293816, 0, 1310720, 2293817, 0, 1310720, 2293818, 0, 1310720, 2293819, 0, 1310720, 2293820, 0, 1310720, 2293821, 0, 1310720, 2293822, 0, 1310720, 2293823, 0, 1310720, 2293824, 0, 1310720, 2293825, 0, 1310720, 2293826, 0, 1310720, 2293827, 0, 1310720, 2293828, 0, 1310720, 2293829, 0, 1310720, 2293830, 0, 1310720, 2293831, 0, 1310720, 2293832, 0, 2097152, 2293833, 0, 2097152, 2293834, 0, 2097152, 2293835, 0, 2097152, 2293836, 0, 2097152, 2293837, 0, 2097152, 2293838, 0, 2097152, 2293839, 0, 2097152, 2293840, 0, 2097152, 2293841, 0, 2097152, 2293842, 0, 2097152, 2293843, 0, 2097152, 2293844, 0, 2097152, 2293845, 0, 2097152, 2293846, 0, 2097152, 2293847, 0, 2097152, 2293848, 0, 2097152, 2293849, 0, 2097152, 2293850, 0, 2097152, 2293851, 0, 2097152, 2293852, 0, 2097152, 2293853, 0, 2097152, 2293854, 0, 2097152, 2293855, 0, 2097152, 2293856, 0, 2097152, 2293857, 0, 2097152, 2293858, 0, 2097152, 2293859, 0, 2097152, 2293860, 0, 2097152, 2293861, 0, 2097152, 2293862, 0, 2097152, 2293863, 0, 2097152, 2293864, 0, 2097152, 2293865, 0, 2097152, 2293866, 0, 2097152, 2293867, 0, 2097152)
 
-[node name="Player" parent="." unique_id=949381415 instance=ExtResource("2_dhalm")]
-position = Vector2(102, 554)
+[node name="Player" parent="." unique_id=949381415 instance=ExtResource("3_char")]
+position = Vector2(96, 539)
 
-[node name="SlimeEnemy" parent="." unique_id=1091950493 instance=ExtResource("3_bxfy6")]
-position = Vector2(187, 546)
+[node name="SlimeEnemy" parent="." unique_id=1091950493 instance=ExtResource("4_slime")]
+position = Vector2(400, 544)
+
+[node name="ZoneManager" type="Node" parent="." unique_id=200025]
+script = ExtResource("1_zm")
