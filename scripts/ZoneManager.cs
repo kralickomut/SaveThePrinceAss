@@ -2,9 +2,9 @@ using Godot;
 
 public partial class ZoneManager : Node
 {
-    private const float Zone1End = 576f;   // x where zone 1 → zone 2 crossfade is centred
-    private const float Zone2End = 1152f;  // x where zone 2 → zone 3 crossfade is centred
-    private const float FadeSize = 128f;   // total crossfade width in game pixels
+    private const float Zone1End = 1728f;  // x where zone 1 → zone 2 crossfade is centred (54 tiles * 32px)
+    private const float Zone2End = 3456f;  // x where zone 2 → zone 3 crossfade is centred (108 tiles * 32px)
+    private const float FadeSize = 256f;   // total crossfade width in game pixels
 
     private Node2D _normalSprites;
     private Node2D _autumnSprites;

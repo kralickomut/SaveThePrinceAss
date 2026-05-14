@@ -1,12 +1,12 @@
-[gd_scene format=3 uid="uid://dn314auixunnd"]
+[gd_scene format=3 uid="uid://bx5bjworwelfo"]
 
-[ext_resource type="Script" uid="uid://dwy01kqtjeu1h" path="res://scripts/SlimeEnemy.cs" id="1_slm"]
-[ext_resource type="Texture2D" uid="uid://b4l5fw2ulorki" path="res://sprites/slime_green.png" id="2_slm"]
+[ext_resource type="Script" uid="uid://dwy01kqtjeu1h" path="res://scripts/SlimeEnemy.cs" id="1_pslm"]
+[ext_resource type="Texture2D" uid="uid://d2eccuifjwqif" path="res://sprites/slime_purple.png" id="2_pslm"]
 
-[sub_resource type="RectangleShape2D" id="Shape_slm"]
-size = Vector2(28, 26)
+[sub_resource type="RectangleShape2D" id="Shape_pslm"]
+size = Vector2(28, 23)
 
-[sub_resource type="Animation" id="Anim_attack"]
+[sub_resource type="Animation" id="Anim_attack_p"]
 resource_name = "attack"
 length = 0.48
 step = 0.12
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "values": [Rect2(0, 24, 24, 24), Rect2(24, 24, 24, 24), Rect2(48, 24, 24, 24), Rect2(72, 24, 24, 24)]
 }
 
-[sub_resource type="Animation" id="Anim_hit"]
+[sub_resource type="Animation" id="Anim_hit_p"]
 resource_name = "hit"
 length = 0.36
 step = 0.12
@@ -40,7 +40,7 @@ tracks/0/keys = {
 "values": [Rect2(0, 48, 24, 24), Rect2(24, 48, 24, 24), Rect2(48, 48, 24, 24)]
 }
 
-[sub_resource type="Animation" id="Anim_move"]
+[sub_resource type="Animation" id="Anim_move_p"]
 resource_name = "move"
 length = 0.48
 loop_mode = 1
@@ -58,27 +58,27 @@ tracks/0/keys = {
 "values": [Rect2(0, 0, 24, 24), Rect2(24, 0, 24, 24), Rect2(48, 0, 24, 24), Rect2(72, 0, 24, 24)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimLib_slm"]
+[sub_resource type="AnimationLibrary" id="AnimLib_pslm"]
 _data = {
-&"attack": SubResource("Anim_attack"),
-&"hit": SubResource("Anim_hit"),
-&"move": SubResource("Anim_move")
+&"attack": SubResource("Anim_attack_p"),
+&"hit": SubResource("Anim_hit_p"),
+&"move": SubResource("Anim_move_p")
 }
 
-[node name="SlimeEnemy" type="CharacterBody2D" unique_id=2023688018]
+[node name="SlimeEnemy" type="CharacterBody2D" unique_id=-1271279278]
 collision_layer = 4
-script = ExtResource("1_slm")
+script = ExtResource("1_pslm")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=383739320]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=483739320]
 position = Vector2(0, -12)
 scale = Vector2(2, 2)
-texture = ExtResource("2_slm")
+texture = ExtResource("2_pslm")
 region_enabled = true
 region_rect = Rect2(0, 0, 24, 24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=443868523]
-position = Vector2(0, -1)
-shape = SubResource("Shape_slm")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=543868523]
+position = Vector2(0, 0.5)
+shape = SubResource("Shape_pslm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=920943741]
-libraries/ = SubResource("AnimLib_slm")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1020943741]
+libraries/ = SubResource("AnimLib_pslm")

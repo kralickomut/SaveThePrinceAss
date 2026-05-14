@@ -22,6 +22,8 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 	private int _currentHealth;
 	private bool _facingLeft = false;
 	private bool _hasDealtDamageThisAttack = false;
+	private float _invincibleTimer = 0f;
+	private const float InvincibleDuration = 1.2f;
 
 	private Texture2D _knightTexture;
 	private Texture2D _attackTexture;
@@ -52,6 +54,9 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 		if (_state == State.Dead) return;
 
 		Vector2 velocity = Velocity;
+
+		if (_invincibleTimer > 0f)
+			_invincibleTimer -= (float)delta;
 
 		// Гравитация — ВСЕГДА
 		if (!IsOnFloor())
@@ -177,9 +182,10 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 	// ── Получение урона (IDamageable) ───────────────────────────────────────
 	public void TakeDamage(int damage)
 	{
-		if (_state == State.Dead || _state == State.Hurt) return;
+		if (_state == State.Dead || _invincibleTimer > 0f) return;
 
 		_currentHealth = Mathf.Max(0, _currentHealth - damage);
+		_invincibleTimer = InvincibleDuration;
 		GD.Print($"Player HP: {_currentHealth}/{MaxHealth}");
 
 		if (_currentHealth <= 0)

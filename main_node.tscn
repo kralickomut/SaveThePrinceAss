@@ -1,49 +1,61 @@
 [gd_scene format=3 uid="uid://bh60ihk0xt2j3"]
 
-[ext_resource type="Script" path="res://scripts/ZoneManager.cs" id="1_zm"]
+[ext_resource type="Script" uid="uid://sesyepqubrsh" path="res://scripts/ZoneManager.cs" id="1_zm"]
 [ext_resource type="Texture2D" uid="uid://dghfvwmmeluvy" path="res://GandalfHardcore FREE Platformer Assets/Floor Tiles1.png" id="2_wts"]
 [ext_resource type="PackedScene" uid="uid://d4fjcxrccyvgq" path="res://character.tscn" id="3_char"]
 [ext_resource type="PackedScene" uid="uid://dn314auixunnd" path="res://slime.tscn" id="4_slime"]
+[ext_resource type="PackedScene" uid="uid://cslmpurple01" path="res://slime_purple.tscn" id="5_pslime"]
+[ext_resource type="Texture2D" uid="uid://t38uwfbs0odl" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/Background Castle .png" id="5_n0"]
+[ext_resource type="Texture2D" uid="uid://rtl80lcdbdrr" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 5.png" id="6_n5"]
+[ext_resource type="Texture2D" uid="uid://ds8b8bu5la2tj" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 4.png" id="7_n4"]
+[ext_resource type="Texture2D" uid="uid://3bonc7jv4wff" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 3.png" id="8_n3"]
+[ext_resource type="Texture2D" uid="uid://b8jlfuj6733a5" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 2.png" id="9_n2"]
+[ext_resource type="Texture2D" uid="uid://dwoxc6xbtl514" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 1.png" id="10_n1"]
+[ext_resource type="Texture2D" uid="uid://c4fakgy3wmmt4" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/Background Castle Autumn.png" id="11_a0"]
+[ext_resource type="Texture2D" uid="uid://dmrxh088vwobq" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 5.png" id="12_a5"]
+[ext_resource type="Texture2D" uid="uid://bs3iveh6bu62y" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 4.png" id="13_a4"]
+[ext_resource type="Texture2D" uid="uid://0048ygj3gpk6" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 3.png" id="14_a3"]
+[ext_resource type="Texture2D" uid="uid://f5tu73odggoy" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 2.png" id="15_a2"]
+[ext_resource type="Texture2D" uid="uid://crvkldk3syk84" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 1.png" id="16_a1"]
+[ext_resource type="Texture2D" uid="uid://1vpjpwfbo4y3" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/Background Castle  Winter.png" id="17_w0"]
+[ext_resource type="Texture2D" uid="uid://dm76jtvhpub6r" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/GandalfHardcore Background layers_layer 5.png" id="18_w5"]
+[ext_resource type="Texture2D" uid="uid://ct6ofvlm7xqat" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/GandalfHardcore Background layers_layer 4.png" id="19_w4"]
+[ext_resource type="Texture2D" uid="uid://dauobrdjau1t1" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/GandalfHardcore Background layers_layer 3.png" id="20_w3"]
+[ext_resource type="Texture2D" uid="uid://5aatmi8s0weu" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/GandalfHardcore Background layers_layer 2.png" id="21_w2"]
+[ext_resource type="Texture2D" uid="uid://dfupb71171f4k" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/GandalfHardcore Background layers_layer 1.png" id="22_w1"]
 
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/Background Castle .png" id="5_n0"]
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 5.png" id="6_n5"]
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 4.png" id="7_n4"]
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 3.png" id="8_n3"]
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 2.png" id="9_n2"]
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 1.png" id="10_n1"]
-
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/Background Castle Autumn.png" id="11_a0"]
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 5.png" id="12_a5"]
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 4.png" id="13_a4"]
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 3.png" id="14_a3"]
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 2.png" id="15_a2"]
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 1.png" id="16_a1"]
-
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/Background Castle  Winter.png" id="17_w0"]
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/GandalfHardcore Background layers_layer 5.png" id="18_w5"]
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/GandalfHardcore Background layers_layer 4.png" id="19_w4"]
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/GandalfHardcore Background layers_layer 3.png" id="20_w3"]
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/GandalfHardcore Background layers_layer 2.png" id="21_w2"]
-[ext_resource type="Texture2D" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/GandalfHardcore Background layers_layer 1.png" id="22_w1"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rcnnr"]
 texture = ExtResource("2_wts")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-0:8/0 = 0
-0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-0:12/0 = 0
-0:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-0:20/0 = 0
-0:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-0:24/0 = 0
-0:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-0:32/0 = 0
-0:32/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+texture_region_size = Vector2i(32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:7/0 = 0
+3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:12/0 = 0
+1:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:13/0 = 0
+1:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:6/0 = 0
+4:6/0 = 0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:6/0 = 0
+1:7/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_1"]
+[sub_resource type="TileSet" id="TileSet_pa4lm"]
+tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_1")
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Normal"
+terrain_set_0/terrain_0/color = Color(0.2, 0.7, 0.2, 1)
+terrain_set_0/terrain_1/name = "Autumn"
+terrain_set_0/terrain_1/color = Color(0.8, 0.5, 0.1, 1)
+terrain_set_0/terrain_2/name = "Winter"
+terrain_set_0/terrain_2/color = Color(0.6, 0.8, 1, 1)
+sources/0 = SubResource("TileSetAtlasSource_rcnnr")
 
 [node name="MainNode" type="Node2D" unique_id=718610701]
 
@@ -53,34 +65,34 @@ layer = -100
 [node name="Sprites" type="Node2D" parent="NormalBG" unique_id=200002]
 
 [node name="Castle" type="Sprite2D" parent="NormalBG/Sprites" unique_id=200003]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("5_n0")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="Layer5" type="Sprite2D" parent="NormalBG/Sprites" unique_id=200004]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("6_n5")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="Layer4" type="Sprite2D" parent="NormalBG/Sprites" unique_id=200005]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("7_n4")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="Layer3" type="Sprite2D" parent="NormalBG/Sprites" unique_id=200006]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("8_n3")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="Layer2" type="Sprite2D" parent="NormalBG/Sprites" unique_id=200007]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("9_n2")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="Layer1" type="Sprite2D" parent="NormalBG/Sprites" unique_id=200008]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("10_n1")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="AutumnBG" type="CanvasLayer" parent="." unique_id=200009]
 layer = -100
@@ -89,34 +101,34 @@ layer = -100
 modulate = Color(1, 1, 1, 0)
 
 [node name="Castle" type="Sprite2D" parent="AutumnBG/Sprites" unique_id=200011]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("11_a0")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="Layer5" type="Sprite2D" parent="AutumnBG/Sprites" unique_id=200012]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("12_a5")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="Layer4" type="Sprite2D" parent="AutumnBG/Sprites" unique_id=200013]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("13_a4")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="Layer3" type="Sprite2D" parent="AutumnBG/Sprites" unique_id=200014]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("14_a3")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="Layer2" type="Sprite2D" parent="AutumnBG/Sprites" unique_id=200015]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("15_a2")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="Layer1" type="Sprite2D" parent="AutumnBG/Sprites" unique_id=200016]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("16_a1")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="WinterBG" type="CanvasLayer" parent="." unique_id=200017]
 layer = -100
@@ -125,45 +137,48 @@ layer = -100
 modulate = Color(1, 1, 1, 0)
 
 [node name="Castle" type="Sprite2D" parent="WinterBG/Sprites" unique_id=200019]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("17_w0")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="Layer5" type="Sprite2D" parent="WinterBG/Sprites" unique_id=200020]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("18_w5")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="Layer4" type="Sprite2D" parent="WinterBG/Sprites" unique_id=200021]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("19_w4")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="Layer3" type="Sprite2D" parent="WinterBG/Sprites" unique_id=200022]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("20_w3")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="Layer2" type="Sprite2D" parent="WinterBG/Sprites" unique_id=200023]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("21_w2")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="Layer1" type="Sprite2D" parent="WinterBG/Sprites" unique_id=200024]
+position = Vector2(960, 540)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("22_w1")
-position = Vector2(576, 324)
-scale = Vector2(2, 2)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=668536971]
-tile_set = SubResource("TileSet_1")
+tile_set = SubResource("TileSet_pa4lm")
 format = 2
-layer_0/tile_data = PackedInt32Array(2228224, 0, 0, 2228225, 0, 0, 2228226, 0, 0, 2228227, 0, 0, 2228228, 0, 0, 2228229, 0, 0, 2228230, 0, 0, 2228231, 0, 0, 2228232, 0, 0, 2228233, 0, 0, 2228234, 0, 0, 2228235, 0, 0, 2228236, 0, 0, 2228237, 0, 0, 2228238, 0, 0, 2228239, 0, 0, 2228240, 0, 0, 2228241, 0, 0, 2228242, 0, 0, 2228243, 0, 0, 2228244, 0, 0, 2228245, 0, 0, 2228246, 0, 0, 2228247, 0, 0, 2228248, 0, 0, 2228249, 0, 0, 2228250, 0, 0, 2228251, 0, 0, 2228252, 0, 0, 2228253, 0, 0, 2228254, 0, 0, 2228255, 0, 0, 2228256, 0, 0, 2228257, 0, 0, 2228258, 0, 0, 2228259, 0, 0, 2228260, 0, 786432, 2228261, 0, 786432, 2228262, 0, 786432, 2228263, 0, 786432, 2228264, 0, 786432, 2228265, 0, 786432, 2228266, 0, 786432, 2228267, 0, 786432, 2228268, 0, 786432, 2228269, 0, 786432, 2228270, 0, 786432, 2228271, 0, 786432, 2228272, 0, 786432, 2228273, 0, 786432, 2228274, 0, 786432, 2228275, 0, 786432, 2228276, 0, 786432, 2228277, 0, 786432, 2228278, 0, 786432, 2228279, 0, 786432, 2228280, 0, 786432, 2228281, 0, 786432, 2228282, 0, 786432, 2228283, 0, 786432, 2228284, 0, 786432, 2228285, 0, 786432, 2228286, 0, 786432, 2228287, 0, 786432, 2228288, 0, 786432, 2228289, 0, 786432, 2228290, 0, 786432, 2228291, 0, 786432, 2228292, 0, 786432, 2228293, 0, 786432, 2228294, 0, 786432, 2228295, 0, 786432, 2228296, 0, 1572864, 2228297, 0, 1572864, 2228298, 0, 1572864, 2228299, 0, 1572864, 2228300, 0, 1572864, 2228301, 0, 1572864, 2228302, 0, 1572864, 2228303, 0, 1572864, 2228304, 0, 1572864, 2228305, 0, 1572864, 2228306, 0, 1572864, 2228307, 0, 1572864, 2228308, 0, 1572864, 2228309, 0, 1572864, 2228310, 0, 1572864, 2228311, 0, 1572864, 2228312, 0, 1572864, 2228313, 0, 1572864, 2228314, 0, 1572864, 2228315, 0, 1572864, 2228316, 0, 1572864, 2228317, 0, 1572864, 2228318, 0, 1572864, 2228319, 0, 1572864, 2228320, 0, 1572864, 2228321, 0, 1572864, 2228322, 0, 1572864, 2228323, 0, 1572864, 2228324, 0, 1572864, 2228325, 0, 1572864, 2228326, 0, 1572864, 2228327, 0, 1572864, 2228328, 0, 1572864, 2228329, 0, 1572864, 2228330, 0, 1572864, 2228331, 0, 1572864, 2293760, 0, 524288, 2293761, 0, 524288, 2293762, 0, 524288, 2293763, 0, 524288, 2293764, 0, 524288, 2293765, 0, 524288, 2293766, 0, 524288, 2293767, 0, 524288, 2293768, 0, 524288, 2293769, 0, 524288, 2293770, 0, 524288, 2293771, 0, 524288, 2293772, 0, 524288, 2293773, 0, 524288, 2293774, 0, 524288, 2293775, 0, 524288, 2293776, 0, 524288, 2293777, 0, 524288, 2293778, 0, 524288, 2293779, 0, 524288, 2293780, 0, 524288, 2293781, 0, 524288, 2293782, 0, 524288, 2293783, 0, 524288, 2293784, 0, 524288, 2293785, 0, 524288, 2293786, 0, 524288, 2293787, 0, 524288, 2293788, 0, 524288, 2293789, 0, 524288, 2293790, 0, 524288, 2293791, 0, 524288, 2293792, 0, 524288, 2293793, 0, 524288, 2293794, 0, 524288, 2293795, 0, 524288, 2293796, 0, 1310720, 2293797, 0, 1310720, 2293798, 0, 1310720, 2293799, 0, 1310720, 2293800, 0, 1310720, 2293801, 0, 1310720, 2293802, 0, 1310720, 2293803, 0, 1310720, 2293804, 0, 1310720, 2293805, 0, 1310720, 2293806, 0, 1310720, 2293807, 0, 1310720, 2293808, 0, 1310720, 2293809, 0, 1310720, 2293810, 0, 1310720, 2293811, 0, 1310720, 2293812, 0, 1310720, 2293813, 0, 1310720, 2293814, 0, 1310720, 2293815, 0, 1310720, 2293816, 0, 1310720, 2293817, 0, 1310720, 2293818, 0, 1310720, 2293819, 0, 1310720, 2293820, 0, 1310720, 2293821, 0, 1310720, 2293822, 0, 1310720, 2293823, 0, 1310720, 2293824, 0, 1310720, 2293825, 0, 1310720, 2293826, 0, 1310720, 2293827, 0, 1310720, 2293828, 0, 1310720, 2293829, 0, 1310720, 2293830, 0, 1310720, 2293831, 0, 1310720, 2293832, 0, 2097152, 2293833, 0, 2097152, 2293834, 0, 2097152, 2293835, 0, 2097152, 2293836, 0, 2097152, 2293837, 0, 2097152, 2293838, 0, 2097152, 2293839, 0, 2097152, 2293840, 0, 2097152, 2293841, 0, 2097152, 2293842, 0, 2097152, 2293843, 0, 2097152, 2293844, 0, 2097152, 2293845, 0, 2097152, 2293846, 0, 2097152, 2293847, 0, 2097152, 2293848, 0, 2097152, 2293849, 0, 2097152, 2293850, 0, 2097152, 2293851, 0, 2097152, 2293852, 0, 2097152, 2293853, 0, 2097152, 2293854, 0, 2097152, 2293855, 0, 2097152, 2293856, 0, 2097152, 2293857, 0, 2097152, 2293858, 0, 2097152, 2293859, 0, 2097152, 2293860, 0, 2097152, 2293861, 0, 2097152, 2293862, 0, 2097152, 2293863, 0, 2097152, 2293864, 0, 2097152, 2293865, 0, 2097152, 2293866, 0, 2097152, 2293867, 0, 2097152)
+layer_0/tile_data = PackedInt32Array(1179648, 0, 1, 1179649, 0, 1, 1179650, 0, 1, 1179651, 0, 1, 1179652, 0, 1, 1179653, 0, 1, 1179654, 0, 1, 1179655, 0, 1, 1179656, 0, 1, 1179657, 0, 1, 1179658, 0, 1, 1179659, 0, 1, 1179660, 0, 1, 1179661, 0, 1, 1179662, 0, 1, 1179663, 0, 1, 1179664, 0, 1, 1179665, 0, 1, 1179666, 0, 1, 1179667, 0, 1, 1179668, 0, 1, 1179669, 0, 1, 1179670, 0, 1, 1179671, 0, 1, 1179672, 0, 1, 1179673, 0, 1, 1179674, 0, 1, 1179675, 0, 1, 1179676, 0, 1, 1179677, 0, 1, 1179678, 0, 1, 1179679, 0, 1, 1179680, 0, 1, 1179681, 0, 1, 1179682, 0, 1, 1179683, 0, 1, 1179684, 0, 1, 1179685, 0, 1, 1179686, 0, 1, 1179687, 0, 1, 1179688, 0, 1, 1179689, 0, 1, 1179690, 0, 1, 1179691, 0, 1, 1179692, 0, 1, 1179693, 0, 1, 1179694, 0, 1, 1179695, 0, 1, 1179696, 0, 1, 1179697, 0, 1, 1179698, 0, 1, 1179699, 0, 1, 1179700, 0, 1, 1179701, 0, 1, 1179702, 0, 393219, 1179703, 0, 393219, 1179704, 0, 393219, 1179705, 0, 393219, 1179706, 0, 393219, 1179707, 0, 393219, 1179708, 0, 393219, 1179709, 0, 393219, 1179710, 0, 393219, 1179711, 0, 393219, 1179712, 0, 393219, 1179713, 0, 393219, 1179714, 0, 393219, 1179715, 0, 393219, 1179716, 0, 393219, 1179717, 0, 393219, 1179718, 0, 393219, 1179719, 0, 393219, 1179720, 0, 393219, 1179721, 0, 393219, 1179722, 0, 393219, 1179723, 0, 393219, 1179724, 0, 393219, 1179725, 0, 393219, 1179726, 0, 393219, 1179727, 0, 393219, 1179728, 0, 393219, 1179729, 0, 393219, 1179730, 0, 393219, 1179731, 0, 393219, 1179732, 0, 393219, 1179733, 0, 393219, 1179734, 0, 393219, 1179735, 0, 393219, 1179736, 0, 393219, 1179737, 0, 393219, 1179738, 0, 393219, 1179739, 0, 393219, 1179740, 0, 393219, 1179741, 0, 393219, 1179742, 0, 393219, 1179743, 0, 393219, 1179744, 0, 393219, 1179745, 0, 393219, 1179746, 0, 393219, 1179747, 0, 393219, 1179748, 0, 393219, 1179749, 0, 393219, 1179750, 0, 393219, 1179751, 0, 393219, 1179752, 0, 393219, 1179753, 0, 393219, 1179754, 0, 393219, 1179755, 0, 393219, 1179756, 0, 786433, 1179757, 0, 786433, 1179758, 0, 786433, 1179759, 0, 786433, 1179760, 0, 786433, 1179761, 0, 786433, 1179762, 0, 786433, 1179763, 0, 786433, 1179764, 0, 786433, 1179765, 0, 786433, 1179766, 0, 786433, 1179767, 0, 786433, 1179768, 0, 786433, 1179769, 0, 786433, 1179770, 0, 786433, 1179771, 0, 786433, 1179772, 0, 786433, 1179773, 0, 786433, 1179774, 0, 786433, 1179775, 0, 786433, 1179776, 0, 786433, 1179777, 0, 786433, 1179778, 0, 786433, 1179779, 0, 786433, 1179780, 0, 786433, 1179781, 0, 786433, 1179782, 0, 786433, 1179783, 0, 786433, 1179784, 0, 786433, 1179785, 0, 786433, 1179786, 0, 786433, 1179787, 0, 786433, 1179788, 0, 786433, 1179789, 0, 786433, 1179790, 0, 786433, 1179791, 0, 786433, 1179792, 0, 786433, 1179793, 0, 786433, 1179794, 0, 786433, 1179795, 0, 786433, 1179796, 0, 786433, 1179797, 0, 786433, 1179798, 0, 786433, 1179799, 0, 786433, 1179800, 0, 786433, 1179801, 0, 786433, 1179802, 0, 786433, 1179803, 0, 786433, 1179804, 0, 786433, 1179805, 0, 786433, 1179806, 0, 786433, 1179807, 0, 786433, 1179808, 0, 786433, 1179809, 0, 786433, 1245184, 65536, 0, 1245185, 65536, 0, 1245186, 65536, 0, 1245187, 65536, 0, 1245188, 65536, 0, 1245189, 65536, 0, 1245190, 65536, 0, 1245191, 65536, 0, 1245192, 65536, 0, 1245193, 65536, 0, 1245194, 65536, 0, 1245195, 65536, 0, 1245196, 65536, 0, 1245197, 65536, 0, 1245198, 65536, 0, 1245199, 65536, 0, 1245200, 65536, 0, 1245201, 65536, 0, 1245202, 65536, 0, 1245203, 65536, 0, 1245204, 65536, 0, 1245205, 65536, 0, 1245206, 65536, 0, 1245207, 65536, 0, 1245208, 65536, 0, 1245209, 65536, 0, 1245210, 65536, 0, 1245211, 65536, 0, 1245212, 65536, 0, 1245213, 65536, 0, 1245214, 65536, 0, 1245215, 65536, 0, 1245216, 65536, 0, 1245217, 65536, 0, 1245218, 65536, 0, 1245219, 65536, 0, 1245220, 65536, 0, 1245221, 65536, 0, 1245222, 65536, 0, 1245223, 65536, 0, 1245224, 65536, 0, 1245225, 65536, 0, 1245226, 65536, 0, 1245227, 65536, 0, 1245228, 65536, 0, 1245229, 65536, 0, 1245230, 65536, 0, 1245231, 65536, 0, 1245232, 65536, 0, 1245233, 65536, 0, 1245234, 65536, 0, 1245235, 65536, 0, 1245236, 65536, 0, 1245237, 65536, 0, 1245238, 262144, 6, 1245239, 262144, 6, 1245240, 262144, 6, 1245241, 262144, 6, 1245242, 262144, 6, 1245243, 262144, 6, 1245244, 262144, 6, 1245245, 262144, 6, 1245246, 262144, 6, 1245247, 262144, 6, 1245248, 262144, 6, 1245249, 262144, 6, 1245250, 262144, 6, 1245251, 262144, 6, 1245252, 262144, 6, 1245253, 262144, 6, 1245254, 262144, 6, 1245255, 262144, 6, 1245256, 262144, 6, 1245257, 262144, 6, 1245258, 262144, 6, 1245259, 262144, 6, 1245260, 262144, 6, 1245261, 262144, 6, 1245262, 262144, 6, 1245263, 262144, 6, 1245264, 262144, 6, 1245265, 262144, 6, 1245266, 262144, 6, 1245267, 262144, 6, 1245268, 262144, 6, 1245269, 262144, 6, 1245270, 262144, 6, 1245271, 262144, 6, 1245272, 262144, 6, 1245273, 262144, 6, 1245274, 262144, 6, 1245275, 262144, 6, 1245276, 262144, 6, 1245277, 262144, 6, 1245278, 262144, 6, 1245279, 262144, 6, 1245280, 262144, 6, 1245281, 262144, 6, 1245282, 262144, 6, 1245283, 262144, 6, 1245284, 262144, 6, 1245285, 262144, 6, 1245286, 262144, 6, 1245287, 262144, 6, 1245288, 262144, 6, 1245289, 262144, 6, 1245290, 262144, 6, 1245291, 262144, 6, 1245292, 65536, 12, 1245293, 65536, 12, 1245294, 65536, 12, 1245295, 65536, 12, 1245296, 65536, 12, 1245297, 65536, 12, 1245298, 65536, 12, 1245299, 65536, 12, 1245300, 65536, 12, 1245301, 65536, 12, 1245302, 65536, 12, 1245303, 65536, 12, 1245304, 65536, 12, 1245305, 65536, 12, 1245306, 65536, 12, 1245307, 65536, 12, 1245308, 65536, 12, 1245309, 65536, 12, 1245310, 65536, 12, 1245311, 65536, 12, 1245312, 65536, 12, 1245313, 65536, 12, 1245314, 65536, 12, 1245315, 65536, 12, 1245316, 65536, 12, 1245317, 65536, 12, 1245318, 65536, 12, 1245319, 65536, 12, 1245320, 65536, 12, 1245321, 65536, 12, 1245322, 65536, 12, 1245323, 65536, 12, 1245324, 65536, 12, 1245325, 65536, 12, 1245326, 65536, 12, 1245327, 65536, 12, 1245328, 65536, 12, 1245329, 65536, 12, 1245330, 65536, 12, 1245331, 65536, 12, 1245332, 65536, 12, 1245333, 65536, 12, 1245334, 65536, 12, 1245335, 65536, 12, 1245336, 65536, 12, 1245337, 65536, 12, 1245338, 65536, 12, 1245339, 65536, 12, 1245340, 65536, 12, 1245341, 65536, 12, 1245342, 65536, 12, 1245343, 65536, 12, 1245344, 65536, 12, 1245345, 65536, 12, 1310807, 262144, 6, 1310808, 262144, 6, 1310809, 262144, 6, 1310810, 262144, 6, 1310811, 262144, 6, 1310825, 262144, 6, 1310826, 262144, 6, 1310827, 262144, 6, 1310828, 262144, 6)
 
 [node name="Player" parent="." unique_id=949381415 instance=ExtResource("3_char")]
-position = Vector2(96, 539)
+position = Vector2(96, 571)
 
 [node name="SlimeEnemy" parent="." unique_id=1091950493 instance=ExtResource("4_slime")]
-position = Vector2(400, 544)
+position = Vector2(400, 576)
+
+[node name="SlimeEnemyPurple" parent="." unique_id=1191950493 instance=ExtResource("5_pslime")]
+position = Vector2(700, 576)
 
 [node name="ZoneManager" type="Node" parent="." unique_id=200025]
 script = ExtResource("1_zm")

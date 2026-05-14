@@ -48,6 +48,40 @@ tracks/1/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_death"]
+resource_name = "death"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 224, 32, 32), Rect2(32, 224, 32, 32), Rect2(64, 224, 32, 32), Rect2(96, 224, 32, 32), Rect2(96, 224, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_hit"]
+resource_name = "hit"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 192, 32, 32), Rect2(32, 192, 32, 32), Rect2(64, 192, 32, 32), Rect2(96, 192, 32, 32), Rect2(96, 192, 32, 32)]
+}
+
 [sub_resource type="Animation" id="Animation_pjt0s"]
 resource_name = "idle"
 loop_mode = 1
@@ -84,8 +118,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_wfnr8"]
 resource_name = "move"
-loop_mode = 1
 length = 2.0
+loop_mode = 1
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -100,40 +134,6 @@ tracks/0/keys = {
 "values": [Rect2(0, 64, 32, 32), Rect2(32, 64, 32, 32), Rect2(64, 64, 32, 32), Rect2(96, 64, 32, 32), Rect2(128, 64, 32, 32), Rect2(160, 64, 32, 32), Rect2(192, 64, 32, 32), Rect2(224, 64, 32, 32), Rect2(0, 96, 32, 32), Rect2(32, 96, 32, 32), Rect2(64, 96, 32, 32), Rect2(96, 96, 32, 32), Rect2(128, 96, 32, 32), Rect2(160, 96, 32, 32), Rect2(192, 96, 32, 32), Rect2(224, 96, 32, 32), Rect2(224, 96, 32, 32)]
 }
 
-[sub_resource type="Animation" id="Animation_death"]
-resource_name = "death"
-length = 0.4
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
-tracks/0/interp = 0
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Rect2(0, 224, 32, 32), Rect2(32, 224, 32, 32), Rect2(64, 224, 32, 32), Rect2(96, 224, 32, 32), Rect2(96, 224, 32, 32)]
-}
-
-[sub_resource type="Animation" id="Animation_hit"]
-resource_name = "hit"
-length = 0.4
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
-tracks/0/interp = 0
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Rect2(0, 192, 32, 32), Rect2(32, 192, 32, 32), Rect2(64, 192, 32, 32), Rect2(96, 192, 32, 32), Rect2(96, 192, 32, 32)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wa5vi"]
 _data = {
 &"RESET": SubResource("Animation_wa5vi"),
@@ -146,18 +146,20 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glpr6"]
-size = Vector2(13.5, 19)
+size = Vector2(28, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
 size = Vector2(12, 10)
 
 [node name="Player" type="CharacterBody2D" unique_id=949381415]
 collision_layer = 2
-collision_mask = 1
 script = ExtResource("1_pjt0s")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=339371271]
+offset = Vector2(0, 10)
 zoom = Vector2(6, 6)
+limit_top = 429
+limit_bottom = 609
 
 [node name="PlayerAnimator" type="Node2D" parent="." unique_id=1250667790]
 script = ExtResource("2_wa5vi")
@@ -169,12 +171,13 @@ autoplay = &"idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator" unique_id=2073796625]
 position = Vector2(2, -7)
+scale = Vector2(2, 2)
 texture = ExtResource("1_glpr6")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=859654896]
-position = Vector2(1.25, -4.5)
+position = Vector2(1, -2)
 shape = SubResource("RectangleShape2D_glpr6")
 
 [node name="AttackHitbox" type="Area2D" parent="." unique_id=112233445]
