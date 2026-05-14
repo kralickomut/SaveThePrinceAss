@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d4fjcxrccyvgq"]
 
-[ext_resource type="Texture2D" uid="uid://pmbissxw7m4m" path="res://sprites/knight.png" id="1_glpr6"]
 [ext_resource type="Script" uid="uid://dtymd2pcwv021" path="res://scripts/PlayerController.cs" id="1_pjt0s"]
+[ext_resource type="Texture2D" uid="uid://cilisis1f0nju" path="res://GandalfHardcore FREE Warrior/GandalfHardcore Warrior.png" id="1_warrior"]
 [ext_resource type="Script" uid="uid://c1nxh0xqbqwk" path="res://scripts/PlayerAnimator.cs" id="2_wa5vi"]
 [ext_resource type="Script" uid="uid://dmm0qgx2r4n5c" path="res://scripts/HealthBar.cs" id="3_health"]
 
@@ -17,13 +17,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(0, 0, 32, 32)]
+"values": [Rect2(0, 448, 80, 64)]
 }
 
 [sub_resource type="Animation" id="Animation_attack"]
 resource_name = "attack"
-length = 0.56
-step = 0.07
+length = 0.48
+step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -31,10 +31,10 @@ tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.07, 0.14, 0.21, 0.28305027, 0.35305023, 0.42, 0.49305025, 0.5630502),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Rect2(32, 0, 32, 32), Rect2(96, 0, 32, 32), Rect2(0, 64, 32, 32), Rect2(64, 32, 32, 32), Rect2(64, 64, 32, 32), Rect2(96, 64, 32, 32), Rect2(64, 0, 32, 32), Rect2(32, 0, 32, 32), Rect2(32, 0, 32, 32)]
+"values": [Rect2(0, 896, 80, 64), Rect2(80, 896, 80, 64), Rect2(160, 896, 80, 64), Rect2(240, 896, 80, 64), Rect2(320, 896, 80, 64), Rect2(400, 896, 80, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -43,7 +43,7 @@ tracks/1/path = NodePath("AttackHitbox/CollisionShape2D:disabled")
 tracks/1/interp = 0
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.14, 0.42),
+"times": PackedFloat32Array(0, 0.16, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -51,6 +51,22 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_death"]
 resource_name = "death"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 960, 80, 64), Rect2(80, 960, 80, 64), Rect2(160, 960, 80, 64), Rect2(240, 960, 80, 64), Rect2(320, 960, 80, 64), Rect2(400, 960, 80, 64), Rect2(480, 960, 80, 64), Rect2(560, 960, 80, 64), Rect2(640, 960, 80, 64), Rect2(720, 960, 80, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_fall"]
+resource_name = "fall"
 length = 0.4
 step = 0.1
 tracks/0/type = "value"
@@ -60,10 +76,10 @@ tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Rect2(0, 224, 32, 32), Rect2(32, 224, 32, 32), Rect2(64, 224, 32, 32), Rect2(96, 224, 32, 32), Rect2(96, 224, 32, 32)]
+"values": [Rect2(0, 768, 80, 64), Rect2(80, 768, 80, 64), Rect2(160, 768, 80, 64), Rect2(240, 768, 80, 64)]
 }
 
 [sub_resource type="Animation" id="Animation_hit"]
@@ -77,16 +93,16 @@ tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Rect2(0, 192, 32, 32), Rect2(32, 192, 32, 32), Rect2(64, 192, 32, 32), Rect2(96, 192, 32, 32), Rect2(96, 192, 32, 32)]
+"values": [Rect2(0, 768, 80, 64), Rect2(80, 768, 80, 64), Rect2(160, 768, 80, 64), Rect2(240, 768, 80, 64)]
 }
 
 [sub_resource type="Animation" id="Animation_pjt0s"]
 resource_name = "idle"
 loop_mode = 1
-step = 0.25
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -94,34 +110,34 @@ tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Rect2(0, 0, 32, 32), Rect2(32, 0, 32, 32), Rect2(64, 0, 32, 32), Rect2(96, 0, 32, 32), Rect2(96, 0, 32, 32)]
+"values": [Rect2(0, 448, 80, 64), Rect2(80, 448, 80, 64), Rect2(160, 448, 80, 64), Rect2(240, 448, 80, 64), Rect2(320, 448, 80, 64)]
 }
 
 [sub_resource type="Animation" id="Animation_px5sl"]
 resource_name = "jump"
-length = 0.5
-step = 0.125
+length = 0.4
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
 tracks/0/interp = 0
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0625, 0.125, 0.19, 0.255, 0.32, 0.385, 0.45, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Rect2(0, 160, 32, 32), Rect2(32, 160, 32, 32), Rect2(64, 160, 32, 32), Rect2(96, 160, 32, 32), Rect2(128, 160, 32, 32), Rect2(160, 160, 32, 32), Rect2(192, 160, 32, 32), Rect2(224, 160, 32, 32), Rect2(224, 160, 32, 32)]
+"values": [Rect2(0, 704, 80, 64), Rect2(80, 704, 80, 64), Rect2(160, 704, 80, 64), Rect2(240, 704, 80, 64)]
 }
 
 [sub_resource type="Animation" id="Animation_wfnr8"]
 resource_name = "move"
-length = 2.0
+length = 0.8
 loop_mode = 1
-step = 0.125
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -129,10 +145,28 @@ tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25, 1.375, 1.5, 1.625, 1.75, 1.875, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Rect2(0, 64, 32, 32), Rect2(32, 64, 32, 32), Rect2(64, 64, 32, 32), Rect2(96, 64, 32, 32), Rect2(128, 64, 32, 32), Rect2(160, 64, 32, 32), Rect2(192, 64, 32, 32), Rect2(224, 64, 32, 32), Rect2(0, 96, 32, 32), Rect2(32, 96, 32, 32), Rect2(64, 96, 32, 32), Rect2(96, 96, 32, 32), Rect2(128, 96, 32, 32), Rect2(160, 96, 32, 32), Rect2(192, 96, 32, 32), Rect2(224, 96, 32, 32), Rect2(224, 96, 32, 32)]
+"values": [Rect2(0, 512, 80, 64), Rect2(80, 512, 80, 64), Rect2(160, 512, 80, 64), Rect2(240, 512, 80, 64), Rect2(320, 512, 80, 64), Rect2(400, 512, 80, 64), Rect2(480, 512, 80, 64), Rect2(560, 512, 80, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_run"]
+resource_name = "run"
+length = 0.64
+loop_mode = 1
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 576, 80, 64), Rect2(80, 576, 80, 64), Rect2(160, 576, 80, 64), Rect2(240, 576, 80, 64), Rect2(320, 576, 80, 64), Rect2(400, 576, 80, 64), Rect2(480, 576, 80, 64), Rect2(560, 576, 80, 64)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wa5vi"]
@@ -140,17 +174,19 @@ _data = {
 &"RESET": SubResource("Animation_wa5vi"),
 &"attack": SubResource("Animation_attack"),
 &"death": SubResource("Animation_death"),
+&"fall": SubResource("Animation_fall"),
 &"hit": SubResource("Animation_hit"),
 &"idle": SubResource("Animation_pjt0s"),
 &"jump": SubResource("Animation_px5sl"),
-&"move": SubResource("Animation_wfnr8")
+&"move": SubResource("Animation_wfnr8"),
+&"run": SubResource("Animation_run")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glpr6"]
-size = Vector2(28, 38)
+size = Vector2(28, 45)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
-size = Vector2(12, 10)
+size = Vector2(54, 30)
 
 [node name="Player" type="CharacterBody2D" unique_id=949381415]
 collision_layer = 2
@@ -171,18 +207,17 @@ libraries/ = SubResource("AnimationLibrary_wa5vi")
 autoplay = &"idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator" unique_id=2073796625]
-position = Vector2(2, -7)
-scale = Vector2(2, 2)
-texture = ExtResource("1_glpr6")
+position = Vector2(0, -5)
+texture = ExtResource("1_warrior")
 region_enabled = true
-region_rect = Rect2(0, 0, 32, 32)
+region_rect = Rect2(0, 448, 80, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=859654896]
-position = Vector2(1, -2)
+position = Vector2(1, 4.5)
 shape = SubResource("RectangleShape2D_glpr6")
 
 [node name="AttackHitbox" type="Area2D" parent="." unique_id=112233445]
-position = Vector2(12, -7)
+position = Vector2(40, -9)
 collision_layer = 0
 collision_mask = 4
 

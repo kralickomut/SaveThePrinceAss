@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dn314auixunnd" path="res://slime.tscn" id="4_slime"]
 [ext_resource type="Texture2D" uid="uid://t38uwfbs0odl" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/Background Castle .png" id="5_n0"]
 [ext_resource type="PackedScene" uid="uid://bx5bjworwelfo" path="res://slime_purple.tscn" id="5_pslime"]
+[ext_resource type="PackedScene" path="res://slime_blue.tscn" id="5_bslime"]
 [ext_resource type="Texture2D" uid="uid://cx3liw2f5nqpx" path="res://GandalfHardcore FREE Platformer Assets/Birch1.png" id="6_birch"]
 [ext_resource type="Texture2D" uid="uid://rtl80lcdbdrr" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 5.png" id="6_n5"]
 [ext_resource type="Texture2D" uid="uid://ds8b8bu5la2tj" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 4.png" id="7_n4"]
@@ -1031,8 +1032,11 @@ position = Vector2(96, 571)
 [node name="SlimeEnemy" parent="." unique_id=1091950493 instance=ExtResource("4_slime")]
 position = Vector2(400, 576)
 
-[node name="SlimeEnemyPurple" parent="." unique_id=1191950493 instance=ExtResource("5_pslime")]
+[node name="SlimeEnemyRed" parent="." unique_id=1191950493 instance=ExtResource("5_pslime")]
 position = Vector2(700, 576)
+
+[node name="SlimeEnemyBlue" parent="." instance=ExtResource("5_bslime")]
+position = Vector2(1000, 576)
 
 [node name="ZoneManager" type="Node" parent="." unique_id=200025]
 script = ExtResource("1_zm")

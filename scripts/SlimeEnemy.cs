@@ -6,7 +6,7 @@ public partial class SlimeEnemy : CharacterBody2D, IDamageable
 	[Export] public int AttackDamage  = 5;
 	[Export] public float MoveSpeed   = 40.0f;
 	[Export] public float DetectRange = 120.0f;
-	[Export] public float AttackRange = 14.0f;
+	[Export] public float AttackRange = 52.0f;
 
 	// ── Состояния ───────────────────────────────────────────────────────────
 	private enum State { Patrol, Chase, Attack, Hurt, Dead }
@@ -22,6 +22,8 @@ public partial class SlimeEnemy : CharacterBody2D, IDamageable
 	private float _patrolDirection = 1f;
 	private float _patrolTimer     = 0f;
 	private const float PatrolTime = 2.5f;
+	private const float AttackVerticalTolerance = 48.0f;
+	private const float FacingDeadZone = 2.0f;
 
 	// Урон наносится через задержку (в середине анимации атаки)
 	private float _attackDamageTimer = -1f;
@@ -70,19 +72,21 @@ public partial class SlimeEnemy : CharacterBody2D, IDamageable
 				? GlobalPosition.DistanceTo(player.GlobalPosition)
 				: 9999f;
 
-			if (player != null && distToPlayer < AttackRange)
+			if (player != null && IsPlayerInAttackReach(player, AttackRange))
 			{
 				// Атакуем
 				velocity.X = 0;
-				_sprite.FlipH = (player.GlobalPosition.X - GlobalPosition.X) < 0;
+				UpdateFacing(player);
 				SetState(State.Attack);
 			}
 			else if (player != null && distToPlayer < DetectRange)
 			{
 				// Гонимся
-				float dir  = (player.GlobalPosition.X - GlobalPosition.X) > 0 ? 1f : -1f;
+				float xDiff = player.GlobalPosition.X - GlobalPosition.X;
+				float dir  = xDiff > 0 ? 1f : -1f;
 				velocity.X = dir * MoveSpeed;
-				_sprite.FlipH = dir < 0;
+				if (Mathf.Abs(xDiff) > FacingDeadZone)
+					_sprite.FlipH = dir < 0;
 				if (_state != State.Chase) SetState(State.Chase);
 			}
 			else
@@ -132,7 +136,7 @@ public partial class SlimeEnemy : CharacterBody2D, IDamageable
 				break;
 
 			case State.Dead:
-				QueueFree();
+				_animationPlayer.Play("death");
 				break;
 		}
 	}
@@ -146,8 +150,12 @@ public partial class SlimeEnemy : CharacterBody2D, IDamageable
 		if (player == null) return;
 		if (!GodotObject.IsInstanceValid(player)) return;
 
-		float dist = GlobalPosition.DistanceTo(player.GlobalPosition);
-		if (dist < AttackRange * 1.5f && player is IDamageable damageable)
+		if (!IsPlayerInAttackReach(player, AttackRange + 10f))
+			return;
+
+		if (player is PlayerController playerController)
+			playerController.TakeDamageFrom(this, AttackDamage);
+		else if (player is IDamageable damageable)
 			damageable.TakeDamage(AttackDamage);
 	}
 
@@ -173,6 +181,12 @@ public partial class SlimeEnemy : CharacterBody2D, IDamageable
 	// ── Конец анимации ──────────────────────────────────────────────────────
 	private void OnAnimationFinished(StringName animName)
 	{
+		if (animName == "death")
+		{
+			QueueFree();
+			return;
+		}
+
 		if (_state == State.Dead) return;
 
 		if (animName == "attack" || animName == "hit")
@@ -186,5 +200,18 @@ public partial class SlimeEnemy : CharacterBody2D, IDamageable
 			_state = distToPlayer < DetectRange ? State.Chase : State.Patrol;
 			_animationPlayer.Play("move");
 		}
+	}
+
+	private bool IsPlayerInAttackReach(CharacterBody2D player, float horizontalRange)
+	{
+		Vector2 delta = player.GlobalPosition - GlobalPosition;
+		return Mathf.Abs(delta.X) <= horizontalRange && Mathf.Abs(delta.Y) <= AttackVerticalTolerance;
+	}
+
+	private void UpdateFacing(CharacterBody2D player)
+	{
+		float xDiff = player.GlobalPosition.X - GlobalPosition.X;
+		if (Mathf.Abs(xDiff) > FacingDeadZone)
+			_sprite.FlipH = xDiff < 0f;
 	}
 }

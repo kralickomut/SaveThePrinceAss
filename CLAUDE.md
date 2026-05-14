@@ -41,7 +41,9 @@ MainNode (Node2D)
 │       └── Castle, Layer5..Layer1 (Sprite2D × 6)
 ├── TileMap          ← Floor Tiles1.png atlas, 16px tiles, collision layer 1
 ├── Player           ← instance of character.tscn, spawns at Vector2(48, 539)
-├── SlimeEnemy       ← instance of slime.tscn, spawns at Vector2(300, 544)
+├── SlimeEnemy       ← instance of slime.tscn, new green Gandalf slime
+├── SlimeEnemyRed    ← instance of slime_purple.tscn, new red Gandalf slime
+├── SlimeEnemyBlue   ← instance of slime_blue.tscn, new blue Gandalf slime
 └── ZoneManager (Node) ← ZoneManager.cs, controls background crossfades
 ```
 
@@ -50,11 +52,11 @@ MainNode (Node2D)
 Player (CharacterBody2D)    ← PlayerController.cs, collision_layer = 2
 ├── Camera2D                ← zoom = Vector2(6, 6)
 ├── PlayerAnimator (Node2D) ← PlayerAnimator.cs (empty stub, just a container)
-│   ├── AnimationPlayer     ← autoplay = "idle"; animations: idle, move, jump, attack, hit, death, RESET
-│   └── Sprite2D            ← knight.png OR attack.png (swapped on attack), 32×32 region, offset (2, -7)
+│   ├── AnimationPlayer     ← autoplay = "idle"; animations: idle, move, run, jump, fall, attack, hit, death, RESET
+│   └── Sprite2D            ← GandalfHardcore Warrior.png, 80×64 region, offset (0, -5)
 ├── CollisionShape2D        ← RectangleShape2D 13.5×19 px, offset (1.25, -4.5)
-├── AttackHitbox (Area2D)   ← offset (12, -7); collision_mask = 4 (hits enemies only)
-│   └── CollisionShape2D    ← RectangleShape2D 12×10 px; disabled by default
+├── AttackHitbox (Area2D)   ← offset (40, -9); collision_mask = 4 (hits enemies only)
+│   └── CollisionShape2D    ← RectangleShape2D 54×30 px; disabled by default
 └── PlayerHud (CanvasLayer, layer=100)
     └── HealthBar (Node2D) ← HealthBar.cs, screen position Vector2(24, 24)
         ├── Border (ColorRect)
@@ -64,18 +66,21 @@ Player (CharacterBody2D)    ← PlayerController.cs, collision_layer = 2
 
 ### `slime.tscn`
 ```
-SlimeEnemy (CharacterBody2D)  ← SlimeEnemy.cs, collision_layer = 4
-├── Sprite2D                  ← slime_green.png, 24×24 region, offset (0, -12)
-├── CollisionShape2D          ← RectangleShape2D 14×14 px, offset (0, -7)
-├── AnimationPlayer           ← animations: move, attack, hit
-└── HealthBar (Node2D)        ← HealthBar.cs, local position Vector2(0, -40)
+SlimeEnemy (CharacterBody2D)  ← SlimeEnemy.cs, collision_layer = 4, collision_mask = 1
+├── Sprite2D                  ← Gandalf Slime Enemy/Slime green.png, 32×32 region, scale 2×, offset (0, -32)
+├── CollisionShape2D          ← RectangleShape2D 42×24 px, offset (0, -12)
+├── AnimationPlayer           ← animations: idle, move, attack, hit, death
+└── HealthBar (Node2D)        ← HealthBar.cs, local position Vector2(0, -70)
     ├── Border (ColorRect)
     ├── Background (ColorRect)
     └── Fill (ColorRect)
 ```
 
 ### `slime_purple.tscn`
-Same structure and script as `slime.tscn`, but uses `sprites/slime_purple.png`. It also has a world-space `HealthBar` above the enemy.
+Same structure and script as `slime.tscn`, but now uses `GandalfHardcore Slime Enemy/Slime red.png`. The filename is legacy; in-game node is `SlimeEnemyRed`.
+
+### `slime_blue.tscn`
+Standalone copy of the same slime setup using `GandalfHardcore Slime Enemy/Slime blue.png`. It is intentionally not inherited from `slime.tscn`, so editor collider tweaks are less fragile.
 
 ## Scripts
 
@@ -83,27 +88,31 @@ Same structure and script as `slime.tscn`, but uses `sprites/slime_purple.png`. 
 Single-method interface: `void TakeDamage(int damage)`. Every entity that can be hit must implement this. Currently: `PlayerController`, `SlimeEnemy`.
 
 ### `PlayerController.cs`
-State machine with states: `Idle | Move | Jump | Attack | Hurt | Dead`
+State machine with states: `Idle | Move | Run | Jump | Fall | Attack | Hurt | Dead`
 
 Key constants:
 ```csharp
 const float Speed = 100.0f;
+const float RunSpeed = 160.0f;
 const float JumpVelocity = -250.0f;
 ```
 
 Input actions:
 - `ui_accept` — jump (Space/Enter)
 - `ui_left` / `ui_right` / `ui_up` / `ui_down` — movement (`Input.GetVector`)
+- `Shift` — run while held (direct `Key.Shift` check, no input action)
 - `attack` — attack (mapped to left mouse button)
 
-Attack flow: `SetState(Attack)` → `attack.png` swapped in, `"attack"` animation plays → animation keyframe enables `AttackHitbox/CollisionShape2D` at t=0.14s and disables it at t=0.42s → `_PhysicsProcess` detects overlapping `IDamageable` bodies (one hit per swing via `_hasDealtDamageThisAttack`) → `OnAnimationFinished` returns to `Idle`.
+Attack flow: `SetState(Attack)` → `"attack"` animation plays on `GandalfHardcore Warrior.png` → animation keyframe enables `AttackHitbox/CollisionShape2D` at t=0.16s and disables it at t=0.40s → `_PhysicsProcess` detects overlapping `IDamageable` bodies (one hit per swing via `_hasDealtDamageThisAttack`) → `OnAnimationFinished` returns to `Idle`.
 
 The hitbox enable/disable is driven by **animation keyframes**, not by code — do not manually toggle it in C#.
-Attack direction is driven by `UpdateFacingDirection()`, which moves `AttackHitbox.Position` to `Vector2(12, -7)` when facing right and `Vector2(-12, -7)` when facing left. Do not rely on negative `Scale.X`; the hitbox shape is symmetric, so scaling only mirrors it in place.
+Attack direction is driven by `UpdateFacingDirection()`, which moves `AttackHitbox.Position` to `Vector2(40, -9)` when facing right and `Vector2(-40, -9)` when facing left. The warrior sheet faces left by default, so `Sprite2D.FlipH = !_facingLeft`.
 
-`UpdateMovementState()` only transitions between `Idle / Move / Jump`; it returns early when state is `Attack`, `Hurt`, or `Dead`.
+`UpdateMovementState()` transitions between `Idle / Move / Run / Jump / Fall`; it returns early when state is `Attack`, `Hurt`, or `Dead`.
 
 `Heal(int amount)` restores player HP up to `MaxHealth`, updates the HUD `HealthBar`, and returns `true` only if health actually changed. Interactables use this to avoid consuming healing items while the player is already full HP.
+
+Player damage cooldowns are tracked per attacker for source-aware damage. `SlimeEnemy` calls `TakeDamageFrom(this, AttackDamage)`, so each slime is rate-limited independently and two slimes attacking together can both apply damage during their own attack cycles. Generic `TakeDamage()` still uses the shared `_invincibleTimer`.
 
 ### `SlimeEnemy.cs`
 State machine with states: `Patrol | Chase | Attack | Hurt | Dead`
@@ -111,13 +120,13 @@ State machine with states: `Patrol | Chase | Attack | Hurt | Dead`
 Key exports (tunable in editor):
 ```csharp
 int MaxHealth = 30;   int AttackDamage = 5;
-float MoveSpeed = 40; float DetectRange = 120; float AttackRange = 14;
+float MoveSpeed = 40; float DetectRange = 120; float AttackRange = 52;
 ```
 
 AI loop (runs in `_PhysicsProcess`):
 1. Distance to player → if `< AttackRange`: attack; if `< DetectRange`: chase; else: patrol
 2. Patrol reverses direction on wall collision or after `PatrolTime = 2.5s`
-3. Attack damage is applied via `_attackDamageTimer = 0.24s` delay (mid-animation), not via a hitbox
+3. Attack damage is applied via `_attackDamageTimer = 0.24s` delay (mid-animation), not via a hitbox. Slimes call `PlayerController.TakeDamageFrom(this, AttackDamage)` so multiple slimes stack damage correctly.
 
 Player is located with `GetTree().GetFirstNodeInGroup("player")` — the player must stay in group `"player"`.
 
@@ -196,11 +205,11 @@ Each zone's background is a `CanvasLayer` (layer=−100) containing a `Sprites` 
 
 | File | Location | Status |
 |---|---|---|
-| `knight.png` | `sprites/` | Player (idle/move/jump/hit/death frames) |
-| `attack.png` | `sprites/` | Player attack frames (texture-swapped during attack state) |
+| `GandalfHardcore Warrior.png` | `GandalfHardcore FREE Warrior/` | Active player spritesheet, 80×64 frames |
+| `knight.png`, `attack.png` | `sprites/` | Legacy player spritesheets, no longer used by `character.tscn` |
 | `Floor Tiles1.png` | `GandalfHardcore FREE Platformer Assets/` | Active ground tileset |
-| `slime_green.png` | `sprites/` | Green SlimeEnemy sprite |
-| `slime_purple.png` | `sprites/` | Purple SlimeEnemy sprite |
+| `Slime green.png`, `Slime red.png`, `Slime blue.png` | `GandalfHardcore Slime Enemy/` | Active slime spritesheets, 32×32 frames |
+| `slime_green.png`, `slime_purple.png` | `sprites/` | Legacy slime sprites, no longer used by slime scenes |
 | `Decor.png` apple region | `GandalfHardcore FREE Platformer Assets/` | `grass-5_norm2` apple heal interactable |
 | Background layers (×18) | `GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/` | Zone backgrounds (Normal/Autumn/Winter, 6 layers each) |
 | `world_tileset.png` | `sprites/` | No longer used (replaced by Floor Tiles1.png) |
@@ -216,22 +225,23 @@ Duplicate PNG copies at the repo root are legacy leftovers — scenes reference 
 - **TileMap tile_size**: Do not set `tile_size = Vector2i(32, 32)` on the TileSet sub_resource in .tscn — Godot 4.6 may not apply it from the file, causing the tile grid to default to 16px and placing ground tiles at world_y=272 instead of 544 (off-screen).
 - **CanvasLayer modulate**: `CanvasLayer` does not extend `CanvasItem` so it has no `modulate` property. The fade targets are the `Sprites` Node2D children (which do have `modulate`).
 - **Health bars**: Player health is a `CanvasLayer` HUD child at screen position `(24, 24)`. Enemy health bars are world-space children above each slime. The same `HealthBar.cs` supports both with the `Centered` export.
-- **Attack direction**: The player attack hitbox must be moved left/right by position, not by `Scale.X`. Mirroring a centered `RectangleShape2D` does not move the hitbox to the other side of the player.
+- **Attack direction**: The player attack hitbox must be moved left/right by position, not by `Scale.X`. The sprite's visual flip is inverted because the warrior source art faces left.
+- **Warrior spritesheet**: Player animations use 80×64 regions from `GandalfHardcore FREE Warrior/GandalfHardcore Warrior.png`. Current mapped rows: idle row 7, move row 8, run row 9, jump row 11, fall/hit row 12, attack row 14 (slash frames 0–5), death row 15.
 
 ## What Is and Isn't Implemented
 
 ### Done
 - [x] Horizontal movement with smooth deceleration
 - [x] Jump + gravity
-- [x] All player animations: idle (loop), move (loop), jump, attack, hit, death
-- [x] Player state machine (Idle / Move / Jump / Attack / Hurt / Dead)
+- [x] All player animations: idle (loop), move (loop), run (loop), jump, fall, attack, hit, death
+- [x] Player state machine (Idle / Move / Run / Jump / Fall / Attack / Hurt / Dead)
 - [x] Attack hitbox with one-hit-per-swing guard (animation-driven)
 - [x] `IDamageable` interface + health/damage on player and slime
 - [x] Player HUD health bar fixed to the viewport corner
-- [x] World-space health bars above green and purple slimes
+- [x] World-space health bars above green/red/blue slimes
 - [x] Apple healing interactable (`Press E to eat`) using `Decor/grass-5_norm2`
 - [x] SlimeEnemy with Patrol / Chase / Attack / Hurt / Dead AI
-- [x] Second slime variant using purple sprite
+- [x] Three slime color variants using the Gandalf Slime Enemy sheets
 - [x] Camera following player (6× zoom)
 - [x] 108-tile horizontal world with collision (1728 px)
 - [x] 3-zone horizontal world with smooth background crossfades (Normal → Autumn → Winter)
