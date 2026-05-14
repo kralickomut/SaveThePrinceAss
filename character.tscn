@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://pmbissxw7m4m" path="res://sprites/knight.png" id="1_glpr6"]
 [ext_resource type="Script" uid="uid://dtymd2pcwv021" path="res://scripts/PlayerController.cs" id="1_pjt0s"]
 [ext_resource type="Script" uid="uid://c1nxh0xqbqwk" path="res://scripts/PlayerAnimator.cs" id="2_wa5vi"]
+[ext_resource type="Script" uid="uid://dmm0qgx2r4n5c" path="res://scripts/HealthBar.cs" id="3_health"]
 
 [sub_resource type="Animation" id="Animation_wa5vi"]
 length = 0.001
@@ -188,3 +189,30 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=112233446]
 shape = SubResource("RectangleShape2D_hitbox")
 disabled = true
+
+[node name="PlayerHud" type="CanvasLayer" parent="." unique_id=789915947]
+layer = 100
+
+[node name="HealthBar" type="Node2D" parent="PlayerHud" unique_id=209558937]
+position = Vector2(24, 24)
+script = ExtResource("3_health")
+Width = 300.0
+Height = 20.0
+Centered = false
+
+[node name="Border" type="ColorRect" parent="PlayerHud/HealthBar" unique_id=199297632]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 301.0
+offset_bottom = 21.0
+color = Color(0.03, 0.02, 0.02, 0.95)
+
+[node name="Background" type="ColorRect" parent="PlayerHud/HealthBar" unique_id=1808646129]
+offset_right = 300.0
+offset_bottom = 20.0
+color = Color(0.08, 0.02, 0.03, 0.85)
+
+[node name="Fill" type="ColorRect" parent="PlayerHud/HealthBar" unique_id=459457619]
+offset_right = 300.0
+offset_bottom = 20.0
+color = Color(0.18, 0.92, 0.28, 1)

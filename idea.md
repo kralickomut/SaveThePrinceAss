@@ -1,4 +1,4 @@
-# Nápad na hru — SaveThePrinceAss
+# Nápad na hru — Save The Princess
 
 ## Koncept
 

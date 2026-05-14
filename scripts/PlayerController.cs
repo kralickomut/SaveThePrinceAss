@@ -17,6 +17,7 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 	private Sprite2D _sprite2D;
 	private Area2D _attackHitbox;
 	private CollisionShape2D _hitboxShape;
+	private HealthBar _healthBar;
 
 	// ── Данные ──────────────────────────────────────────────────────────────
 	private int _currentHealth;
@@ -24,6 +25,8 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 	private bool _hasDealtDamageThisAttack = false;
 	private float _invincibleTimer = 0f;
 	private const float InvincibleDuration = 1.2f;
+	private static readonly Vector2 AttackHitboxRightPosition = new(12f, -7f);
+	private static readonly Vector2 AttackHitboxLeftPosition = new(-12f, -7f);
 
 	private Texture2D _knightTexture;
 	private Texture2D _attackTexture;
@@ -35,12 +38,14 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 		_sprite2D        = GetNode<Sprite2D>("PlayerAnimator/Sprite2D");
 		_attackHitbox    = GetNode<Area2D>("AttackHitbox");
 		_hitboxShape     = GetNode<CollisionShape2D>("AttackHitbox/CollisionShape2D");
+		_healthBar       = GetNodeOrNull<HealthBar>("PlayerHud/HealthBar");
 
 		_knightTexture = GD.Load<Texture2D>("res://sprites/knight.png");
 		_attackTexture = GD.Load<Texture2D>("res://sprites/attack.png");
 
 		_currentHealth        = MaxHealth;
 		_hitboxShape.Disabled = true;
+		_healthBar?.SetHealth(_currentHealth, MaxHealth);
 
 		_animationPlayer.AnimationFinished += OnAnimationFinished;
 		AddToGroup("player");
@@ -82,8 +87,7 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 				{
 					velocity.X  = dir.X * Speed;
 					_facingLeft = dir.X < 0;
-					_sprite2D.FlipH          = _facingLeft;
-					_attackHitbox.Scale = new Vector2(_facingLeft ? -1f : 1f, 1f);
+					UpdateFacingDirection();
 				}
 				else
 				{
@@ -146,6 +150,7 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 
 			case State.Attack:
 				_hasDealtDamageThisAttack = false;
+				UpdateFacingDirection();
 				_sprite2D.Texture = _attackTexture;
 				_animationPlayer.Play("attack");
 				break;
@@ -179,6 +184,13 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 		SetState(next); // SetState сам проверит — если то же состояние, ничего не произойдёт
 	}
 
+	private void UpdateFacingDirection()
+	{
+		_sprite2D.FlipH = _facingLeft;
+		_attackHitbox.Position = _facingLeft ? AttackHitboxLeftPosition : AttackHitboxRightPosition;
+		_attackHitbox.Scale = Vector2.One;
+	}
+
 	// ── Получение урона (IDamageable) ───────────────────────────────────────
 	public void TakeDamage(int damage)
 	{
@@ -186,6 +198,7 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 
 		_currentHealth = Mathf.Max(0, _currentHealth - damage);
 		_invincibleTimer = InvincibleDuration;
+		_healthBar?.SetHealth(_currentHealth, MaxHealth);
 		GD.Print($"Player HP: {_currentHealth}/{MaxHealth}");
 
 		if (_currentHealth <= 0)
@@ -196,6 +209,17 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 		}
 
 		SetState(State.Hurt);
+	}
+
+	public bool Heal(int amount)
+	{
+		if (_state == State.Dead || _currentHealth >= MaxHealth)
+			return false;
+
+		_currentHealth = Mathf.Min(MaxHealth, _currentHealth + amount);
+		_healthBar?.SetHealth(_currentHealth, MaxHealth);
+		GD.Print($"Player HP: {_currentHealth}/{MaxHealth}");
+		return true;
 	}
 
 	// ── Конец анимации ──────────────────────────────────────────────────────

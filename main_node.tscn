@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://frvmiy01fxdi" path="res://GandalfHardcore FREE Platformer Assets/Tree2.png" id="26_y8vna"]
 [ext_resource type="Texture2D" uid="uid://dvgxg5cq33ktn" path="res://GandalfHardcore FREE Platformer Assets/Animated Sprites/Campfire sheet.png" id="27_imchu"]
 [ext_resource type="Texture2D" uid="uid://b8ayj4miwfi6n" path="res://GandalfHardcore FREE Platformer Assets/Large Pine Tree.png" id="31_wct6h"]
+[ext_resource type="Script" uid="uid://cqbce8nyg0rj1" path="res://scripts/AppleInteractable.cs" id="32_apple"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rcnnr"]
 texture = ExtResource("2_wts")
@@ -354,6 +355,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_apple"]
+radius = 42.0
+
 [node name="MainNode" type="Node2D" unique_id=718610701]
 
 [node name="NormalBG" type="CanvasLayer" parent="." unique_id=200001]
@@ -575,6 +579,26 @@ position = Vector2(1008, 592)
 texture = ExtResource("25_6vuwa")
 region_enabled = true
 region_rect = Rect2(320, 0, 32, 32)
+script = ExtResource("32_apple")
+HealAmount = 25
+
+[node name="InteractionArea" type="Area2D" parent="Decor/grass-5_norm2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Decor/grass-5_norm2/InteractionArea"]
+shape = SubResource("CircleShape2D_apple")
+
+[node name="PromptLabel" type="Label" parent="Decor/grass-5_norm2"]
+visible = false
+z_index = 50
+offset_left = -58.0
+offset_top = -52.0
+offset_right = 58.0
+offset_bottom = -28.0
+scale = Vector2(0.35, 0.35)
+text = "Press E to eat"
+horizontal_alignment = 1
 
 [node name="grass-5_norm3" type="Sprite2D" parent="Decor" unique_id=395885857]
 position = Vector2(1113, 592)
