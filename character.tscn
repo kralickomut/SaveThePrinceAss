@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cilisis1f0nju" path="res://GandalfHardcore FREE Warrior/GandalfHardcore Warrior.png" id="1_warrior"]
 [ext_resource type="Script" uid="uid://c1nxh0xqbqwk" path="res://scripts/PlayerAnimator.cs" id="2_wa5vi"]
 [ext_resource type="Script" uid="uid://dmm0qgx2r4n5c" path="res://scripts/HealthBar.cs" id="3_health"]
+[ext_resource type="Texture2D" uid="uid://bagwotk8ovfij" path="res://GandalfHardcore Hp bar/Hp bar.png" id="4_hp_frame"]
+[ext_resource type="Texture2D" uid="uid://d0uj7kfefweuo" path="res://GandalfHardcore Hp bar/red bar.png" id="5_hp_red"]
+[ext_resource type="Texture2D" uid="uid://b2cnsv5vdegqc" path="res://GandalfHardcore Hp bar/yellow bar.png" id="6_hp_yellow"]
 
 [sub_resource type="Animation" id="Animation_wa5vi"]
 length = 0.001
@@ -229,25 +232,59 @@ disabled = true
 layer = 100
 
 [node name="HealthBar" type="Node2D" parent="PlayerHud" unique_id=209558937]
-position = Vector2(24, 24)
+position = Vector2(16, 16)
 script = ExtResource("3_health")
-Width = 300.0
-Height = 20.0
+Width = 100.0
+Height = 16.0
 Centered = false
+UseLargeFrame = true
+SecondaryWidth = 63.008
+
+[node name="RedOrbFill" type="Sprite2D" parent="PlayerHud/HealthBar" unique_id=382766416]
+position = Vector2(8, 8)
+scale = Vector2(2, 2)
+texture = ExtResource("5_hp_red")
+centered = false
+
+[node name="Frame" type="Sprite2D" parent="PlayerHud/HealthBar" unique_id=1818322140]
+z_index = 10
+scale = Vector2(2, 2)
+texture = ExtResource("4_hp_frame")
+centered = false
+
+[node name="PlayerHealthFill" type="ColorRect" parent="PlayerHud/HealthBar" unique_id=600566116]
+z_index = 1
+offset_left = 126.0
+offset_top = 106.0
+offset_right = 226.0
+offset_bottom = 122.0
+color = Color(0.88, 0.05, 0.03, 1)
+
+[node name="SprintFill" type="Sprite2D" parent="PlayerHud/HealthBar" unique_id=1224339683]
+z_index = 1
+position = Vector2(132, 94)
+scale = Vector2(1.969, 2)
+texture = ExtResource("6_hp_yellow")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 4)
 
 [node name="Border" type="ColorRect" parent="PlayerHud/HealthBar" unique_id=199297632]
+visible = false
 offset_left = -1.0
 offset_top = -1.0
-offset_right = 301.0
-offset_bottom = 21.0
+offset_right = 101.0
+offset_bottom = 17.0
 color = Color(0.03, 0.02, 0.02, 0.95)
 
 [node name="Background" type="ColorRect" parent="PlayerHud/HealthBar" unique_id=1808646129]
-offset_right = 300.0
-offset_bottom = 20.0
+visible = false
+offset_right = 100.0
+offset_bottom = 16.0
 color = Color(0.08, 0.02, 0.03, 0.85)
 
 [node name="Fill" type="ColorRect" parent="PlayerHud/HealthBar" unique_id=459457619]
-offset_right = 300.0
-offset_bottom = 20.0
+visible = false
+offset_right = 100.0
+offset_bottom = 16.0
 color = Color(0.18, 0.92, 0.28, 1)

@@ -127,7 +127,7 @@ z_index = 20
 position = Vector2(0, -70)
 script = ExtResource("3_health")
 Width = 30.0
-Height = 3.0
+Height = 4.0
 
 [node name="Border" type="ColorRect" parent="HealthBar" unique_id=1847677510]
 offset_left = -16.0

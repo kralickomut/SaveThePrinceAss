@@ -280,6 +280,8 @@ Both are empty stubs (auto-generated Node2D scripts, no logic).
 - [x] All player animations keyed (idle, move, run, jump, fall, attack, hit, death)
 - [x] Attack hitbox — enabled by animation, directional flip, one-hit-per-swing guard
 - [x] Player health + `TakeDamage()` via `IDamageable`
+- [x] Gandalf HP bar visuals: red player HP/orb, yellow sprint meter, compact enemy health bars
+- [x] Sprint stamina — Shift sprint drains stamina, then constantly recharges
 - [x] **Damage cooldowns** — per-attacker cooldown for slime attacks, shared i-frame timer for generic damage
 - [x] Camera following player (6× zoom, Y-axis locked so background doesn't jump)
 - [x] `IDamageable` interface

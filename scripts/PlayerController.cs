@@ -6,6 +6,10 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 	public const float Speed = 100.0f;
 	public const float RunSpeed = 160.0f;
 	public const float JumpVelocity = -250.0f;
+	public const float MaxSprint = 100.0f;
+	public const float SprintDrainPerSecond = 35.0f;
+	public const float SprintRechargePerSecond = 25.0f;
+	public const float SprintResumeThreshold = 20.0f;
 
 	[Export] public int MaxHealth = 100;
 	[Export] public int AttackDamage = 10;
@@ -25,7 +29,10 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 	private int _currentHealth;
 	private bool _facingLeft = false;
 	private bool _hasDealtDamageThisAttack = false;
+	private bool _isSprinting = false;
+	private bool _sprintExhausted = false;
 	private float _invincibleTimer = 0f;
+	private float _currentSprint = MaxSprint;
 	private readonly Dictionary<ulong, float> _damageCooldownByAttacker = new();
 	private readonly List<ulong> _damageCooldownKeys = new();
 	private const float InvincibleDuration = 1.2f;
@@ -43,8 +50,10 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 		_healthBar       = GetNodeOrNull<HealthBar>("PlayerHud/HealthBar");
 
 		_currentHealth        = MaxHealth;
+		_currentSprint        = MaxSprint;
 		_hitboxShape.Disabled = true;
 		_healthBar?.SetHealth(_currentHealth, MaxHealth);
+		_healthBar?.SetSecondary(1.0f);
 
 		_animationPlayer.AnimationFinished += OnAnimationFinished;
 		AddToGroup("player");
@@ -62,6 +71,7 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 		if (_invincibleTimer > 0f)
 			_invincibleTimer -= (float)delta;
 		UpdateDamageCooldowns((float)delta);
+		bool canRun = UpdateSprint((float)delta);
 
 		// Гравитация — ВСЕГДА
 		if (!IsOnFloor())
@@ -85,7 +95,7 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 				Vector2 dir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 				if (dir != Vector2.Zero)
 				{
-					float speed = IsRunHeld() ? RunSpeed : Speed;
+					float speed = canRun ? RunSpeed : Speed;
 					velocity.X  = dir.X * speed;
 					_facingLeft = dir.X < 0;
 					UpdateFacingDirection();
@@ -180,7 +190,7 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 		if (!IsOnFloor())
 			next = Velocity.Y > 0f ? State.Fall : State.Jump;
 		else if (Mathf.Abs(Velocity.X) > 1f)
-			next = IsRunHeld() ? State.Run : State.Move;
+			next = CanShowRunAnimation() ? State.Run : State.Move;
 		else
 			next = State.Idle;
 
@@ -198,6 +208,31 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 	private static bool IsRunHeld()
 	{
 		return Input.IsKeyPressed(Key.Shift);
+	}
+
+	private bool UpdateSprint(float delta)
+	{
+		bool wantsRun = IsRunHeld() && Mathf.Abs(Input.GetAxis("ui_left", "ui_right")) > 0.0f;
+		if (_currentSprint <= 0.0f)
+			_sprintExhausted = true;
+		else if (_currentSprint >= SprintResumeThreshold)
+			_sprintExhausted = false;
+
+		bool canRun = wantsRun && !_sprintExhausted && _currentSprint > 0.0f;
+
+		if (canRun)
+			_currentSprint = Mathf.Max(0.0f, _currentSprint - SprintDrainPerSecond * delta);
+		else
+			_currentSprint = Mathf.Min(MaxSprint, _currentSprint + SprintRechargePerSecond * delta);
+
+		_isSprinting = canRun;
+		_healthBar?.SetSecondary(_currentSprint / MaxSprint);
+		return canRun;
+	}
+
+	private bool CanShowRunAnimation()
+	{
+		return _isSprinting;
 	}
 
 	// ── Получение урона (IDamageable) ───────────────────────────────────────

@@ -58,7 +58,7 @@ Player (CharacterBody2D)    ← PlayerController.cs, collision_layer = 2
 ├── AttackHitbox (Area2D)   ← offset (40, -9); collision_mask = 4 (hits enemies only)
 │   └── CollisionShape2D    ← RectangleShape2D 54×30 px; disabled by default
 └── PlayerHud (CanvasLayer, layer=100)
-    └── HealthBar (Node2D) ← HealthBar.cs, screen position Vector2(24, 24)
+    └── HealthBar (Node2D) ← HealthBar.cs, screen position Vector2(16, 16), large Gandalf frame
         ├── Border (ColorRect)
         ├── Background (ColorRect)
         └── Fill (ColorRect)
@@ -95,12 +95,15 @@ Key constants:
 const float Speed = 100.0f;
 const float RunSpeed = 160.0f;
 const float JumpVelocity = -250.0f;
+const float MaxSprint = 100.0f;
+const float SprintDrainPerSecond = 35.0f;
+const float SprintRechargePerSecond = 25.0f;
 ```
 
 Input actions:
 - `ui_accept` — jump (Space/Enter)
 - `ui_left` / `ui_right` / `ui_up` / `ui_down` — movement (`Input.GetVector`)
-- `Shift` — run while held (direct `Key.Shift` check, no input action)
+- `Shift` — sprint while held, limited by a constantly recharging sprint meter
 - `attack` — attack (mapped to left mouse button)
 
 Attack flow: `SetState(Attack)` → `"attack"` animation plays on `GandalfHardcore Warrior.png` → animation keyframe enables `AttackHitbox/CollisionShape2D` at t=0.16s and disables it at t=0.40s → `_PhysicsProcess` detects overlapping `IDamageable` bodies (one hit per swing via `_hasDealtDamageThisAttack`) → `OnAnimationFinished` returns to `Idle`.
@@ -133,9 +136,9 @@ Player is located with `GetTree().GetFirstNodeInGroup("player")` — the player 
 On death: `QueueFree()` immediately removes the node.
 
 ### `HealthBar.cs`
-Reusable `Node2D` health bar used by the player HUD and slime enemies. It expects direct `ColorRect` children named `Background` and `Fill`; optional `Border` is supported.
+Reusable `Node2D` health bar used by the player HUD and slime enemies. It supports the original `ColorRect` children (`Border`, `Background`, `Fill`) plus a textured Gandalf player HUD using `GandalfHardcore Hp bar/Hp bar.png`, `red bar.png`, and `yellow bar.png`.
 
-`SetHealth(currentHealth, maxHealth)` clamps the ratio, resizes `Fill.Size.X`, switches fill color by HP ratio (green → yellow → red), and hides the bar when health reaches 0. Slimes cache `GetNodeOrNull<HealthBar>("HealthBar")`; the player caches `GetNodeOrNull<HealthBar>("PlayerHud/HealthBar")`, so the player bar sticks to the viewport corner instead of floating above the character.
+`SetHealth(currentHealth, maxHealth)` clamps the HP ratio, resizes the red player HP fill or compact enemy `Fill`, switches enemy fill color by HP ratio (green → yellow → red), and hides the bar when health reaches 0. `SetSecondary(ratio)` drives the yellow sprint meter on the player HUD.
 
 ### `AppleInteractable.cs`
 Attached to `main_node.tscn` → `Decor/grass-5_norm2`, which is an apple visual from `Decor.png`. It has an `InteractionArea` (`Area2D`, mask layer 2 for player) and a `PromptLabel` that says `"Press E to eat"` while the player is nearby.
@@ -224,7 +227,7 @@ Duplicate PNG copies at the repo root are legacy leftovers — scenes reference 
 - **Editor cache**: Godot stores the last-selected AnimationPlayer path in `.godot/editor/*.cfg`. If the node `PlayerAnimator` was previously named `AgentAnimator`, these files contain stale paths and produce "Node not found" warnings on scene load. The cache files have been patched.
 - **TileMap tile_size**: Do not set `tile_size = Vector2i(32, 32)` on the TileSet sub_resource in .tscn — Godot 4.6 may not apply it from the file, causing the tile grid to default to 16px and placing ground tiles at world_y=272 instead of 544 (off-screen).
 - **CanvasLayer modulate**: `CanvasLayer` does not extend `CanvasItem` so it has no `modulate` property. The fade targets are the `Sprites` Node2D children (which do have `modulate`).
-- **Health bars**: Player health is a `CanvasLayer` HUD child at screen position `(24, 24)`. Enemy health bars are world-space children above each slime. The same `HealthBar.cs` supports both with the `Centered` export.
+- **Health bars**: Player health is a `CanvasLayer` HUD child at screen position `(16, 16)` using the large Gandalf HP frame with a red orb/HP fill and yellow sprint meter. Enemy health bars are compact world-space children above each slime. The same `HealthBar.cs` supports both via `UseLargeFrame`.
 - **Attack direction**: The player attack hitbox must be moved left/right by position, not by `Scale.X`. The sprite's visual flip is inverted because the warrior source art faces left.
 - **Warrior spritesheet**: Player animations use 80×64 regions from `GandalfHardcore FREE Warrior/GandalfHardcore Warrior.png`. Current mapped rows: idle row 7, move row 8, run row 9, jump row 11, fall/hit row 12, attack row 14 (slash frames 0–5), death row 15.
 
