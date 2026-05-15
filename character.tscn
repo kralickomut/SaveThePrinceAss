@@ -233,6 +233,7 @@ layer = 100
 
 [node name="HealthBar" type="Node2D" parent="PlayerHud" unique_id=209558937]
 position = Vector2(16, 16)
+scale = Vector2(2, 2)
 script = ExtResource("3_health")
 Width = 100.0
 Height = 16.0
