@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://blalrassrr51j" path="res://GandalfHardcore 43x Female Clothing/Queen Dress.png" id="2_k2owl"]
 [ext_resource type="Texture2D" uid="uid://dumta1hgi54wx" path="res://GandalfHardcore 58x Hair/28x Male Hair/Queen hair.png" id="3_pidp6"]
 [ext_resource type="Texture2D" uid="uid://dqljdqyc8aiud" path="res://GandalfHardcore Hostage Layers/Female tied up.png" id="4_tnlo1"]
+[ext_resource type="Script" path="res://scripts/PrincessInteraction.cs" id="5_princess"]
 
 [sub_resource type="Animation" id="Animation_wvti7"]
 length = 1.2
@@ -82,7 +83,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvti7"]
 size = Vector2(20, 47)
 
+[sub_resource type="RectangleShape2D" id="InteractionShape_princess"]
+size = Vector2(84, 72)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1686472825]
+script = ExtResource("5_princess")
 
 [node name="skin" type="Sprite2D" parent="." unique_id=1424395969]
 position = Vector2(0, -1)
@@ -114,3 +119,41 @@ autoplay = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420913250]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_wvti7")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -8)
+shape = SubResource("InteractionShape_princess")
+
+[node name="PromptLabel" type="Label" parent="."]
+visible = false
+z_index = 50
+offset_left = -58.0
+offset_top = -72.0
+offset_right = 58.0
+offset_bottom = -48.0
+scale = Vector2(0.35, 0.35)
+theme_override_colors/font_color = Color(1, 0.94, 0.58, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+horizontal_alignment = 1
+text = "Press E to talk"
+
+[node name="DialogueLabel" type="Label" parent="."]
+visible = false
+z_index = 50
+offset_left = -120.0
+offset_top = -104.0
+offset_right = 120.0
+offset_bottom = -60.0
+scale = Vector2(0.35, 0.35)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+horizontal_alignment = 1
+autowrap_mode = 3

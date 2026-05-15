@@ -1290,5 +1290,5 @@ position = Vector2(1360, 585)
 [node name="SecondGuardEnemy" parent="." unique_id=652005697 instance=ExtResource("38_2fjmt")]
 position = Vector2(1299, 585)
 
-[node name="CharacterBody2D" parent="." unique_id=2008741917 instance=ExtResource("39_hqm0r")]
+[node name="Princess" parent="." unique_id=2008741917 instance=ExtResource("39_hqm0r")]
 position = Vector2(5123, 585)
