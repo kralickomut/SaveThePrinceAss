@@ -85,7 +85,7 @@ Standalone copy of the same slime setup using `GandalfHardcore Slime Enemy/Slime
 ## Scripts
 
 ### `IDamageable.cs`
-Single-method interface: `void TakeDamage(int damage)`. Every entity that can be hit must implement this. Currently: `PlayerController`, `SlimeEnemy`.
+Single-method interface: `void TakeDamage(int damage)`. Every entity that can be hit must implement this. Currently: `PlayerController`, `SlimeEnemy`, `GuardInteraction`.
 
 ### `PlayerController.cs`
 State machine with states: `Idle | Move | Run | Jump | Fall | Attack | Hurt | Dead`
@@ -134,6 +134,13 @@ AI loop (runs in `_PhysicsProcess`):
 Player is located with `GetTree().GetFirstNodeInGroup("player")` — the player must stay in group `"player"`.
 
 On death: `QueueFree()` immediately removes the node.
+
+### `GuardInteraction.cs`
+Attached to `guard_enemy.tscn` and `another_enemy.tscn`. Provides proximity dialog via `InteractionArea`, `PromptLabel`, and `DialogueLabel`; interaction uses direct `Key.E` detection.
+
+- `guard_enemy.tscn`: non-killable talker. After dialog, body collision is disabled so the player can pass through.
+- `another_enemy.tscn`: second guard. Blocks the player with `collision_layer = 5`, becomes killable only after its dialog completes, and shows a hidden `HealthBar` above him when combat starts.
+- Label positions are normalized in `GuardInteraction.LayoutLabels()` so prompts/dialog stay centered above each guard under the 6× camera zoom.
 
 ### `HealthBar.cs`
 Reusable `Node2D` health bar used by the player HUD and slime enemies. It supports the original `ColorRect` children (`Border`, `Background`, `Fill`) plus a textured Gandalf player HUD using `GandalfHardcore Hp bar/Hp bar.png`, `red bar.png`, and `yellow bar.png`.

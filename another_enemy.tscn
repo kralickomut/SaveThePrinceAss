@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cdugw1yr78n2" path="res://GandalfHardcore 7x Male Clothing/Chainmail.png" id="3_22d5t"]
 [ext_resource type="Texture2D" uid="uid://crtblh4uetc4h" path="res://GandalfHardcore Masks/Male Bandit Scarf.png" id="4_4yugy"]
 [ext_resource type="Texture2D" uid="uid://fc4rte5oxja5" path="res://GandalfHardcore Character Asset Pack/Male Clothing/Boots.png" id="5_4euae"]
+[ext_resource type="Script" path="res://scripts/GuardInteraction.cs" id="6_guard"]
+[ext_resource type="Script" uid="uid://dmm0qgx2r4n5c" path="res://scripts/HealthBar.cs" id="7_health"]
 
 [sub_resource type="Animation" id="Animation_wvti7"]
 length = 0.001
@@ -86,16 +88,90 @@ tracks/4/keys = {
 "values": [Rect2(104, 16, 32, 48), Rect2(184, 16, 32, 48), Rect2(264, 16, 32, 48), Rect2(344, 16, 32, 48), Rect2(344, 16, 32, 48)]
 }
 
+[sub_resource type="Animation" id="Animation_attack_guard"]
+resource_name = "attack"
+length = 0.48
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skin:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(24, 336, 32, 48), Rect2(104, 336, 32, 48), Rect2(184, 336, 32, 48), Rect2(264, 336, 32, 48), Rect2(344, 336, 32, 48), Rect2(424, 336, 32, 48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pants:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(24, 336, 32, 48), Rect2(104, 336, 32, 48), Rect2(184, 336, 32, 48), Rect2(264, 336, 32, 48), Rect2(344, 336, 32, 48), Rect2(424, 336, 32, 48)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("chainmale:region_rect")
+tracks/2/interp = 0
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(24, 336, 32, 48), Rect2(104, 336, 32, 48), Rect2(184, 336, 32, 48), Rect2(264, 336, 32, 48), Rect2(344, 336, 32, 48), Rect2(424, 336, 32, 48)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("helmet:region_rect")
+tracks/3/interp = 0
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(24, 336, 32, 48), Rect2(104, 336, 32, 48), Rect2(184, 336, 32, 48), Rect2(264, 336, 32, 48), Rect2(344, 336, 32, 48), Rect2(424, 336, 32, 48)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("boots:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(24, 336, 32, 48), Rect2(104, 336, 32, 48), Rect2(184, 336, 32, 48), Rect2(264, 336, 32, 48), Rect2(344, 336, 32, 48), Rect2(424, 336, 32, 48)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1ai3i"]
 _data = {
 &"RESET": SubResource("Animation_wvti7"),
+&"attack": SubResource("Animation_attack_guard"),
 &"idle": SubResource("Animation_3fcb7")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvti7"]
 size = Vector2(20, 47)
 
+[sub_resource type="RectangleShape2D" id="InteractionShape_guard"]
+size = Vector2(96, 72)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1686472825]
+collision_layer = 5
+script = ExtResource("6_guard")
+Dialogue = "So the first fool let you pass.\nThe princess is alone in our kingdom.\nShe will remain ours.\nDraw your blade."
+KillableAfterDialogue = true
+MaxHealth = 30
 
 [node name="skin" type="Sprite2D" parent="." unique_id=1424395969]
 position = Vector2(0, -1)
@@ -134,3 +210,68 @@ autoplay = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420913250]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_wvti7")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -8)
+shape = SubResource("InteractionShape_guard")
+
+[node name="PromptLabel" type="Label" parent="."]
+z_index = 50
+offset_left = -42.0
+offset_top = -72.0
+offset_right = 42.0
+offset_bottom = -49.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(1, 0.94, 0.58, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+horizontal_alignment = 1
+text = "Press E to talk"
+
+[node name="DialogueLabel" type="Label" parent="."]
+z_index = 50
+offset_left = -120.0
+offset_top = -100.0
+offset_right = 120.0
+offset_bottom = -58.0
+scale = Vector2(0.38, 0.38)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HealthBar" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, -42)
+z_index = 20
+script = ExtResource("7_health")
+Width = 28.0
+Height = 4.0
+
+[node name="Border" type="ColorRect" parent="HealthBar"]
+offset_left = -15.0
+offset_top = -3.0
+offset_right = 15.0
+offset_bottom = 3.0
+color = Color(0.03, 0.02, 0.02, 0.95)
+
+[node name="Background" type="ColorRect" parent="HealthBar"]
+offset_left = -14.0
+offset_top = -2.0
+offset_right = 14.0
+offset_bottom = 2.0
+color = Color(0.08, 0.02, 0.03, 0.85)
+
+[node name="Fill" type="ColorRect" parent="HealthBar"]
+offset_left = -14.0
+offset_top = -2.0
+offset_right = 14.0
+offset_bottom = 2.0
+color = Color(0.18, 0.92, 0.28, 1)

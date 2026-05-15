@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cdugw1yr78n2" path="res://GandalfHardcore 7x Male Clothing/Chainmail.png" id="3_1ai3i"]
 [ext_resource type="Texture2D" uid="uid://elwf22858qso" path="res://GandalfHardcore 39x Hats/Male Hat/Guard Helmet.png" id="4_14oub"]
 [ext_resource type="Texture2D" uid="uid://fc4rte5oxja5" path="res://GandalfHardcore Character Asset Pack/Male Clothing/Boots.png" id="5_6xlib"]
+[ext_resource type="Script" path="res://scripts/GuardInteraction.cs" id="6_guard"]
 
 [sub_resource type="Animation" id="Animation_wvti7"]
 length = 0.001
@@ -95,7 +96,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvti7"]
 size = Vector2(20, 47)
 
+[sub_resource type="RectangleShape2D" id="InteractionShape_guard"]
+size = Vector2(96, 72)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1686472825]
+collision_layer = 5
+script = ExtResource("6_guard")
+Dialogue = "You should not be here.\nA lonely princess is trapped in our kingdom.\nMy brother ahead still guards the road.\nGo on. I will not stop you."
+DisableCollisionAfterDialogue = true
 
 [node name="skin" type="Sprite2D" parent="." unique_id=1424395969]
 position = Vector2(0, -1)
@@ -134,3 +142,39 @@ autoplay = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420913250]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_wvti7")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -8)
+shape = SubResource("InteractionShape_guard")
+
+[node name="PromptLabel" type="Label" parent="."]
+z_index = 50
+offset_left = -42.0
+offset_top = -72.0
+offset_right = 42.0
+offset_bottom = -49.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(1, 0.94, 0.58, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+horizontal_alignment = 1
+text = "Press E to talk"
+
+[node name="DialogueLabel" type="Label" parent="."]
+z_index = 50
+offset_left = -120.0
+offset_top = -100.0
+offset_right = 120.0
+offset_bottom = -58.0
+scale = Vector2(0.38, 0.38)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+horizontal_alignment = 1
+autowrap_mode = 3

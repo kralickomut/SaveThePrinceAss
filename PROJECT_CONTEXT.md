@@ -286,6 +286,7 @@ Both are empty stubs (auto-generated Node2D scripts, no logic).
 - [x] Camera following player (6× zoom, Y-axis locked so background doesn't jump)
 - [x] `IDamageable` interface
 - [x] Green/red/blue slime enemies — full AI (Patrol / Chase / Attack / Hurt / Dead)
+- [x] Guard dialog interaction — first guard talks and becomes pass-through; second guard talks then becomes killable
 - [x] `ZoneManager` — 3-zone background crossfade (Normal / Autumn / Winter)
 - [x] TileMap with collision — 32×32 tiles, 162 tiles wide (3 zones × 54 tiles)
 - [x] Background layers — all sprites scaled to fill 1920×1080 (scale 3.5)
@@ -293,7 +294,6 @@ Both are empty stubs (auto-generated Node2D scripts, no logic).
 
 ### Not Done
 - [ ] `PlayerAnimator.cs` / `PlayerAnimation.cs` — empty stubs, no logic
-- [ ] Guard enemy (planned for floor 1–2)
 - [ ] Knight enemy (planned for floor 2–3)
 - [ ] Weapons system (short sword / broadsword / magic sword pickups)
 - [ ] Scroll / lore system (interactive objects)
@@ -311,6 +311,7 @@ Both are empty stubs (auto-generated Node2D scripts, no logic).
 - `PlayerAnimator.cs` is attached to the `PlayerAnimator` node but does nothing — its `_Process` is empty
 - `PlayerAnimation.cs` exists at project root (not in `scripts/`) — likely leftover or misplaced
 - Slime scenes use `collision_mask = 1`, so they collide with world geometry but do not physically push the player. They stay on enemy layer 4 so the player's `AttackHitbox` can still overlap them.
+- Guard scenes use `GuardInteraction.cs`. `guard_enemy.tscn` disables body collision after dialog; `another_enemy.tscn` keeps collision, becomes damageable after dialog, and reveals its `HealthBar` when combat starts. Guard prompt/dialog label layout is script-normalized above the character.
 - Camera Y-lock is hardcoded to world y≈519. If ground level changes, update `limit_top` and `limit_bottom` in `character.tscn` Camera2D (`limit_top = cameraY - 90`, `limit_bottom = cameraY + 90` at zoom=6, viewport height=180)
 - `ZoneManager` expects exactly `NormalBG/Sprites`, `AutumnBG/Sprites`, `WinterBG/Sprites` node paths relative to its parent
 
@@ -319,7 +320,7 @@ Both are empty stubs (auto-generated Node2D scripts, no logic).
 ## Suggested Next Steps (by deadline 2026-05-20)
 
 1. Design floor 1 in TileMap — add platforms, gaps, rooms (user places tiles manually)
-2. Implement Guard enemy scene + script
+2. Add proper guard combat animations / attacks
 3. Add death/respawn logic (restart scene or checkpoint)
 4. Add HUD — health bar
 5. Add scroll pickup mechanic (lore items)
