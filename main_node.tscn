@@ -878,6 +878,22 @@ texture = ExtResource("24_imchu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Decor" unique_id=249107918]
 
+[node name="AutumnBirch1" type="Sprite2D" parent="Decor" unique_id=1958021719]
+position = Vector2(1785, 552)
+texture = ExtResource("21_0noyg")
+
+[node name="AutumnTree1" type="Sprite2D" parent="Decor" unique_id=277777518]
+position = Vector2(2220, 504)
+texture = ExtResource("26_y8vna")
+
+[node name="AutumnBirch2" type="Sprite2D" parent="Decor" unique_id=743098924]
+position = Vector2(2845, 552)
+texture = ExtResource("22_hlqug")
+
+[node name="AutumnTree2" type="Sprite2D" parent="Decor" unique_id=829632679]
+position = Vector2(3330, 504)
+texture = ExtResource("26_y8vna")
+
 [node name="grass_norm" type="Sprite2D" parent="Decor" unique_id=734861202]
 position = Vector2(144, 592)
 texture = ExtResource("25_6vuwa")
@@ -987,6 +1003,199 @@ scale = Vector2(0.35, 0.35)
 text = "Press E to eat"
 horizontal_alignment = 1
 
+[node name="AppleAutumn1" type="Sprite2D" parent="Decor" unique_id=183847844]
+position = Vector2(2050, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(320, 0, 32, 32)
+script = ExtResource("33_apple")
+
+[node name="InteractionArea" type="Area2D" parent="Decor/AppleAutumn1" unique_id=1318279701]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Decor/AppleAutumn1/InteractionArea" unique_id=1244652083]
+shape = SubResource("CircleShape2D_apple")
+
+[node name="PromptLabel" type="Label" parent="Decor/AppleAutumn1" unique_id=632483790]
+visible = false
+z_index = 50
+offset_left = -58.0
+offset_top = -52.0
+offset_right = 58.0
+offset_bottom = -28.0
+scale = Vector2(0.35, 0.35)
+text = "Press E to eat"
+horizontal_alignment = 1
+
+[node name="AppleAutumn2" type="Sprite2D" parent="Decor" unique_id=943191169]
+position = Vector2(3180, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(320, 0, 32, 32)
+script = ExtResource("33_apple")
+
+[node name="InteractionArea" type="Area2D" parent="Decor/AppleAutumn2" unique_id=527876783]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Decor/AppleAutumn2/InteractionArea" unique_id=230777620]
+shape = SubResource("CircleShape2D_apple")
+
+[node name="PromptLabel" type="Label" parent="Decor/AppleAutumn2" unique_id=852545336]
+visible = false
+z_index = 50
+offset_left = -58.0
+offset_top = -52.0
+offset_right = 58.0
+offset_bottom = -28.0
+scale = Vector2(0.35, 0.35)
+text = "Press E to eat"
+horizontal_alignment = 1
+
+[node name="AutumnWoodPile1" type="Sprite2D" parent="Decor" unique_id=941045756]
+position = Vector2(1900, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 96, 96, 32)
+
+[node name="AutumnGroundWood1" type="Sprite2D" parent="Decor" unique_id=1763583709]
+position = Vector2(2510, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(264, 32, 48, 32)
+
+[node name="AutumnRockClump1" type="Sprite2D" parent="Decor" unique_id=674095688]
+position = Vector2(2960, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 160, 32, 32)
+
+[node name="AutumnGrassClump1" type="Sprite2D" parent="Decor" unique_id=477475360]
+position = Vector2(2350, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(64, 448, 32, 32)
+
+[node name="AutumnTree3" type="Sprite2D" parent="Decor" unique_id=2132002998]
+position = Vector2(2660, 504)
+texture = ExtResource("26_y8vna")
+
+[node name="AutumnWoodPile2" type="Sprite2D" parent="Decor" unique_id=465835968]
+position = Vector2(3295, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 96, 96, 32)
+
+[node name="AppleAutumn3" type="Sprite2D" parent="Decor" unique_id=1295402701]
+position = Vector2(2740, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(320, 0, 32, 32)
+script = ExtResource("33_apple")
+
+[node name="InteractionArea" type="Area2D" parent="Decor/AppleAutumn3" unique_id=1907329427]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Decor/AppleAutumn3/InteractionArea" unique_id=2059982215]
+shape = SubResource("CircleShape2D_apple")
+
+[node name="PromptLabel" type="Label" parent="Decor/AppleAutumn3" unique_id=401634524]
+visible = false
+z_index = 50
+offset_left = -58.0
+offset_top = -52.0
+offset_right = 58.0
+offset_bottom = -28.0
+scale = Vector2(0.35, 0.35)
+text = "Press E to eat"
+horizontal_alignment = 1
+
+[node name="WinterChristmasTree1" type="Sprite2D" parent="Decor" unique_id=65370932]
+position = Vector2(3565, 576)
+texture = ExtResource("24_imchu")
+
+[node name="WinterChristmasTree2" type="Sprite2D" parent="Decor" unique_id=652097089]
+position = Vector2(4660, 576)
+texture = ExtResource("24_imchu")
+
+[node name="WinterPine1" type="Sprite2D" parent="Decor" unique_id=1223058104]
+position = Vector2(4215, 520)
+texture = ExtResource("31_wct6h")
+
+[node name="WinterSnowRock1" type="Sprite2D" parent="Decor" unique_id=501835778]
+position = Vector2(3860, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(160, 192, 32, 32)
+
+[node name="WinterSnowPile1" type="Sprite2D" parent="Decor" unique_id=806665399]
+position = Vector2(4420, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 224, 96, 32)
+
+[node name="WinterWoodPile1" type="Sprite2D" parent="Decor" unique_id=918831138]
+position = Vector2(4920, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 96, 96, 32)
+
+[node name="WinterBattleTent" type="Sprite2D" parent="Decor"]
+position = Vector2(4380, 544)
+texture = ExtResource("20_6dwd8")
+
+[node name="WinterApple1" type="Sprite2D" parent="Decor" unique_id=284295211]
+position = Vector2(3760, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(320, 0, 32, 32)
+script = ExtResource("33_apple")
+
+[node name="InteractionArea" type="Area2D" parent="Decor/WinterApple1" unique_id=1053764157]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Decor/WinterApple1/InteractionArea" unique_id=1292268677]
+shape = SubResource("CircleShape2D_apple")
+
+[node name="PromptLabel" type="Label" parent="Decor/WinterApple1" unique_id=617758096]
+visible = false
+z_index = 50
+offset_left = -58.0
+offset_top = -52.0
+offset_right = 58.0
+offset_bottom = -28.0
+scale = Vector2(0.35, 0.35)
+text = "Press E to eat"
+horizontal_alignment = 1
+
+[node name="WinterApple2" type="Sprite2D" parent="Decor" unique_id=901104081]
+position = Vector2(4560, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(320, 0, 32, 32)
+script = ExtResource("33_apple")
+
+[node name="InteractionArea" type="Area2D" parent="Decor/WinterApple2" unique_id=1509208027]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Decor/WinterApple2/InteractionArea" unique_id=225220976]
+shape = SubResource("CircleShape2D_apple")
+
+[node name="PromptLabel" type="Label" parent="Decor/WinterApple2" unique_id=1279654331]
+visible = false
+z_index = 50
+offset_left = -58.0
+offset_top = -52.0
+offset_right = 58.0
+offset_bottom = -28.0
+scale = Vector2(0.35, 0.35)
+text = "Press E to eat"
+horizontal_alignment = 1
+
 [node name="grass-5_norm3" type="Sprite2D" parent="Decor" unique_id=395885857]
 position = Vector2(1113, 592)
 texture = ExtResource("25_6vuwa")
@@ -1034,7 +1243,7 @@ sprite_frames = SubResource("SpriteFrames_elsiq")
 autoplay = "default"
 
 [node name="Player" parent="." unique_id=949381415 instance=ExtResource("3_char")]
-position = Vector2(96, 571)
+position = Vector2(206, 565)
 
 [node name="SlimeEnemy" parent="." unique_id=1091950493 instance=ExtResource("4_slime")]
 position = Vector2(400, 576)
@@ -1042,14 +1251,37 @@ position = Vector2(400, 576)
 [node name="SlimeEnemyRed" parent="." unique_id=1191950493 instance=ExtResource("5_pslime")]
 position = Vector2(700, 576)
 
+[node name="AutumnSlimeGreen" parent="." unique_id=891453235 instance=ExtResource("4_slime")]
+position = Vector2(2140, 576)
+
 [node name="SlimeEnemyBlue" parent="." unique_id=874832470 instance=ExtResource("5_bslime")]
 position = Vector2(1000, 576)
+
+[node name="AutumnSlimeRed" parent="." unique_id=1842007153 instance=ExtResource("5_pslime")]
+position = Vector2(3060, 576)
+
+[node name="AutumnSlimeBlue" parent="." unique_id=1994657091 instance=ExtResource("5_bslime")]
+position = Vector2(2630, 576)
+
+[node name="WinterSlimeBlue" parent="." unique_id=2135319772 instance=ExtResource("5_bslime")]
+position = Vector2(3900, 576)
+
+[node name="WinterSlimeRed" parent="." unique_id=939919100 instance=ExtResource("5_pslime")]
+position = Vector2(4720, 576)
+
+[node name="WinterTentGuardLeft" parent="." instance=ExtResource("38_2fjmt")]
+position = Vector2(4290, 585)
+Dialogue = "The cold keeps weak heroes away.\nYou made it this far, but this camp is ours.\nThe princess will never see spring.\nDraw your blade."
+
+[node name="WinterTentGuardRight" parent="." instance=ExtResource("38_2fjmt")]
+position = Vector2(4470, 585)
+Dialogue = "Another wanderer with a sword.\nWe buried better fighters beneath this snow.\nTurn back, or bleed for the princess.\nDraw your blade."
 
 [node name="ZoneManager" type="Node" parent="." unique_id=200025]
 script = ExtResource("1_zm")
 
 [node name="LargePineTree" type="Sprite2D" parent="." unique_id=480447884]
-position = Vector2(1696, 520)
+position = Vector2(4015, 520)
 texture = ExtResource("31_wct6h")
 
 [node name="GuardEnemy" parent="." unique_id=1686472825 instance=ExtResource("37_1jgt1")]
