@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://dbnirioojwbvv"]
+
+[ext_resource type="Texture2D" uid="uid://cylx25nfl8n0i" path="res://GandalfHardcore Character Asset Pack/Character skin colors/Female Skin1.png" id="1_wholh"]
+[ext_resource type="Texture2D" uid="uid://blalrassrr51j" path="res://GandalfHardcore 43x Female Clothing/Queen Dress.png" id="2_k2owl"]
+[ext_resource type="Texture2D" uid="uid://dumta1hgi54wx" path="res://GandalfHardcore 58x Hair/28x Male Hair/Queen hair.png" id="3_pidp6"]
+[ext_resource type="Texture2D" uid="uid://dqljdqyc8aiud" path="res://GandalfHardcore Hostage Layers/Female tied up.png" id="4_tnlo1"]
+
+[sub_resource type="Animation" id="Animation_wvti7"]
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skin:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(24, 16, 32, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_3fcb7"]
+resource_name = "idle"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skin:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.33333334, 0.6, 0.8000001, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(104, 16, 32, 48), Rect2(184, 16, 32, 48), Rect2(264, 16, 32, 48), Rect2(344, 16, 32, 48), Rect2(344, 16, 32, 48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dress:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.33333334, 0.59733963, 0.7973397, 0.9973396, 1.0973396),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(104, 16, 32, 48), Rect2(184, 16, 32, 48), Rect2(264, 16, 32, 48), Rect2(344, 16, 32, 48), Rect2(344, 16, 32, 48)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hair:region_rect")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.33333334, 0.59733963, 0.7973397, 0.9973396, 1.0973396),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(104, 16, 32, 48), Rect2(184, 16, 32, 48), Rect2(264, 16, 32, 48), Rect2(344, 16, 32, 48), Rect2(344, 16, 32, 48)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("tied:region_rect")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.33333334, 0.59733963, 0.7973397, 0.9973396, 1.0973396),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(104, 16, 32, 48), Rect2(184, 16, 32, 48), Rect2(264, 16, 32, 48), Rect2(344, 16, 32, 48), Rect2(344, 16, 32, 48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ai3i"]
+_data = {
+&"RESET": SubResource("Animation_wvti7"),
+&"idle": SubResource("Animation_3fcb7")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvti7"]
+size = Vector2(20, 47)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1686472825]
+
+[node name="skin" type="Sprite2D" parent="." unique_id=1424395969]
+position = Vector2(0, -1)
+texture = ExtResource("1_wholh")
+region_enabled = true
+region_rect = Rect2(24, 16, 32, 48)
+
+[node name="dress" type="Sprite2D" parent="." unique_id=2028488600]
+position = Vector2(0, -1)
+texture = ExtResource("2_k2owl")
+region_enabled = true
+region_rect = Rect2(344, 16, 32, 48)
+
+[node name="hair" type="Sprite2D" parent="." unique_id=1246147090]
+position = Vector2(0, -1)
+texture = ExtResource("3_pidp6")
+region_enabled = true
+region_rect = Rect2(344, 16, 32, 48)
+
+[node name="tied" type="Sprite2D" parent="." unique_id=1427968850]
+texture = ExtResource("4_tnlo1")
+region_enabled = true
+region_rect = Rect2(344, 16, 32, 48)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=544123730]
+libraries/ = SubResource("AnimationLibrary_1ai3i")
+autoplay = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420913250]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_wvti7")

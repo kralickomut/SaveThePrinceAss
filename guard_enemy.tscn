@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://do5o4748vna4j"]
+
+[ext_resource type="Texture2D" uid="uid://dagmw0d6x2wik" path="res://GandalfHardcore Character Asset Pack/Character skin colors/Male Skin1.png" id="1_wvti7"]
+[ext_resource type="Texture2D" uid="uid://w4uef1ywe3hq" path="res://GandalfHardcore Character Asset Pack/Male Clothing/Green Pants.png" id="2_3fcb7"]
+[ext_resource type="Texture2D" uid="uid://cdugw1yr78n2" path="res://GandalfHardcore 7x Male Clothing/Chainmail.png" id="3_1ai3i"]
+[ext_resource type="Texture2D" uid="uid://elwf22858qso" path="res://GandalfHardcore 39x Hats/Male Hat/Guard Helmet.png" id="4_14oub"]
+[ext_resource type="Texture2D" uid="uid://fc4rte5oxja5" path="res://GandalfHardcore Character Asset Pack/Male Clothing/Boots.png" id="5_6xlib"]
+
+[sub_resource type="Animation" id="Animation_wvti7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skin:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(104, 16, 32, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_3fcb7"]
+resource_name = "idle"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skin:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.33599374, 0.6, 0.8000001, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(104, 16, 32, 48), Rect2(184, 16, 32, 48), Rect2(264, 16, 32, 48), Rect2(344, 16, 32, 48), Rect2(344, 16, 32, 48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pants:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.33333334, 0.59733963, 0.7973397, 0.9973396, 1.0973396),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(104, 16, 32, 48), Rect2(184, 16, 32, 48), Rect2(264, 16, 32, 48), Rect2(344, 16, 32, 48), Rect2(344, 16, 32, 48)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("chainmale:region_rect")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.33333334, 0.59733963, 0.7973397, 0.9973396, 1.0973396),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(104, 16, 32, 48), Rect2(184, 16, 32, 48), Rect2(264, 16, 32, 48), Rect2(344, 16, 32, 48), Rect2(344, 16, 32, 48)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("helmet:region_rect")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.33333334, 0.59733963, 0.7973397, 0.9973396, 1.0973396),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(104, 16, 32, 48), Rect2(184, 16, 32, 48), Rect2(264, 16, 32, 48), Rect2(344, 16, 32, 48), Rect2(344, 16, 32, 48)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("boots:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.33333334, 0.59733963, 0.7973397, 0.9973396, 1.0973396),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(104, 16, 32, 48), Rect2(184, 16, 32, 48), Rect2(264, 16, 32, 48), Rect2(344, 16, 32, 48), Rect2(344, 16, 32, 48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ai3i"]
+_data = {
+&"RESET": SubResource("Animation_wvti7"),
+&"idle": SubResource("Animation_3fcb7")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvti7"]
+size = Vector2(20, 47)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1686472825]
+
+[node name="skin" type="Sprite2D" parent="." unique_id=1424395969]
+position = Vector2(0, -1)
+texture = ExtResource("1_wvti7")
+region_enabled = true
+region_rect = Rect2(104, 16, 32, 48)
+
+[node name="pants" type="Sprite2D" parent="." unique_id=853854546]
+position = Vector2(0, -1)
+texture = ExtResource("2_3fcb7")
+region_enabled = true
+region_rect = Rect2(344, 16, 32, 48)
+
+[node name="chainmale" type="Sprite2D" parent="." unique_id=2028488600]
+position = Vector2(0, -1)
+texture = ExtResource("3_1ai3i")
+region_enabled = true
+region_rect = Rect2(344, 16, 32, 48)
+
+[node name="helmet" type="Sprite2D" parent="." unique_id=1246147090]
+position = Vector2(0, -1)
+texture = ExtResource("4_14oub")
+region_enabled = true
+region_rect = Rect2(344, 16, 32, 48)
+
+[node name="boots" type="Sprite2D" parent="." unique_id=1646394755]
+position = Vector2(0, -1)
+texture = ExtResource("5_6xlib")
+region_enabled = true
+region_rect = Rect2(344, 16, 32, 48)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=544123730]
+libraries/ = SubResource("AnimationLibrary_1ai3i")
+autoplay = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420913250]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_wvti7")
