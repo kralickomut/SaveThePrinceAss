@@ -33,12 +33,15 @@
 [ext_resource type="Texture2D" uid="uid://frvmiy01fxdi" path="res://GandalfHardcore FREE Platformer Assets/Tree2.png" id="26_y8vna"]
 [ext_resource type="Texture2D" uid="uid://dvgxg5cq33ktn" path="res://GandalfHardcore FREE Platformer Assets/Animated Sprites/Campfire sheet.png" id="27_imchu"]
 [ext_resource type="Texture2D" uid="uid://dgc2bppu53uvd" path="res://GandalfHardcore FREE Platformer Assets/Animated Sprites/Campfire with food sheet.png" id="28_6vuwa"]
+[ext_resource type="Texture2D" uid="uid://d33onjgkx8ljf" path="res://GandalfHardcore FREE Platformer Assets/Tree3.png" id="30_d5txl"]
+[ext_resource type="Texture2D" uid="uid://kd4abmkdq0og" path="res://GandalfHardcore FREE Platformer Assets/Weeping Willow2.png" id="31_jdmr4"]
 [ext_resource type="Texture2D" uid="uid://b8ayj4miwfi6n" path="res://GandalfHardcore FREE Platformer Assets/Large Pine Tree.png" id="31_wct6h"]
 [ext_resource type="Texture2D" uid="uid://cv2rq8s1fa88" path="res://GandalfHardcore FREE Platformer Assets/Snow blizzard sheet frame size 484x274.png" id="32_snow"]
+[ext_resource type="Texture2D" uid="uid://bgvln8dlg1v66" path="res://GandalfHardcore FREE Platformer Assets/Cooking area.png" id="32_vg3yx"]
 [ext_resource type="Script" uid="uid://cqbce8nyg0rj1" path="res://scripts/AppleInteractable.cs" id="33_apple"]
-[ext_resource type="PackedScene" path="res://guard_enemy.tscn" id="37_1jgt1"]
-[ext_resource type="PackedScene" path="res://another_enemy.tscn" id="38_2fjmt"]
-[ext_resource type="PackedScene" path="res://princess.tscn" id="39_hqm0r"]
+[ext_resource type="PackedScene" uid="uid://do5o4748vna4j" path="res://guard_enemy.tscn" id="37_1jgt1"]
+[ext_resource type="PackedScene" uid="uid://du8kpe4umw5wy" path="res://another_enemy.tscn" id="38_2fjmt"]
+[ext_resource type="PackedScene" uid="uid://dbnirioojwbvv" path="res://princess.tscn" id="39_hqm0r"]
 
 [sub_resource type="Animation" id="Animation_blizzard"]
 resource_name = "blizzard"
@@ -675,6 +678,98 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_elsiq"]
+atlas = ExtResource("32_vg3yx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmg3n"]
+atlas = ExtResource("32_vg3yx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qjwm"]
+atlas = ExtResource("32_vg3yx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wr2v"]
+atlas = ExtResource("32_vg3yx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrash"]
+atlas = ExtResource("32_vg3yx")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnlti"]
+atlas = ExtResource("32_vg3yx")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro2i4"]
+atlas = ExtResource("32_vg3yx")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yhs8"]
+atlas = ExtResource("32_vg3yx")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7l0h"]
+atlas = ExtResource("32_vg3yx")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er2ly"]
+atlas = ExtResource("32_vg3yx")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tao51"]
+atlas = ExtResource("32_vg3yx")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qprif"]
+atlas = ExtResource("32_vg3yx")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mmfie"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elsiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmg3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qjwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wr2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrash")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnlti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ro2i4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yhs8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7l0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er2ly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tao51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qprif")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="MainNode" type="Node2D" unique_id=718610701]
 
 [node name="NormalBG" type="CanvasLayer" parent="." unique_id=200001]
@@ -780,7 +875,7 @@ scale = Vector2(3.5, 3.5)
 texture = ExtResource("21_w2")
 
 [node name="Layer1" type="Sprite2D" parent="WinterBG/Sprites" unique_id=200024]
-position = Vector2(1013.00006, 547.00006)
+position = Vector2(1042.0001, 534)
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("22_w1")
 
@@ -804,7 +899,7 @@ autoplay = &"blizzard"
 [node name="TileMap" type="TileMap" parent="." unique_id=668536971]
 tile_set = SubResource("TileSet_pa4lm")
 format = 2
-layer_0/tile_data = PackedInt32Array(1179648, 0, 1, 1179649, 0, 1, 1179650, 0, 1, 1179651, 0, 1, 1179652, 0, 1, 1179658, 0, 1, 1179659, 0, 1, 1179660, 0, 1, 1179661, 0, 1, 1179662, 0, 1, 1179663, 0, 1, 1179664, 0, 1, 1179665, 0, 1, 1179666, 0, 1, 1179667, 0, 1, 1179668, 0, 1, 1179669, 0, 1, 1179670, 0, 1, 1179671, 0, 1, 1179672, 0, 1, 1179673, 0, 1, 1179674, 0, 1, 1179675, 0, 1, 1179676, 0, 1, 1179677, 0, 1, 1179678, 0, 1, 1179679, 0, 1, 1179680, 0, 1, 1179681, 0, 1, 1179682, 0, 1, 1179683, 0, 1, 1179684, 0, 1, 1179685, 0, 1, 1179686, 0, 1, 1179687, 0, 1, 1179688, 0, 1, 1179689, 0, 1, 1179690, 0, 1, 1179691, 0, 1, 1179692, 0, 1, 1179693, 0, 1, 1179694, 0, 1, 1179695, 0, 1, 1179696, 0, 1, 1179697, 0, 1, 1179698, 0, 1, 1179699, 0, 1, 1179700, 0, 1, 1179701, 0, 1, 1179702, 0, 393219, 1179703, 0, 393219, 1179704, 0, 393219, 1179705, 0, 393219, 1179706, 0, 393219, 1179707, 0, 393219, 1179708, 0, 393219, 1179709, 0, 393219, 1179710, 0, 393219, 1179711, 0, 393219, 1179712, 0, 393219, 1179713, 0, 393219, 1179714, 0, 393219, 1179715, 0, 393219, 1179716, 0, 393219, 1179717, 0, 393219, 1179718, 0, 393219, 1179719, 0, 393219, 1179720, 0, 393219, 1179721, 0, 393219, 1179722, 0, 393219, 1179723, 0, 393219, 1179724, 0, 393219, 1179725, 0, 393219, 1179726, 0, 393219, 1179727, 0, 393219, 1179728, 0, 393219, 1179729, 0, 393219, 1179730, 0, 393219, 1179731, 0, 393219, 1179732, 0, 393219, 1179733, 0, 393219, 1179734, 0, 393219, 1179735, 0, 393219, 1179736, 0, 393219, 1179737, 0, 393219, 1179738, 0, 393219, 1179739, 0, 393219, 1179740, 0, 393219, 1179741, 0, 393219, 1179742, 0, 393219, 1179743, 0, 393219, 1179744, 0, 393219, 1179745, 0, 393219, 1179746, 0, 393219, 1179747, 0, 393219, 1179748, 0, 393219, 1179749, 0, 393219, 1179750, 0, 393219, 1179751, 0, 393219, 1179752, 0, 393219, 1179753, 0, 393219, 1179754, 0, 393219, 1179755, 0, 393219, 1179756, 0, 786433, 1179757, 0, 786433, 1179758, 0, 786433, 1179759, 0, 786433, 1179760, 0, 786433, 1179761, 0, 786433, 1179762, 0, 786433, 1179763, 0, 786433, 1179764, 0, 786433, 1179765, 0, 786433, 1179766, 0, 786433, 1179767, 0, 786433, 1179768, 0, 786433, 1179769, 0, 786433, 1179770, 0, 786433, 1179771, 0, 786433, 1179772, 0, 786433, 1179773, 0, 786433, 1179774, 0, 786433, 1179775, 0, 786433, 1179776, 0, 786433, 1179777, 0, 786433, 1179778, 0, 786433, 1179779, 0, 786433, 1179780, 0, 786433, 1179781, 0, 786433, 1179782, 0, 786433, 1179783, 0, 786433, 1179784, 0, 786433, 1179785, 0, 786433, 1179786, 0, 786433, 1179787, 0, 786433, 1179788, 0, 786433, 1179789, 0, 786433, 1179790, 0, 786433, 1179791, 0, 786433, 1179792, 0, 786433, 1179793, 0, 786433, 1179794, 0, 786433, 1179795, 0, 786433, 1179796, 0, 786433, 1179797, 0, 786433, 1179798, 0, 786433, 1179799, 0, 786433, 1179800, 0, 786433, 1179801, 0, 786433, 1179802, 0, 786433, 1179803, 0, 786433, 1179804, 0, 786433, 1179805, 0, 786433, 1179806, 0, 786433, 1179807, 0, 786433, 1179808, 0, 786433, 1179809, 0, 786433, 1245184, 65536, 0, 1245185, 65536, 0, 1245186, 65536, 0, 1245187, 65536, 0, 1245188, 65536, 0, 1245189, 65536, 0, 1245190, 65536, 0, 1245191, 65536, 0, 1245192, 65536, 0, 1245193, 65536, 0, 1245194, 65536, 0, 1245195, 65536, 0, 1245196, 65536, 0, 1245197, 65536, 0, 1245198, 65536, 0, 1245199, 65536, 0, 1245200, 65536, 0, 1245201, 65536, 0, 1245202, 65536, 0, 1245203, 65536, 0, 1245204, 65536, 0, 1245205, 65536, 0, 1245206, 65536, 0, 1245207, 65536, 0, 1245208, 65536, 0, 1245209, 65536, 0, 1245210, 65536, 0, 1245211, 65536, 0, 1245212, 65536, 0, 1245213, 65536, 0, 1245214, 65536, 0, 1245215, 65536, 0, 1245216, 65536, 0, 1245217, 65536, 0, 1245218, 65536, 0, 1245219, 65536, 0, 1245220, 65536, 0, 1245221, 65536, 0, 1245222, 65536, 0, 1245223, 65536, 0, 1245224, 65536, 0, 1245225, 65536, 0, 1245226, 65536, 0, 1245227, 65536, 0, 1245228, 65536, 0, 1245229, 65536, 0, 1245230, 65536, 0, 1245231, 65536, 0, 1245232, 65536, 0, 1245233, 65536, 0, 1245234, 65536, 0, 1245235, 65536, 0, 1245236, 65536, 0, 1245237, 65536, 0, 1245238, 262144, 6, 1245239, 262144, 6, 1245240, 262144, 6, 1245241, 262144, 6, 1245242, 262144, 6, 1245243, 262144, 6, 1245244, 262144, 6, 1245245, 262144, 6, 1245246, 262144, 6, 1245247, 262144, 6, 1245248, 262144, 6, 1245249, 262144, 6, 1245250, 262144, 6, 1245251, 262144, 6, 1245252, 262144, 6, 1245253, 262144, 6, 1245254, 262144, 6, 1245255, 262144, 6, 1245256, 262144, 6, 1245257, 262144, 6, 1245258, 262144, 6, 1245259, 262144, 6, 1245260, 262144, 6, 1245261, 262144, 6, 1245262, 262144, 6, 1245263, 262144, 6, 1245264, 262144, 6, 1245265, 262144, 6, 1245266, 262144, 6, 1245267, 262144, 6, 1245268, 262144, 6, 1245269, 262144, 6, 1245270, 262144, 6, 1245271, 262144, 6, 1245272, 262144, 6, 1245273, 262144, 6, 1245274, 262144, 6, 1245275, 262144, 6, 1245276, 262144, 6, 1245277, 262144, 6, 1245278, 262144, 6, 1245279, 262144, 6, 1245280, 262144, 6, 1245281, 262144, 6, 1245282, 262144, 6, 1245283, 262144, 6, 1245284, 262144, 6, 1245285, 262144, 6, 1245286, 262144, 6, 1245287, 262144, 6, 1245288, 262144, 6, 1245289, 262144, 6, 1245290, 262144, 6, 1245291, 262144, 6, 1245292, 65536, 12, 1245293, 65536, 12, 1245294, 65536, 12, 1245295, 65536, 12, 1245296, 65536, 12, 1245297, 65536, 12, 1245298, 65536, 12, 1245299, 65536, 12, 1245300, 65536, 12, 1245301, 65536, 12, 1245302, 65536, 12, 1245303, 65536, 12, 1245304, 65536, 12, 1245305, 65536, 12, 1245306, 65536, 12, 1245307, 65536, 12, 1245308, 65536, 12, 1245309, 65536, 12, 1245310, 65536, 12, 1245311, 65536, 12, 1245312, 65536, 12, 1245313, 65536, 12, 1245314, 65536, 12, 1245315, 65536, 12, 1245316, 65536, 12, 1245317, 65536, 12, 1245318, 65536, 12, 1245319, 65536, 12, 1245320, 65536, 12, 1245321, 65536, 12, 1245322, 65536, 12, 1245323, 65536, 12, 1245324, 65536, 12, 1245325, 65536, 12, 1245326, 65536, 12, 1245327, 65536, 12, 1245328, 65536, 12, 1245329, 65536, 12, 1245330, 65536, 12, 1245331, 65536, 12, 1245332, 65536, 12, 1245333, 65536, 12, 1245334, 65536, 12, 1245335, 65536, 12, 1245336, 65536, 12, 1245337, 65536, 12, 1245338, 65536, 12, 1245339, 65536, 12, 1245340, 65536, 12, 1245341, 65536, 12, 1245342, 65536, 12, 1245343, 65536, 12, 1245344, 65536, 12, 1245345, 65536, 12, 1310807, 262144, 6, 1310808, 262144, 6, 1310809, 262144, 6, 1310810, 262144, 6, 1310811, 262144, 6, 1310825, 262144, 6, 1310826, 262144, 6, 1310827, 262144, 6, 1310828, 262144, 6, 1245346, 65536, 12, 1245347, 65536, 12, 1245348, 65536, 12, 1245349, 65536, 12)
+layer_0/tile_data = PackedInt32Array(1179648, 0, 1, 1179649, 0, 1, 1179650, 0, 1, 1179651, 0, 1, 1179652, 0, 1, 1179658, 0, 1, 1179659, 0, 1, 1179660, 0, 1, 1179661, 0, 1, 1179662, 0, 1, 1179663, 0, 1, 1179664, 0, 1, 1179665, 0, 1, 1179666, 0, 1, 1179667, 0, 1, 1179668, 0, 1, 1179669, 0, 1, 1179670, 0, 1, 1179671, 0, 1, 1179672, 0, 1, 1179673, 0, 1, 1179674, 0, 1, 1179675, 0, 1, 1179676, 0, 1, 1179677, 0, 1, 1179678, 0, 1, 1179679, 0, 1, 1179680, 0, 1, 1179681, 0, 1, 1179682, 0, 1, 1179683, 0, 1, 1179684, 0, 1, 1179685, 0, 1, 1179686, 0, 1, 1179687, 0, 1, 1179688, 0, 1, 1179689, 0, 1, 1179690, 0, 1, 1179691, 0, 1, 1179692, 0, 1, 1179693, 0, 1, 1179694, 0, 1, 1179695, 0, 1, 1179696, 0, 1, 1179697, 0, 1, 1179698, 0, 1, 1179699, 0, 1, 1179700, 0, 1, 1179701, 0, 1, 1179702, 0, 393219, 1179703, 0, 393219, 1179704, 0, 393219, 1179705, 0, 393219, 1179706, 0, 393219, 1179707, 0, 393219, 1179708, 0, 393219, 1179709, 0, 393219, 1179710, 0, 393219, 1179711, 0, 393219, 1179712, 0, 393219, 1179713, 0, 393219, 1179714, 0, 393219, 1179715, 0, 393219, 1179716, 0, 393219, 1179717, 0, 393219, 1179718, 0, 393219, 1179719, 0, 393219, 1179720, 0, 393219, 1179721, 0, 393219, 1179722, 0, 393219, 1179723, 0, 393219, 1179724, 0, 393219, 1179725, 0, 393219, 1179726, 0, 393219, 1179727, 0, 393219, 1179728, 0, 393219, 1179729, 0, 393219, 1179730, 0, 393219, 1179731, 0, 393219, 1179732, 0, 393219, 1179733, 0, 393219, 1179734, 0, 393219, 1179735, 0, 393219, 1179736, 0, 393219, 1179737, 0, 393219, 1179738, 0, 393219, 1179739, 0, 393219, 1179740, 0, 393219, 1179741, 0, 393219, 1179742, 0, 393219, 1179743, 0, 393219, 1179744, 0, 393219, 1179745, 0, 393219, 1179746, 0, 393219, 1179747, 0, 393219, 1179748, 0, 393219, 1179749, 0, 393219, 1179750, 0, 393219, 1179751, 0, 393219, 1179752, 0, 393219, 1179753, 0, 393219, 1179754, 0, 393219, 1179755, 0, 393219, 1179756, 0, 786433, 1179757, 0, 786433, 1179758, 0, 786433, 1179759, 0, 786433, 1179760, 0, 786433, 1179761, 0, 786433, 1179762, 0, 786433, 1179763, 0, 786433, 1179764, 0, 786433, 1179765, 0, 786433, 1179766, 0, 786433, 1179767, 0, 786433, 1179768, 0, 786433, 1179769, 0, 786433, 1179770, 0, 786433, 1179771, 0, 786433, 1179772, 0, 786433, 1179773, 0, 786433, 1179774, 0, 786433, 1179775, 0, 786433, 1179776, 0, 786433, 1179777, 0, 786433, 1179778, 0, 786433, 1179779, 0, 786433, 1179780, 0, 786433, 1179781, 0, 786433, 1179782, 0, 786433, 1179783, 0, 786433, 1179784, 0, 786433, 1179785, 0, 786433, 1179786, 0, 786433, 1179787, 0, 786433, 1179788, 0, 786433, 1179789, 0, 786433, 1179790, 0, 786433, 1179791, 0, 786433, 1179792, 0, 786433, 1179793, 0, 786433, 1179794, 0, 786433, 1179795, 0, 786433, 1179796, 0, 786433, 1179797, 0, 786433, 1179798, 0, 786433, 1179799, 0, 786433, 1179800, 0, 786433, 1179801, 0, 786433, 1179802, 0, 786433, 1179803, 0, 786433, 1179804, 0, 786433, 1179805, 0, 786433, 1179806, 0, 786433, 1179807, 0, 786433, 1179808, 0, 786433, 1179809, 0, 786433, 1245184, 65536, 0, 1245185, 65536, 0, 1245186, 65536, 0, 1245187, 65536, 0, 1245188, 65536, 0, 1245189, 65536, 0, 1245190, 65536, 0, 1245191, 65536, 0, 1245192, 65536, 0, 1245193, 65536, 0, 1245194, 65536, 0, 1245195, 65536, 0, 1245196, 65536, 0, 1245197, 65536, 0, 1245198, 65536, 0, 1245199, 65536, 0, 1245200, 65536, 0, 1245201, 65536, 0, 1245202, 65536, 0, 1245203, 65536, 0, 1245204, 65536, 0, 1245205, 65536, 0, 1245206, 65536, 0, 1245207, 65536, 0, 1245208, 65536, 0, 1245209, 65536, 0, 1245210, 65536, 0, 1245211, 65536, 0, 1245212, 65536, 0, 1245213, 65536, 0, 1245214, 65536, 0, 1245215, 65536, 0, 1245216, 65536, 0, 1245217, 65536, 0, 1245218, 65536, 0, 1245219, 65536, 0, 1245220, 65536, 0, 1245221, 65536, 0, 1245222, 65536, 0, 1245223, 65536, 0, 1245224, 65536, 0, 1245225, 65536, 0, 1245226, 65536, 0, 1245227, 65536, 0, 1245228, 65536, 0, 1245229, 65536, 0, 1245230, 65536, 0, 1245231, 65536, 0, 1245232, 65536, 0, 1245233, 65536, 0, 1245234, 65536, 0, 1245235, 65536, 0, 1245236, 65536, 0, 1245237, 65536, 0, 1245238, 262144, 6, 1245239, 262144, 6, 1245240, 262144, 6, 1245241, 262144, 6, 1245242, 262144, 6, 1245243, 262144, 6, 1245244, 262144, 6, 1245245, 262144, 6, 1245246, 262144, 6, 1245247, 262144, 6, 1245248, 262144, 6, 1245249, 262144, 6, 1245250, 262144, 6, 1245251, 262144, 6, 1245252, 262144, 6, 1245253, 262144, 6, 1245254, 262144, 6, 1245255, 262144, 6, 1245256, 262144, 6, 1245257, 262144, 6, 1245258, 262144, 6, 1245259, 262144, 6, 1245260, 262144, 6, 1245261, 262144, 6, 1245262, 262144, 6, 1245263, 262144, 6, 1245264, 262144, 6, 1245265, 262144, 6, 1245266, 262144, 6, 1245267, 262144, 6, 1245268, 262144, 6, 1245269, 262144, 6, 1245270, 262144, 6, 1245271, 262144, 6, 1245272, 262144, 6, 1245273, 262144, 6, 1245274, 262144, 6, 1245275, 262144, 6, 1245276, 262144, 6, 1245277, 262144, 6, 1245278, 262144, 6, 1245279, 262144, 6, 1245280, 262144, 6, 1245281, 262144, 6, 1245282, 262144, 6, 1245283, 262144, 6, 1245284, 262144, 6, 1245285, 262144, 6, 1245286, 262144, 6, 1245287, 262144, 6, 1245288, 262144, 6, 1245289, 262144, 6, 1245290, 262144, 6, 1245291, 262144, 6, 1245292, 65536, 12, 1245293, 65536, 12, 1245294, 65536, 12, 1245295, 65536, 12, 1245296, 65536, 12, 1245297, 65536, 12, 1245298, 65536, 12, 1245299, 65536, 12, 1245300, 65536, 12, 1245301, 65536, 12, 1245302, 65536, 12, 1245303, 65536, 12, 1245304, 65536, 12, 1245305, 65536, 12, 1245306, 65536, 12, 1245307, 65536, 12, 1245308, 65536, 12, 1245309, 65536, 12, 1245310, 65536, 12, 1245311, 65536, 12, 1245312, 65536, 12, 1245313, 65536, 12, 1245314, 65536, 12, 1245315, 65536, 12, 1245316, 65536, 12, 1245317, 65536, 12, 1245318, 65536, 12, 1245319, 65536, 12, 1245320, 65536, 12, 1245321, 65536, 12, 1245322, 65536, 12, 1245323, 65536, 12, 1245324, 65536, 12, 1245325, 65536, 12, 1245326, 65536, 12, 1245327, 65536, 12, 1245328, 65536, 12, 1245329, 65536, 12, 1245330, 65536, 12, 1245331, 65536, 12, 1245332, 65536, 12, 1245333, 65536, 12, 1245334, 65536, 12, 1245335, 65536, 12, 1245336, 65536, 12, 1245337, 65536, 12, 1245338, 65536, 12, 1245339, 65536, 12, 1245340, 65536, 12, 1245341, 65536, 12, 1245342, 65536, 12, 1245343, 65536, 12, 1245344, 65536, 12, 1245345, 65536, 12, 1245346, 65536, 12, 1245347, 65536, 12, 1245348, 65536, 12, 1245349, 65536, 12)
 
 [node name="Decor" type="Node2D" parent="." unique_id=300001]
 
@@ -882,18 +977,6 @@ texture = ExtResource("24_imchu")
 position = Vector2(1785, 552)
 texture = ExtResource("21_0noyg")
 
-[node name="AutumnTree1" type="Sprite2D" parent="Decor" unique_id=277777518]
-position = Vector2(2220, 504)
-texture = ExtResource("26_y8vna")
-
-[node name="AutumnBirch2" type="Sprite2D" parent="Decor" unique_id=743098924]
-position = Vector2(2845, 552)
-texture = ExtResource("22_hlqug")
-
-[node name="AutumnTree2" type="Sprite2D" parent="Decor" unique_id=829632679]
-position = Vector2(3330, 504)
-texture = ExtResource("26_y8vna")
-
 [node name="grass_norm" type="Sprite2D" parent="Decor" unique_id=734861202]
 position = Vector2(144, 592)
 texture = ExtResource("25_6vuwa")
@@ -936,6 +1019,10 @@ texture = ExtResource("25_6vuwa")
 region_enabled = true
 region_rect = Rect2(32, 128, 32, 32)
 
+[node name="Tree2" type="Sprite2D" parent="Decor" unique_id=1916279100]
+position = Vector2(1059, 504)
+texture = ExtResource("26_y8vna")
+
 [node name="grass-3_norm" type="Sprite2D" parent="Decor" unique_id=1107462756]
 position = Vector2(284, 592)
 texture = ExtResource("25_6vuwa")
@@ -944,6 +1031,120 @@ region_rect = Rect2(64, 128, 32, 32)
 
 [node name="grass-3_norm2" type="Sprite2D" parent="Decor" unique_id=1302988085]
 position = Vector2(542, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(64, 128, 32, 32)
+
+[node name="grass_norm5" type="Sprite2D" parent="Decor" unique_id=1558534884]
+position = Vector2(915, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(0, 128, 32, 32)
+
+[node name="grass_norm7" type="Sprite2D" parent="Decor" unique_id=698479685]
+position = Vector2(1083, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(0, 128, 32, 32)
+
+[node name="grass_norm9" type="Sprite2D" parent="Decor" unique_id=1996035546]
+position = Vector2(1481, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(0, 128, 32, 32)
+
+[node name="grass_norm6" type="Sprite2D" parent="Decor" unique_id=1193960239]
+position = Vector2(1025, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(0, 128, 32, 32)
+
+[node name="grass-5_norm6" type="Sprite2D" parent="Decor" unique_id=349813768]
+position = Vector2(1412, 588)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 56, 96, 40)
+
+[node name="grass-2_norm4" type="Sprite2D" parent="Decor" unique_id=1317480833]
+position = Vector2(846, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(32, 128, 32, 32)
+
+[node name="grass-2_norm8" type="Sprite2D" parent="Decor" unique_id=385711630]
+position = Vector2(1056, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(32, 128, 32, 32)
+
+[node name="grass-2_norm5" type="Sprite2D" parent="Decor" unique_id=198679845]
+position = Vector2(789, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(32, 128, 32, 32)
+
+[node name="grass-3_norm3" type="Sprite2D" parent="Decor" unique_id=2007061074]
+position = Vector2(875, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(64, 128, 32, 32)
+
+[node name="grass_norm8" type="Sprite2D" parent="Decor" unique_id=545207279]
+position = Vector2(1344, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(0, 128, 32, 32)
+
+[node name="grass-2_norm6" type="Sprite2D" parent="Decor" unique_id=1076152443]
+position = Vector2(1275, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(32, 128, 32, 32)
+
+[node name="grass-2_norm7" type="Sprite2D" parent="Decor" unique_id=1891672210]
+position = Vector2(1218, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(32, 128, 32, 32)
+
+[node name="grass-2_norm9" type="Sprite2D" parent="Decor" unique_id=1755757175]
+position = Vector2(1433, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(32, 128, 32, 32)
+
+[node name="grass-2_norm10" type="Sprite2D" parent="Decor" unique_id=1589462304]
+position = Vector2(1564, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(32, 128, 32, 32)
+
+[node name="grass-2_norm11" type="Sprite2D" parent="Decor" unique_id=74024178]
+position = Vector2(1686, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(32, 128, 32, 32)
+
+[node name="grass-3_norm5" type="Sprite2D" parent="Decor" unique_id=1836120674]
+position = Vector2(1304, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(64, 128, 32, 32)
+
+[node name="grass-3_norm4" type="Sprite2D" parent="Decor" unique_id=1234188491]
+position = Vector2(965, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(64, 128, 32, 32)
+
+[node name="grass-3_norm6" type="Sprite2D" parent="Decor" unique_id=619856938]
+position = Vector2(1599, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(64, 128, 32, 32)
+
+[node name="grass-3_norm7" type="Sprite2D" parent="Decor" unique_id=789534051]
+position = Vector2(1635, 592)
 texture = ExtResource("25_6vuwa")
 region_enabled = true
 region_rect = Rect2(64, 128, 32, 32)
@@ -960,8 +1161,20 @@ texture = ExtResource("25_6vuwa")
 region_enabled = true
 region_rect = Rect2(0, 224, 32, 32)
 
+[node name="grass-4_norm6" type="Sprite2D" parent="Decor" unique_id=1094213534]
+position = Vector2(1519, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(0, 224, 32, 32)
+
 [node name="grass-4_norm3" type="Sprite2D" parent="Decor" unique_id=636014747]
 position = Vector2(736, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(32, 224, 56, 32)
+
+[node name="grass-4_norm5" type="Sprite2D" parent="Decor" unique_id=1944685088]
+position = Vector2(1167, 592)
 texture = ExtResource("25_6vuwa")
 region_enabled = true
 region_rect = Rect2(32, 224, 56, 32)
@@ -1004,7 +1217,7 @@ text = "Press E to eat"
 horizontal_alignment = 1
 
 [node name="AppleAutumn1" type="Sprite2D" parent="Decor" unique_id=183847844]
-position = Vector2(2050, 592)
+position = Vector2(2292, 592)
 texture = ExtResource("25_6vuwa")
 region_enabled = true
 region_rect = Rect2(320, 0, 32, 32)
@@ -1054,13 +1267,19 @@ text = "Press E to eat"
 horizontal_alignment = 1
 
 [node name="AutumnWoodPile1" type="Sprite2D" parent="Decor" unique_id=941045756]
-position = Vector2(1900, 592)
+position = Vector2(1729, 592)
 texture = ExtResource("25_6vuwa")
 region_enabled = true
 region_rect = Rect2(96, 96, 96, 32)
 
+[node name="AutumnWoodPile3" type="Sprite2D" parent="Decor" unique_id=1359722264]
+position = Vector2(1599, 576)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(24, 352, 112, 64)
+
 [node name="AutumnGroundWood1" type="Sprite2D" parent="Decor" unique_id=1763583709]
-position = Vector2(2510, 592)
+position = Vector2(2264, 592)
 texture = ExtResource("25_6vuwa")
 region_enabled = true
 region_rect = Rect2(264, 32, 48, 32)
@@ -1071,46 +1290,41 @@ texture = ExtResource("25_6vuwa")
 region_enabled = true
 region_rect = Rect2(96, 160, 32, 32)
 
+[node name="AutumnRockClump2" type="Sprite2D" parent="Decor" unique_id=261703404]
+position = Vector2(3123, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 160, 32, 32)
+
+[node name="AutumnRockClump3" type="Sprite2D" parent="Decor" unique_id=1388962757]
+position = Vector2(3230, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 160, 32, 32)
+
+[node name="AutumnRockClump4" type="Sprite2D" parent="Decor" unique_id=673693160]
+position = Vector2(3296, 596)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(128, 136, 32, 24)
+
+[node name="AutumnRockClump5" type="Sprite2D" parent="Decor" unique_id=1469165141]
+position = Vector2(3375, 596)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(128, 232, 56, 24)
+
 [node name="AutumnGrassClump1" type="Sprite2D" parent="Decor" unique_id=477475360]
-position = Vector2(2350, 592)
+position = Vector2(2323, 592)
 texture = ExtResource("25_6vuwa")
 region_enabled = true
 region_rect = Rect2(64, 448, 32, 32)
 
-[node name="AutumnTree3" type="Sprite2D" parent="Decor" unique_id=2132002998]
-position = Vector2(2660, 504)
-texture = ExtResource("26_y8vna")
-
 [node name="AutumnWoodPile2" type="Sprite2D" parent="Decor" unique_id=465835968]
-position = Vector2(3295, 592)
+position = Vector2(3261, 600)
 texture = ExtResource("25_6vuwa")
 region_enabled = true
-region_rect = Rect2(96, 96, 96, 32)
-
-[node name="AppleAutumn3" type="Sprite2D" parent="Decor" unique_id=1295402701]
-position = Vector2(2740, 592)
-texture = ExtResource("25_6vuwa")
-region_enabled = true
-region_rect = Rect2(320, 0, 32, 32)
-script = ExtResource("33_apple")
-
-[node name="InteractionArea" type="Area2D" parent="Decor/AppleAutumn3" unique_id=1907329427]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Decor/AppleAutumn3/InteractionArea" unique_id=2059982215]
-shape = SubResource("CircleShape2D_apple")
-
-[node name="PromptLabel" type="Label" parent="Decor/AppleAutumn3" unique_id=401634524]
-visible = false
-z_index = 50
-offset_left = -58.0
-offset_top = -52.0
-offset_right = 58.0
-offset_bottom = -28.0
-scale = Vector2(0.35, 0.35)
-text = "Press E to eat"
-horizontal_alignment = 1
+region_rect = Rect2(384, 112, 32, 16)
 
 [node name="WinterChristmasTree1" type="Sprite2D" parent="Decor" unique_id=65370932]
 position = Vector2(3565, 576)
@@ -1142,7 +1356,7 @@ texture = ExtResource("25_6vuwa")
 region_enabled = true
 region_rect = Rect2(96, 96, 96, 32)
 
-[node name="WinterBattleTent" type="Sprite2D" parent="Decor"]
+[node name="WinterBattleTent" type="Sprite2D" parent="Decor" unique_id=439085074]
 position = Vector2(4380, 544)
 texture = ExtResource("20_6dwd8")
 
@@ -1172,7 +1386,7 @@ text = "Press E to eat"
 horizontal_alignment = 1
 
 [node name="WinterApple2" type="Sprite2D" parent="Decor" unique_id=901104081]
-position = Vector2(4560, 592)
+position = Vector2(4546, 582)
 texture = ExtResource("25_6vuwa")
 region_enabled = true
 region_rect = Rect2(320, 0, 32, 32)
@@ -1214,24 +1428,161 @@ texture = ExtResource("25_6vuwa")
 region_enabled = true
 region_rect = Rect2(352, 32, 32, 32)
 
-[node name="grass-5_norm6" type="Sprite2D" parent="Decor" unique_id=349813768]
-position = Vector2(1412, 588)
-texture = ExtResource("25_6vuwa")
-region_enabled = true
-region_rect = Rect2(96, 56, 96, 40)
-
 [node name="grass-5_norm7" type="Sprite2D" parent="Decor" unique_id=1483905788]
 position = Vector2(1955, 592)
 texture = ExtResource("25_6vuwa")
 region_enabled = true
 region_rect = Rect2(96, 128, 32, 32)
 
-[node name="Tree2" type="Sprite2D" parent="Decor" unique_id=1916279100]
-position = Vector2(1059, 504)
-texture = ExtResource("26_y8vna")
+[node name="grass-5_norm13" type="Sprite2D" parent="Decor" unique_id=142564365]
+position = Vector2(2177, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 128, 32, 32)
+
+[node name="grass-5_norm8" type="Sprite2D" parent="Decor" unique_id=1716667128]
+position = Vector2(1798, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(360, 208, 16, 16)
+
+[node name="grass-5_norm9" type="Sprite2D" parent="Decor" unique_id=1652799551]
+position = Vector2(1857, 596)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(136, 232, 48, 24)
+
+[node name="grass-5_norm10" type="Sprite2D" parent="Decor" unique_id=1836199400]
+position = Vector2(1923, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(128, 144, 32, 16)
+
+[node name="grass-5_norm11" type="Sprite2D" parent="Decor" unique_id=626589942]
+position = Vector2(2041, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 208, 32, 16)
+
+[node name="grass-5_norm16" type="Sprite2D" parent="Decor" unique_id=1768442882]
+position = Vector2(2001, 576)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(296, 192, 48, 64)
+
+[node name="grass-5_norm18" type="Sprite2D" parent="Decor" unique_id=1206390477]
+position = Vector2(2423, 596)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(0, 456, 64, 24)
+
+[node name="grass-5_norm19" type="Sprite2D" parent="Decor" unique_id=1834650122]
+position = Vector2(2661, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 464, 32, 16)
+
+[node name="grass-5_norm20" type="Sprite2D" parent="Decor" unique_id=1770701795]
+position = Vector2(2525, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(384, 208, 32, 16)
+
+[node name="grass-5_norm14" type="Sprite2D" parent="Decor" unique_id=1340812595]
+position = Vector2(2142, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 208, 32, 16)
+
+[node name="grass-5_norm12" type="Sprite2D" parent="Decor" unique_id=738875169]
+position = Vector2(2074, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(168, 144, 16, 16)
+
+[node name="grass-5_norm21" type="Sprite2D" parent="Decor" unique_id=214733598]
+position = Vector2(2492, 592)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 128, 32, 32)
+
+[node name="grass-5_norm22" type="Sprite2D" parent="Decor" unique_id=1594815636]
+position = Vector2(2578, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 208, 32, 16)
+
+[node name="Tree3" type="Sprite2D" parent="Decor" unique_id=408114932]
+position = Vector2(2218, 504)
+texture = ExtResource("30_d5txl")
+
+[node name="WeepingWillow2" type="Sprite2D" parent="Decor" unique_id=1538351654]
+position = Vector2(2891, 512)
+texture = ExtResource("31_jdmr4")
+
+[node name="grass-5_norm25" type="Sprite2D" parent="Decor" unique_id=1051390017]
+position = Vector2(2864, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 208, 32, 16)
+
+[node name="grass-5_norm28" type="Sprite2D" parent="Decor" unique_id=587179447]
+position = Vector2(3064, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 208, 32, 16)
+
+[node name="grass-5_norm23" type="Sprite2D" parent="Decor" unique_id=516169905]
+position = Vector2(2611, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(168, 144, 16, 16)
+
+[node name="grass-5_norm26" type="Sprite2D" parent="Decor" unique_id=487411199]
+position = Vector2(2747, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(168, 144, 16, 16)
+
+[node name="grass-5_norm29" type="Sprite2D" parent="Decor" unique_id=378496487]
+position = Vector2(2907, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(168, 144, 16, 16)
+
+[node name="grass-5_norm27" type="Sprite2D" parent="Decor" unique_id=1428287795]
+position = Vector2(2794, 596)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(96, 232, 32, 24)
+
+[node name="grass-5_norm24" type="Sprite2D" parent="Decor" unique_id=2135093941]
+position = Vector2(2705, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(168, 144, 16, 16)
+
+[node name="grass-5_norm17" type="Sprite2D" parent="Decor" unique_id=1537508748]
+position = Vector2(2002, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(168, 144, 16, 16)
+
+[node name="grass-5_norm15" type="Sprite2D" parent="Decor" unique_id=1837980750]
+position = Vector2(2109, 600)
+texture = ExtResource("25_6vuwa")
+region_enabled = true
+region_rect = Rect2(168, 144, 16, 16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Decor" unique_id=1624622603]
 position = Vector2(468, 592)
+sprite_frames = SubResource("SpriteFrames_8jc02")
+animation = &"burn"
+autoplay = "burn"
+frame_progress = 0.6349277
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Decor" unique_id=1430065042]
+position = Vector2(2364, 592)
 sprite_frames = SubResource("SpriteFrames_8jc02")
 animation = &"burn"
 autoplay = "burn"
@@ -1241,6 +1592,12 @@ frame_progress = 0.6349277
 position = Vector2(1331, 592)
 sprite_frames = SubResource("SpriteFrames_elsiq")
 autoplay = "default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Decor" unique_id=901368004]
+position = Vector2(4521, 576)
+sprite_frames = SubResource("SpriteFrames_mmfie")
+autoplay = "default"
+frame_progress = 0.88430595
 
 [node name="Player" parent="." unique_id=949381415 instance=ExtResource("3_char")]
 position = Vector2(206, 565)
@@ -1269,13 +1626,19 @@ position = Vector2(3900, 576)
 [node name="WinterSlimeRed" parent="." unique_id=939919100 instance=ExtResource("5_pslime")]
 position = Vector2(4720, 576)
 
-[node name="WinterTentGuardLeft" parent="." instance=ExtResource("38_2fjmt")]
+[node name="WinterTentGuardLeft" parent="." unique_id=1567718925 instance=ExtResource("38_2fjmt")]
 position = Vector2(4290, 585)
-Dialogue = "The cold keeps weak heroes away.\nYou made it this far, but this camp is ours.\nThe princess will never see spring.\nDraw your blade."
+Dialogue = "The cold keeps weak heroes away.
+You made it this far, but this camp is ours.
+The princess will never see spring.
+Draw your blade."
 
-[node name="WinterTentGuardRight" parent="." instance=ExtResource("38_2fjmt")]
-position = Vector2(4470, 585)
-Dialogue = "Another wanderer with a sword.\nWe buried better fighters beneath this snow.\nTurn back, or bleed for the princess.\nDraw your blade."
+[node name="WinterTentGuardRight" parent="." unique_id=1212267246 instance=ExtResource("38_2fjmt")]
+position = Vector2(4475, 585)
+Dialogue = "Another wanderer with a sword.
+We buried better fighters beneath this snow.
+Turn back, or bleed for the princess.
+Draw your blade."
 
 [node name="ZoneManager" type="Node" parent="." unique_id=200025]
 script = ExtResource("1_zm")
