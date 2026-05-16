@@ -7,7 +7,7 @@ public partial class GuardInteraction : CharacterBody2D, IDamageable
 	[Export] public bool DisableCollisionAfterDialogue = false;
 	[Export] public bool KillableAfterDialogue = false;
 	[Export] public int MaxHealth = 30;
-	[Export] public int AttackDamage = 8;
+	[Export] public int AttackDamage = 15;
 	[Export] public float AttackRange = 34.0f;
 	[Export] public float AttackCooldown = 1.2f;
 	[Export] public float AttackDamageDelay = 0.24f;
@@ -28,6 +28,7 @@ public partial class GuardInteraction : CharacterBody2D, IDamageable
 	private bool _dialogueComplete;
 	private bool _wasInteractPressed;
 	private bool _isAttacking;
+	private bool _isDead;
 	private float _attackCooldownTimer;
 	private float _attackDamageTimer = -1.0f;
 
@@ -62,6 +63,15 @@ public partial class GuardInteraction : CharacterBody2D, IDamageable
 
 	public override void _Process(double delta)
 	{
+		if (_isDead)
+			return;
+
+		if (_player != null && _player.IsDead)
+		{
+			ClearCombatTarget();
+			return;
+		}
+
 		if (_attackCooldownTimer > 0.0f)
 			_attackCooldownTimer -= (float)delta;
 
@@ -87,7 +97,7 @@ public partial class GuardInteraction : CharacterBody2D, IDamageable
 
 	public void TakeDamage(int damage)
 	{
-		if (!KillableAfterDialogue || !_dialogueComplete)
+		if (_isDead || !KillableAfterDialogue || !_dialogueComplete)
 			return;
 
 		_currentHealth = Mathf.Max(0, _currentHealth - damage);
@@ -95,6 +105,27 @@ public partial class GuardInteraction : CharacterBody2D, IDamageable
 		GD.Print($"Guard HP: {_currentHealth}/{MaxHealth}");
 
 		if (_currentHealth <= 0)
+			Die();
+	}
+
+	private void Die()
+	{
+		_isDead = true;
+		_isAttacking = false;
+		_attackDamageTimer = -1.0f;
+		_promptLabel.Visible = false;
+		_dialogueLabel.Visible = false;
+		if (_healthBar != null)
+			_healthBar.Visible = false;
+
+		CollisionLayer = 0;
+		CollisionMask = 0;
+		if (_bodyCollider != null)
+			_bodyCollider.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+
+		if (_animationPlayer != null && _animationPlayer.HasAnimation("death"))
+			_animationPlayer.Play("death");
+		else
 			QueueFree();
 	}
 
@@ -121,10 +152,23 @@ public partial class GuardInteraction : CharacterBody2D, IDamageable
 
 	private void DealAttackDamage()
 	{
-		if (_player == null || !GodotObject.IsInstanceValid(_player) || !IsPlayerInAttackReach())
+		if (_player == null || !GodotObject.IsInstanceValid(_player) || _player.IsDead || !IsPlayerInAttackReach())
 			return;
 
 		_player.TakeDamageFrom(this, AttackDamage);
+	}
+
+	private void ClearCombatTarget()
+	{
+		_player = null;
+		_isAttacking = false;
+		_attackDamageTimer = -1.0f;
+		_attackCooldownTimer = 0.0f;
+		_promptLabel.Visible = false;
+		_dialogueLabel.Visible = false;
+
+		if (_animationPlayer != null && _animationPlayer.HasAnimation("idle"))
+			_animationPlayer.Play("idle");
 	}
 
 	private void AdvanceDialogue()
@@ -215,6 +259,15 @@ public partial class GuardInteraction : CharacterBody2D, IDamageable
 
 	private void OnAnimationFinished(StringName animName)
 	{
+		if (animName == "death")
+		{
+			QueueFree();
+			return;
+		}
+
+		if (_isDead)
+			return;
+
 		if (animName != "attack")
 			return;
 

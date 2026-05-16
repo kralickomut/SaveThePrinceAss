@@ -43,6 +43,8 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 	private static readonly Vector2 AttackHitboxRightPosition = new(40f, -9f);
 	private static readonly Vector2 AttackHitboxLeftPosition = new(-40f, -9f);
 
+	public bool IsDead => _state == State.Dead;
+
 	// ── Инициализация ───────────────────────────────────────────────────────
 	public override void _Ready()
 	{

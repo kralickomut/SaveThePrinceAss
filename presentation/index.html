@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save The Princess - Prezentace projektu</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css">
+
+  <style>
+    :root {
+      --gold: #ffe978;
+      --red: #e23a2e;
+      --blue: #8ed3df;
+      --dark: #151515;
+      --panel: rgba(10, 12, 18, 0.78);
+    }
+
+    .reveal {
+      font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+      color: #f8f1dd;
+    }
+
+    .reveal .slides {
+      text-align: left;
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      color: var(--gold);
+      letter-spacing: 0;
+      text-transform: none;
+      line-height: 1.05;
+    }
+
+    .reveal h1 {
+      font-size: 2.5em;
+    }
+
+    .reveal h2 {
+      font-size: 1.6em;
+      margin-bottom: 0.55em;
+    }
+
+    .reveal p,
+    .reveal li {
+      font-size: 0.82em;
+      line-height: 1.35;
+    }
+
+    .reveal ul {
+      margin-left: 1.05em;
+    }
+
+    .subtitle {
+      color: #d9e8ef;
+      font-size: 0.72em;
+      max-width: 820px;
+    }
+
+    .small {
+      font-size: 0.58em;
+      color: #d5d5d5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card,
+    .panel {
+      background: var(--panel);
+      border: 1px solid rgba(255, 233, 120, 0.28);
+      border-radius: 8px;
+      padding: 18px 20px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 0.78em;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.55em;
+    }
+
+    .code-title {
+      color: var(--gold);
+      font-size: 0.48em;
+      margin: 0 0 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .reveal pre {
+      width: 100%;
+      margin: 0;
+      box-shadow: none;
+      font-size: 0.47em;
+    }
+
+    .reveal code {
+      border-radius: 8px;
+      max-height: none;
+    }
+
+    .hero {
+      min-height: 560px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.34)),
+        url("../GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/Background Castle  Winter.png");
+      background-size: cover;
+      background-position: center;
+      padding: 0 48px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .tagline {
+      display: inline-block;
+      width: fit-content;
+      color: var(--dark);
+      background: var(--gold);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 0.42em;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .zone {
+      min-height: 170px;
+      border-radius: 8px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .zone::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.48);
+    }
+
+    .zone > * {
+      position: relative;
+    }
+
+    .zone h3 {
+      font-size: 0.7em;
+      margin: 0 0 8px;
+    }
+
+    .zone p {
+      font-size: 0.48em;
+      margin: 0;
+    }
+
+    .normal {
+      background-image: url("../GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/Background Castle .png");
+    }
+
+    .autumn {
+      background-image: url("../GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/Background Castle Autumn.png");
+    }
+
+    .winter {
+      background-image: url("../GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Winter BG/Background Castle  Winter.png");
+    }
+
+    .accent {
+      color: var(--gold);
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <div class="hero">
+          <span class="tagline">Godot 4.6 / C# / 2D platformer</span>
+          <h1>Save The Princess</h1>
+          <p class="subtitle">
+            Krátká technická ukázka side-scrolling akčního platformeru:
+            jak je postavená hlavní scéna, jak funguje soubojový systém
+            a jak se svět mění z normálního lesa do podzimu a zimy.
+          </p>
+          <p class="small">Doporučená délka: přibližně 5 minut, 8 slidů.</p>
+        </div>
+        <aside class="notes">
+          Na začátku řekni, že jde o prototyp hry vytvořený v Godotu a C#.
+          Prezentace se zaměřuje na strukturu a implementaci, nejen na vizuál.
+        </aside>
+      </section>
+
+      <section>
+        <h2>1. Nápad hry</h2>
+        <div class="grid">
+          <div class="panel">
+            <p>
+              Hráč ovládá prince, který prochází horizontálním fantasy světem.
+              Bojuje se slizy a strážemi, léčí se pomocí jablek, dojde do zimního tábora,
+              promluví s princeznou, zachrání ji a spustí závěrečnou scénu.
+            </p>
+          </div>
+          <div class="cards">
+            <div class="card">
+              <h3>Žánr</h3>
+              <p>2D side-scrolling akční platformer.</p>
+            </div>
+            <div class="card">
+              <h3>Herní smyčka</h3>
+              <p>Pohyb, souboj, léčení a postup do dalšího biomu.</p>
+            </div>
+            <div class="card">
+              <h3>Cíl</h3>
+              <p>Dostat se k princezně a dokončit záchrannou scénu.</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          Tuhle část nech krátkou. Nejdřív vysvětli hráčský zážitek, až potom kód.
+        </aside>
+      </section>
+
+      <section>
+        <h2>2. Technologie</h2>
+        <div class="cards">
+          <div class="card">
+              <h3>Herní engine</h3>
+            <p>Godot 4.6, 2D scene tree a zem postavená přes TileMap.</p>
+          </div>
+          <div class="card">
+            <h3>Jazyk</h3>
+            <p>C# skripty řeší pohyb, souboje, zdraví, dialogy a zóny.</p>
+          </div>
+          <div class="card">
+            <h3>Assety</h3>
+            <p>GandalfHardcore sprity pro hráče, nepřátele, biomy, dekorace a HUD.</p>
+          </div>
+        </div>
+        <div class="panel" style="margin-top: 24px;">
+          <p>
+            Hlavní scéna: <span class="accent">main_node.tscn</span>.
+            Scéna hráče: <span class="accent">character.tscn</span>.
+            Většina herní logiky je ve složce <span class="accent">scripts/</span>.
+          </p>
+        </div>
+        <aside class="notes">
+          Zmiň, že Godot scény drží nody a exportované hodnoty, zatímco C# skripty definují chování.
+        </aside>
+      </section>
+
+      <section>
+        <h2>3. Architektura scén</h2>
+        <div class="grid">
+          <div>
+            <ul>
+              <li><span class="accent">MainNode</span> obsahuje celý level.</li>
+              <li>Tři CanvasLayer pozadí se plynule prolínají podle zóny.</li>
+              <li>TileMap vytváří zem a kolize pro pohyb.</li>
+              <li>Nepřátelé, jablka, stráže, stany a princezna jsou instance scén.</li>
+              <li>Hráč obsahuje kameru, animátor, hitbox a HUD.</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <p class="code-title">Zjednodušený strom scény</p>
+            <pre><code class="language-text">MainNode
+├── NormalBG / AutumnBG / WinterBG
+├── SnowOverlay
+├── TileMap
+├── Decor
+├── Player
+├── SlimeEnemy variants
+├── GuardEnemy / SecondGuardEnemy
+├── Princess
+└── ZoneManager</code></pre>
+          </div>
+        </div>
+        <aside class="notes">
+          Vysvětli hlavní myšlenku: kompozice. Hra není jeden obří skript, ale mnoho menších scén a skriptů.
+        </aside>
+      </section>
+
+      <section>
+        <h2>4. Postup biomy</h2>
+        <p>Svět je jeden dlouhý horizontální level rozdělený podle X souřadnice.</p>
+        <div class="timeline">
+          <div class="zone normal">
+            <h3>Normální les</h3>
+            <p>x = 0-1728<br>Začátek hry a první nepřátelé.</p>
+          </div>
+          <div class="zone autumn">
+            <h3>Podzim</h3>
+            <p>x = 1728-3456<br>Více dekorací, jablek a nepřátel.</p>
+          </div>
+          <div class="zone winter">
+            <h3>Zima</h3>
+            <p>x = 3456+<br>Sněžení, stany, stráže a finále s princeznou.</p>
+          </div>
+        </div>
+        <aside class="notes">
+          Tady zdůrazni, že level není rozdělený na více scén.
+          Pozadí a zem se mění podle toho, jak hráč postupuje doprava.
+        </aside>
+      </section>
+
+      <section>
+        <h2>5. Kód pro prolínání zón</h2>
+        <div class="grid">
+          <div>
+            <p>
+              <span class="accent">ZoneManager.cs</span> každý frame čte X pozici hráče.
+              Z ní spočítá dvě přechodové hodnoty a použije je jako alpha hodnoty
+              pro podzimní a zimní vrstvy pozadí.
+            </p>
+            <p>
+              Díky tomu vznikne plynulý přechod biomů bez načítání nové scény.
+            </p>
+          </div>
+          <div>
+            <p class="code-title">scripts/ZoneManager.cs</p>
+            <pre><code class="language-csharp">private const float Zone1End = 1728f;
+private const float Zone2End = 3456f;
+private const float FadeSize = 256f;
+
+float px = player.GlobalPosition.X;
+
+float t12 = Mathf.Clamp(
+  (px - Zone1End + FadeSize * 0.5f) / FadeSize,
+  0f,
+  1f
+);
+
+float t23 = Mathf.Clamp(
+  (px - Zone2End + FadeSize * 0.5f) / FadeSize,
+  0f,
+  1f
+);
+
+SetAlpha(_autumnSprites, t12 * (1f - t23));
+SetAlpha(_winterSprites, t23);
+SetAlpha(_snowSprites, t23);</code></pre>
+          </div>
+        </div>
+        <aside class="notes">
+          Nevysvětluj každý řádek. Stačí říct, že t12 je přechod normální les až podzim a t23 je podzim až zima.
+        </aside>
+      </section>
+
+      <section>
+        <h2>6. Ovládání hráče</h2>
+        <div class="grid">
+          <div>
+            <ul>
+              <li>Pohyb funguje přes šipky i WASD.</li>
+              <li>Shift používá sprint energii zobrazenou v HUDu.</li>
+              <li>Útok používá dočasný hitbox před hráčem.</li>
+              <li>Smrt zobrazí restart overlay: <span class="accent">Press B to start again</span>.</li>
+            </ul>
+          </div>
+          <div>
+            <p class="code-title">scripts/PlayerController.cs</p>
+            <pre><code class="language-csharp">private enum State {
+  Idle, Move, Run, Jump, Fall,
+  Attack, Hurt, Dead
+}
+
+if (Input.IsActionJustPressed("attack")) {
+  SetState(State.Attack);
+}
+
+if (_state == State.Attack &&
+    !_hitboxShape.Disabled &&
+    !_hasDealtDamageThisAttack) {
+  foreach (var body in _attackHitbox.GetOverlappingBodies()) {
+    if (body is IDamageable damageable) {
+      damageable.TakeDamage(AttackDamage);
+      _hasDealtDamageThisAttack = true;
+      break;
+    }
+  }
+}</code></pre>
+          </div>
+        </div>
+        <aside class="notes">
+          State machine vysvětli jednoduše: hráč může být vždy jen v jednom hlavním stavu.
+          Attack hitbox je aktivní jen v části animace.
+        </aside>
+      </section>
+
+      <section>
+        <h2>7. Nepřátelé, zdraví a dialogy</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>Kontrakt pro poškození</h3>
+            <p><code>IDamageable</code> umožňuje hráči, slizům a strážím sdílet stejné API pro poškození.</p>
+          </div>
+          <div class="card">
+            <h3>AI nepřátel</h3>
+            <p>Slizové patrolují, pronásledují hráče, útočí na dosah a umírají při 0 HP.</p>
+          </div>
+          <div class="card">
+            <h3>Interakce</h3>
+            <p>Jablka léčí, stráže mluví nebo bojují, princeznu lze rozvázat a spustit konec hry.</p>
+          </div>
+        </div>
+        <div class="panel" style="margin-top: 22px;">
+          <p class="code-title">scripts/IDamageable.cs</p>
+          <pre><code class="language-csharp">public interface IDamageable
+{
+  void TakeDamage(int damage);
+}</code></pre>
+        </div>
+        <aside class="notes">
+          Tenhle slide je hlavně o znovupoužití. Jednoduchý interface dovolí, aby různé entity reagovaly na útoky stejně.
+        </aside>
+      </section>
+
+      <section>
+        <h2>8. Co bych zlepšil dál</h2>
+        <div class="grid">
+          <div class="panel">
+            <ul>
+              <li>Přidat checkpointy místo restartu celé scény.</li>
+              <li>Přesunout dialogová data do resources nebo JSONu.</li>
+              <li>Přidat zvukové efekty a hudbu.</li>
+              <li>Rozšířit AI stráží a jejich útokové hitboxy.</li>
+              <li>Vytvořit hlavní menu a závěrečné titulky.</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>Shrnutí</h3>
+            <p>
+              Prototyp už má základní herní smyčku:
+              pohyb, souboj, poškození, léčení, postup světem, dialogy,
+              smrt/restart a závěrečnou sekvenci.
+            </p>
+          </div>
+        </div>
+        <aside class="notes">
+          Zakonči sebevědomě: není to hotová komerční hra, ale je to reálně hratelný prototyp s propojenými systémy.
+        </aside>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      controls: true,
+      progress: true,
+      center: true,
+      transition: "fade",
+      width: 1280,
+      height: 720,
+      plugins: [RevealNotes, RevealHighlight]
+    });
+  </script>
+</body>
+</html>
