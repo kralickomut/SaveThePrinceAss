@@ -24,6 +24,8 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 	private Area2D _attackHitbox;
 	private CollisionShape2D _hitboxShape;
 	private HealthBar _healthBar;
+	private CanvasLayer _playerHud;
+	private Control _deathOverlay;
 
 	// ── Данные ──────────────────────────────────────────────────────────────
 	private int _currentHealth;
@@ -31,6 +33,7 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 	private bool _hasDealtDamageThisAttack = false;
 	private bool _isSprinting = false;
 	private bool _sprintExhausted = false;
+	private bool _isRestarting = false;
 	private float _invincibleTimer = 0f;
 	private float _currentSprint = MaxSprint;
 	private readonly Dictionary<ulong, float> _damageCooldownByAttacker = new();
@@ -47,6 +50,7 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 		_sprite2D        = GetNode<Sprite2D>("PlayerAnimator/Sprite2D");
 		_attackHitbox    = GetNode<Area2D>("AttackHitbox");
 		_hitboxShape     = GetNode<CollisionShape2D>("AttackHitbox/CollisionShape2D");
+		_playerHud       = GetNodeOrNull<CanvasLayer>("PlayerHud");
 		_healthBar       = GetNodeOrNull<HealthBar>("PlayerHud/HealthBar");
 
 		_currentHealth        = MaxHealth;
@@ -59,6 +63,18 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 		AddToGroup("player");
 
 		SetState(State.Idle);
+	}
+
+	public override void _Process(double delta)
+	{
+		if (_state != State.Dead || _isRestarting)
+			return;
+
+		if (Input.IsKeyPressed(Key.B))
+		{
+			_isRestarting = true;
+			GetTree().ReloadCurrentScene();
+		}
 	}
 
 	// ── Физика (каждый кадр) ────────────────────────────────────────────────
@@ -279,6 +295,7 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 		if (_currentHealth <= 0)
 		{
 			SetState(State.Dead);
+			ShowDeathOverlay();
 			GD.Print("Player died!");
 			return;
 		}
@@ -300,6 +317,46 @@ public partial class PlayerController : CharacterBody2D, IDamageable
 			else
 				_damageCooldownByAttacker[sourceId] = remaining;
 		}
+	}
+
+	private void ShowDeathOverlay()
+	{
+		if (_deathOverlay != null || _playerHud == null)
+			return;
+
+		_deathOverlay = new Control
+		{
+			Name = "DeathOverlay",
+			MouseFilter = Control.MouseFilterEnum.Ignore
+		};
+		_deathOverlay.SetAnchorsPreset(Control.LayoutPreset.FullRect);
+
+		Label title = CreateCenteredOverlayLabel("You died", 72, new Color(0.92f, 0.05f, 0.03f, 1.0f), -54.0f);
+		Label prompt = CreateCenteredOverlayLabel("Press B to start again", 32, new Color(1.0f, 0.93f, 0.62f, 1.0f), 42.0f);
+
+		_deathOverlay.AddChild(title);
+		_deathOverlay.AddChild(prompt);
+		_playerHud.AddChild(_deathOverlay);
+	}
+
+	private static Label CreateCenteredOverlayLabel(string text, int fontSize, Color color, float yOffset)
+	{
+		Label label = new Label
+		{
+			Text = text,
+			MouseFilter = Control.MouseFilterEnum.Ignore
+		};
+		label.SetAnchorsPreset(Control.LayoutPreset.FullRect);
+		label.OffsetTop = yOffset;
+		label.OffsetBottom = yOffset;
+		label.HorizontalAlignment = HorizontalAlignment.Center;
+		label.VerticalAlignment = VerticalAlignment.Center;
+		label.AddThemeFontSizeOverride("font_size", fontSize);
+		label.AddThemeColorOverride("font_color", color);
+		label.AddThemeColorOverride("font_shadow_color", Colors.Black);
+		label.AddThemeConstantOverride("shadow_offset_x", 4);
+		label.AddThemeConstantOverride("shadow_offset_y", 4);
+		return label;
 	}
 
 	public bool Heal(int amount)

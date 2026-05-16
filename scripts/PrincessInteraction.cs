@@ -8,6 +8,10 @@ public partial class PrincessInteraction : CharacterBody2D
 	[Export] public string EndText = "THE END";
 	[Export] public float TentShakeSeconds = 3.0f;
 	[Export] public float TentShakeDistance = 8.0f;
+	[Export] public Vector2 WinterDialoguePosition = new(-155.0f, -88.0f);
+
+	private const float WinterZoneStartX = 3456.0f;
+	private static readonly Color WinterTextColor = new(1.0f, 0.94f, 0.58f, 1.0f);
 
 	private Area2D _interactionArea;
 	private CollisionShape2D _bodyCollider;
@@ -34,6 +38,7 @@ public partial class PrincessInteraction : CharacterBody2D
 		_freedLines = SplitLines(FreedDialogue);
 
 		LayoutLabels();
+		ApplyBiomeTextStyle();
 		_promptLabel.Text = PromptText;
 		_promptLabel.Visible = false;
 		_dialogueLabel.Visible = false;
@@ -140,18 +145,36 @@ public partial class PrincessInteraction : CharacterBody2D
 	{
 		_promptLabel.Position = new Vector2(-12.0f, -64.0f);
 		_promptLabel.Size = new Vector2(52.0f, 12.0f);
-		_promptLabel.Scale = new Vector2(0.28f, 0.28f);
+		_promptLabel.Scale = new Vector2(0.45f, 0.45f);
 		_promptLabel.HorizontalAlignment = HorizontalAlignment.Center;
 		_promptLabel.VerticalAlignment = VerticalAlignment.Center;
 		_promptLabel.ZIndex = 50;
 
 		_dialogueLabel.Position = new Vector2(-24.0f, -84.0f);
 		_dialogueLabel.Size = new Vector2(82.0f, 22.0f);
-		_dialogueLabel.Scale = new Vector2(0.25f, 0.25f);
+		_dialogueLabel.Scale = new Vector2(0.33f, 0.33f);
 		_dialogueLabel.HorizontalAlignment = HorizontalAlignment.Center;
 		_dialogueLabel.VerticalAlignment = VerticalAlignment.Center;
 		_dialogueLabel.AutowrapMode = TextServer.AutowrapMode.Off;
 		_dialogueLabel.ZIndex = 50;
+	}
+
+	private void ApplyBiomeTextStyle()
+	{
+		if (GlobalPosition.X < WinterZoneStartX)
+			return;
+
+		ApplyTextColor(_promptLabel, WinterTextColor);
+		ApplyTextColor(_dialogueLabel, WinterTextColor);
+		_dialogueLabel.Position = WinterDialoguePosition;
+	}
+
+	private static void ApplyTextColor(Label label, Color color)
+	{
+		label.AddThemeColorOverride("font_color", color);
+		label.AddThemeColorOverride("font_shadow_color", Colors.Black);
+		label.AddThemeConstantOverride("shadow_offset_x", 1);
+		label.AddThemeConstantOverride("shadow_offset_y", 1);
 	}
 
 	private static string[] SplitLines(string text)

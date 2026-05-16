@@ -12,6 +12,9 @@ public partial class GuardInteraction : CharacterBody2D, IDamageable
 	[Export] public float AttackCooldown = 1.2f;
 	[Export] public float AttackDamageDelay = 0.24f;
 
+	private const float WinterZoneStartX = 3456.0f;
+	private static readonly Color WinterTextColor = new(1.0f, 0.94f, 0.58f, 1.0f);
+
 	private Area2D _interactionArea;
 	private CollisionShape2D _bodyCollider;
 	private AnimationPlayer _animationPlayer;
@@ -41,6 +44,7 @@ public partial class GuardInteraction : CharacterBody2D, IDamageable
 		_dialogueLines = Dialogue.Split('\n', System.StringSplitOptions.RemoveEmptyEntries | System.StringSplitOptions.TrimEntries);
 
 		LayoutLabels();
+		ApplyBiomeTextStyle();
 		_promptLabel.Text = PromptText;
 		_promptLabel.Visible = false;
 		_dialogueLabel.Visible = false;
@@ -169,18 +173,35 @@ public partial class GuardInteraction : CharacterBody2D, IDamageable
 	{
 		_promptLabel.Position = new Vector2(-10.0f, -58.0f);
 		_promptLabel.Size = new Vector2(42.0f, 12.0f);
-		_promptLabel.Scale = new Vector2(0.25f, 0.25f);
+		_promptLabel.Scale = new Vector2(0.45f, 0.45f);
 		_promptLabel.HorizontalAlignment = HorizontalAlignment.Center;
 		_promptLabel.VerticalAlignment = VerticalAlignment.Center;
 		_promptLabel.ZIndex = 50;
 
 		_dialogueLabel.Position = new Vector2(-20.0f, -76.0f);
 		_dialogueLabel.Size = new Vector2(68.0f, 20.0f);
-		_dialogueLabel.Scale = new Vector2(0.23f, 0.23f);
+		_dialogueLabel.Scale = new Vector2(0.30f, 0.30f);
 		_dialogueLabel.HorizontalAlignment = HorizontalAlignment.Center;
 		_dialogueLabel.VerticalAlignment = VerticalAlignment.Center;
 		_dialogueLabel.AutowrapMode = TextServer.AutowrapMode.Off;
 		_dialogueLabel.ZIndex = 50;
+	}
+
+	private void ApplyBiomeTextStyle()
+	{
+		if (GlobalPosition.X < WinterZoneStartX)
+			return;
+
+		ApplyTextColor(_promptLabel, WinterTextColor);
+		ApplyTextColor(_dialogueLabel, WinterTextColor);
+	}
+
+	private static void ApplyTextColor(Label label, Color color)
+	{
+		label.AddThemeColorOverride("font_color", color);
+		label.AddThemeColorOverride("font_shadow_color", Colors.Black);
+		label.AddThemeConstantOverride("shadow_offset_x", 1);
+		label.AddThemeConstantOverride("shadow_offset_y", 1);
 	}
 
 	private bool IsPlayerInAttackReach()
